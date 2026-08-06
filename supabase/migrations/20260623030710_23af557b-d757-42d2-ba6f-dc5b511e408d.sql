@@ -1,0 +1,1 @@
+ALTER TABLE public.section_texts ADD COLUMN show_title boolean NOT NULL DEFAULT true;
