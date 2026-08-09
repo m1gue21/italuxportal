@@ -101,23 +101,146 @@ function parseExcelMayoristas(xlsxPath) {
   return JSON.parse(out);
 }
 
+const STOP = new Set([
+  "de",
+  "la",
+  "el",
+  "los",
+  "las",
+  "y",
+  "con",
+  "para",
+  "en",
+  "del",
+  "copia",
+  "hombre",
+  "mujer",
+  "dama",
+  "caballero",
+  "ref",
+]);
+
+/** Sinónimos de estilo (Shopify ↔ Excel). */
+const STYLE_ALIASES = {
+  eslabon: ["cartier", "carter"],
+  cartier: ["eslabon", "carter"],
+  carter: ["cartier", "eslabon"],
+  chinesa: ["chinesca"],
+  chinesca: ["chinesa"],
+  entrelazada: ["cruzada"],
+  cruzada: ["entrelazada"],
+  cafe: ["café"],
+};
+
+function normText(s) {
+  let t = String(s || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+  // Abreviaturas del Excel: C. CUBANA → cadena cubana
+  t = t
+    .replace(/\bd\.\s*/g, "dije ")
+    .replace(/\bc\.\s*/g, "cadena ")
+    .replace(/\bp\.\s*/g, "pulsera ")
+    .replace(/\bt\.\s*/g, "topo ")
+    .replace(/\bcrus\b/g, "cruz")
+    .replace(/\bcartier\b/g, "carter");
+  t = t.replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ").trim();
+  return t;
+}
+
 function toks(s) {
   return new Set(
-    s
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-z0-9]+/g, " ")
-      .trim()
+    normText(s)
       .split(/\s+/)
-      .filter(Boolean),
+      .filter((w) => w && !STOP.has(w)),
   );
 }
+
+function expandStyle(set) {
+  const out = new Set(set);
+  for (const t of set) {
+    for (const a of STYLE_ALIASES[t] || []) out.add(a);
+  }
+  return out;
+}
+
 function jaccard(a, b) {
   if (!a.size || !b.size) return 0;
   let inter = 0;
   for (const x of a) if (b.has(x)) inter++;
   return inter / new Set([...a, ...b]).size;
+}
+
+function mmSet(...parts) {
+  const hay = parts.join(" ").toLowerCase();
+  return new Set(
+    [...hay.matchAll(/(\d+(?:\.\d+)?)\s*mm/g)].map((m) => m[1]),
+  );
+}
+
+function cmSet(...parts) {
+  const hay = parts.join(" ").toLowerCase();
+  return new Set(
+    [...hay.matchAll(/(\d+(?:\.\d+)?)\s*cm/g)].map((m) => m[1]),
+  );
+}
+
+function stripVariantTitle(title) {
+  return String(title || "").split(/\s*[·•]\s*/)[0].trim();
+}
+
+/** SKUs numéricos desde "42395 - 25444", "54883-0", "42793 + 24557". */
+function skuCandidates(sku) {
+  const s = String(sku || "").trim();
+  if (!s) return [];
+  if (/^\d+$/.test(s)) return [s];
+  return [...s.matchAll(/\d{4,}/g)].map((m) => m[0]);
+}
+
+function mmCompatible(productMm, excelMm) {
+  if (!productMm.size || !excelMm.size) return true; // no data → no block
+  for (const m of productMm) if (excelMm.has(m)) return true;
+  return false;
+}
+
+function styleOverlap(a, b) {
+  const styles = [
+    "cubana",
+    "chinesca",
+    "chinesa",
+    "carter",
+    "cartier",
+    "eslabon",
+    "franco",
+    "egipcia",
+    "lazo",
+    "veneciana",
+    "serpiente",
+    "grabada",
+    "cruzada",
+    "entrelazada",
+    "grano",
+    "cafe",
+    "militar",
+    "singapore",
+    "singapur",
+    "caracol",
+    "balin",
+    "continua",
+    "rustica",
+    "cordon",
+    "trigo",
+    "ancla",
+    "virgen",
+    "cruz",
+    "madero",
+    "dolar",
+    "guadalupe",
+  ];
+  const A = expandStyle(a);
+  const B = expandStyle(b);
+  return styles.some((st) => A.has(st) && B.has(st));
 }
 
 const CATALOGS = [
@@ -133,47 +256,94 @@ function roundMoney(n, currency) {
 }
 
 function matchMayorista(product, excelRows, usedSkus, currency) {
-  const sku = product.sku;
-  if (sku && !sku.includes("-") && !sku.includes("+")) {
-    const hit = excelRows.find((e) => e.sku === sku && !usedSkus.has(e.sku));
-    if (hit) {
-      usedSkus.add(hit.sku);
-      return {
-        mayorista: roundMoney(hit.mayorista, currency),
-        provisional: false,
-        match: "sku",
-      };
-    }
-  }
-  const pn = toks(product.title);
-  // strong name
-  const strong = excelRows
-    .filter((e) => !usedSkus.has(e.sku))
-    .map((e) => ({ e, sc: jaccard(pn, toks(e.nombre)) }))
-    .filter((x) => x.sc >= 0.6)
-    .sort((a, b) => b.sc - a.sc);
-  if (
-    strong.length === 1 ||
-    (strong.length > 1 && strong[0].sc - strong[1].sc >= 0.05)
-  ) {
-    usedSkus.add(strong[0].e.sku);
+  const productMm = mmSet(product.title, product.handle);
+  const productCm = cmSet(product.title, product.handle);
+  const candidates = skuCandidates(product.sku);
+  const isCompound =
+    Boolean(product.sku) &&
+    (product.sku.includes("-") ||
+      product.sku.includes("+") ||
+      candidates.length > 1);
+
+  // 1) SKU (exact o extraído), validando mm si ambos lados lo tienen.
+  // Combos con varios SKUs ("42395 - 25444") no consumen el SKU del Excel
+  // para no bloquear la variante individual correspondiente.
+  const multiSkuCombo = candidates.length > 1;
+  for (const cand of candidates) {
+    if (usedSkus.has(cand)) continue;
+    const hit = excelRows.find((e) => e.sku === cand);
+    if (!hit) continue;
+    const excelMm = mmSet(hit.nombre);
+    // En combos multi-SKU no exigimos mm (el 1º SKU suele ser la cadena)
+    if (!multiSkuCombo && !mmCompatible(productMm, excelMm)) continue;
+    if (!multiSkuCombo) usedSkus.add(hit.sku);
     return {
-      mayorista: roundMoney(strong[0].e.mayorista, currency),
-      provisional: true,
+      mayorista: roundMoney(hit.mayorista, currency),
+      provisional: isCompound || multiSkuCombo,
+      match: "sku",
+    };
+  }
+
+  const baseTitle = stripVariantTitle(product.title);
+  const pn = new Set([...toks(baseTitle), ...toks(product.title)]);
+
+  const scored = excelRows
+    .filter((e) => !usedSkus.has(e.sku))
+    .map((e) => {
+      const en = new Set([
+        ...toks(e.nombre),
+        ...(e.n ? String(e.n).split(/\s+/).filter(Boolean) : []),
+      ]);
+      let sc = jaccard(pn, en);
+      const excelMm = mmSet(e.nombre);
+      const excelCm = cmSet(e.nombre);
+      if (productMm.size && excelMm.size) {
+        if (mmCompatible(productMm, excelMm)) sc += 0.22;
+        else sc -= 0.25;
+      }
+      if (productCm.size && excelCm.size) {
+        for (const c of productCm) {
+          if (excelCm.has(c)) {
+            sc += 0.08;
+            break;
+          }
+        }
+      }
+      if (styleOverlap(pn, en)) sc += 0.12;
+      else sc -= 0.08;
+      return { e, sc, en, excelMm };
+    })
+    .sort((a, b) => b.sc - a.sc);
+
+  // 2) Nombre firme: score alto + (estilo o mm) + gap vs 2º
+  const firm = scored.filter((x) => {
+    if (x.sc < 0.55) return false;
+    if (productMm.size && x.excelMm.size && !mmCompatible(productMm, x.excelMm)) {
+      return false;
+    }
+    return styleOverlap(pn, x.en) || (productMm.size && mmCompatible(productMm, x.excelMm));
+  });
+  if (
+    firm.length >= 1 &&
+    (firm.length === 1 || firm[0].sc - firm[1].sc >= 0.04)
+  ) {
+    usedSkus.add(firm[0].e.sku);
+    return {
+      mayorista: roundMoney(firm[0].e.mayorista, currency),
+      provisional: false,
       match: "name",
     };
   }
-  // estimate
-  const any = excelRows
-    .map((e) => ({ e, sc: jaccard(pn, toks(e.nombre)) }))
-    .sort((a, b) => b.sc - a.sc);
-  if (any[0] && any[0].sc >= 0.25) {
+
+  // 3) Estimate (no consume SKU)
+  if (scored[0] && scored[0].sc >= 0.32) {
     return {
-      mayorista: roundMoney(any[0].e.mayorista, currency),
+      mayorista: roundMoney(scored[0].e.mayorista, currency),
       provisional: true,
       match: "estimate",
     };
   }
+
   const fam = ["cadena", "pulsera", "dije", "combo", "topo", "arete"].find((t) =>
     pn.has(t),
   );

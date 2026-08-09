@@ -1,6 +1,6 @@
 import type { CatalogProduct } from "./types";
 
-/** Auto-generated from products_exportCOLOMBIA.csv — do not edit by hand */
+/** Auto-generated from products_exportCOLOMBIA.csv — 1 Shopify variant = 1 product. Do not edit by hand. */
 export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
   {
     handle: "copia-de-arete-corazon-piedras-33003",
@@ -81,8 +81,8 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     ],
   },
   {
-    handle: "cadena-china-45-cm",
-    title: "Cadena China 45 cm",
+    handle: "cadena-china-45-cm--cadena-caballero-60",
+    title: "Cadena China 45 cm · CADENA CABALLERO 60",
     sku: "43888",
     retailPrice: 84,
     compareAtPrice: 112,
@@ -95,7 +95,23 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     tags: [
     ],
     categories: [
-      "Cadenas",
+    ],
+  },
+  {
+    handle: "cadena-china-45-cm--cadena-dama-45-cm",
+    title: "Cadena China 45 cm · CADENA DAMA 45 CM",
+    sku: "43886",
+    retailPrice: 134925,
+    compareAtPrice: 179900,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/IMG_9358.jpg?v=1766092477",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/IMG_9358.jpg?v=1766092477",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/43886_5.jpg?v=1766092475",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/IMG_9359.jpg?v=1766092476",
+    ],
+    tags: [
+    ],
+    categories: [
     ],
   },
   {
@@ -112,14 +128,59 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     tags: [
     ],
     categories: [
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-chinesa-hombre--4mm-65cm",
+    title: "Cadena Chinesca Hombre · 4mm/65cm",
+    sku: "44883",
+    retailPrice: 175000,
+    compareAtPrice: 250000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/BLANCA_CHINESCA-4MM_d08467c9-52ba-4afb-8e78-fb4c27b38922.jpg?v=1782351318",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/BLANCA_CHINESCA-4MM_d08467c9-52ba-4afb-8e78-fb4c27b38922.jpg?v=1782351318",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_china_8mm.png?v=1782351318",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_china_6mm.png?v=1782351318",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_China_6mm_2.png?v=1782351318",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
       "Cadenas",
       "Hombre",
     ],
   },
   {
-    handle: "cadena-chinesa-hombre",
-    title: "Cadena Chinesca Hombre",
+    handle: "cadena-chinesa-hombre--6mm-65cm",
+    title: "Cadena Chinesca Hombre · 6mm/65cm",
     sku: "44888",
+    retailPrice: 195300,
+    compareAtPrice: 279000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_china_6mm.png?v=1782351318",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_china_6mm.png?v=1782351318",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_china_8mm.png?v=1782351318",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/BLANCA_CHINESCA-4MM_d08467c9-52ba-4afb-8e78-fb4c27b38922.jpg?v=1782351318",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_China_6mm_2.png?v=1782351318",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-chinesa-hombre--8mm-65cm",
+    title: "Cadena Chinesca Hombre · 8mm/65cm",
+    sku: "",
     retailPrice: 259700,
     compareAtPrice: 371000,
     imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_china_8mm.png?v=1782351318",
@@ -195,7 +256,6 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     tags: [
     ],
     categories: [
-      "Cadenas",
     ],
   },
   {
@@ -261,15 +321,57 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     ],
   },
   {
-    handle: "cadena-cubana-hombre",
-    title: "Cadena Cubana Hombre",
-    sku: "42399",
-    retailPrice: 227500,
-    compareAtPrice: 325000,
+    handle: "cadena-cubana-hombre--4mm-65cm",
+    title: "Cadena Cubana Hombre · 4mm/65cm",
+    sku: "42397",
+    retailPrice: 150500,
+    compareAtPrice: 215000,
     imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_cubana_6mm.png?v=1782351307",
     galleryUrls: [
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_cubana_6mm.png?v=1782351307",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_CUBANA_9MM_5.jpg?v=1782351308",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-cubana-hombre--6mm-65cm",
+    title: "Cadena Cubana Hombre · 6mm/65cm",
+    sku: "42398",
+    retailPrice: 179900,
+    compareAtPrice: 257000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_cubana_6mm.png?v=1782351307",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_cubana_6mm.png?v=1782351307",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_CUBANA_9MM_5.jpg?v=1782351308",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-cubana-hombre--9mm-65cm",
+    title: "Cadena Cubana Hombre · 9mm/65cm",
+    sku: "42399",
+    retailPrice: 227500,
+    compareAtPrice: 325000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_CUBANA_9MM_5.jpg?v=1782351308",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_CUBANA_9MM_5.jpg?v=1782351308",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_cubana_6mm.png?v=1782351307",
     ],
     tags: [
       "Cadenas",
@@ -316,19 +418,42 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     tags: [
     ],
     categories: [
-      "Cadenas",
     ],
   },
   {
-    handle: "cadena-egipcia-hombre",
-    title: "Cadena Egipcia Hombre",
+    handle: "cadena-egipcia-hombre--4mm-65cm",
+    title: "Cadena Egipcia Hombre · 4mm/65cm",
+    sku: "",
+    retailPrice: 179900,
+    compareAtPrice: 257000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Egipcia-Cuero-Negro-Natural_95dab7f8-f9d7-4e54-8fbd-34cb5c67fa02.webp?v=1782351319",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Egipcia-Cuero-Negro-Natural_95dab7f8-f9d7-4e54-8fbd-34cb5c67fa02.webp?v=1782351319",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena-Egipcia-6mm_82cfd5a6-789c-4cec-8ba6-33ab843be73b.webp?v=1782351319",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_Egipcia_6mm.png?v=1782351319",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_Egipcia_6mm_2.png?v=1782351319",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/EGIPCIAPUESTA_7d4e37a6-f338-468c-9369-1e560130ba05.jpg?v=1782351319",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-egipcia-hombre--6mm-65cm",
+    title: "Cadena Egipcia Hombre · 6mm/65cm",
     sku: "",
     retailPrice: 227500,
     compareAtPrice: 325000,
-    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena-Egipcia-6mm_82cfd5a6-789c-4cec-8ba6-33ab843be73b.webp?v=1782351319",
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_Egipcia_6mm.png?v=1782351319",
     galleryUrls: [
-      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena-Egipcia-6mm_82cfd5a6-789c-4cec-8ba6-33ab843be73b.webp?v=1782351319",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_Egipcia_6mm.png?v=1782351319",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena-Egipcia-6mm_82cfd5a6-789c-4cec-8ba6-33ab843be73b.webp?v=1782351319",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_Egipcia_6mm_2.png?v=1782351319",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Egipcia-Cuero-Negro-Natural_95dab7f8-f9d7-4e54-8fbd-34cb5c67fa02.webp?v=1782351319",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/EGIPCIAPUESTA_7d4e37a6-f338-468c-9369-1e560130ba05.jpg?v=1782351319",
@@ -366,8 +491,29 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     ],
   },
   {
-    handle: "cadena-entrelazada-hombre",
-    title: "Cadena Entrelazada Hombre",
+    handle: "cadena-entrelazada-hombre--5mm-65cm",
+    title: "Cadena Entrelazada Hombre · 5mm/65cm",
+    sku: "",
+    retailPrice: 150500,
+    compareAtPrice: 215000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_CRUZADA_5MM_2_108069c3-16bd-4550-a1e2-5d423349ef1a.jpg?v=1782351329",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_CRUZADA_5MM_2_108069c3-16bd-4550-a1e2-5d423349ef1a.jpg?v=1782351329",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Luxxojoyeria-febrero-02424_c7bcb9ed-3877-4316-bd74-4bf5ebb5a458.jpg?v=1782351329",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-entrelazada-hombre--6mm-65mm",
+    title: "Cadena Entrelazada Hombre · 6mm/65mm",
     sku: "",
     retailPrice: 179900,
     compareAtPrice: 257000,
@@ -387,11 +533,35 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     ],
   },
   {
-    handle: "cadena-cartier-hombre",
-    title: "Cadena Eslabon Hombre",
-    sku: "42540",
-    retailPrice: 75825,
-    compareAtPrice: 105100,
+    handle: "cadena-cartier-hombre--6mm-65cm",
+    title: "Cadena Eslabon Hombre · 6mm/65cm",
+    sku: "42500",
+    retailPrice: 179900,
+    compareAtPrice: 257000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/BLANCO-CARTER-4MM_188d3cf9-651f-4db2-810a-a2676ba00907.jpg?v=1782351315",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/BLANCO-CARTER-4MM_188d3cf9-651f-4db2-810a-a2676ba00907.jpg?v=1782351315",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0286.jpg?v=1782351318",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_CARTIER_7MM.jpg?v=1782351316",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0287.jpg?v=1782351318",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/3X1_8e6a8688-27f8-4e53-800d-6aefc6be3449.jpg?v=1782351316",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-cartier-hombre--7mm-65cm",
+    title: "Cadena Eslabon Hombre · 7mm/65cm",
+    sku: "42520",
+    retailPrice: 199500,
+    compareAtPrice: 275000,
     imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0286.jpg?v=1782351318",
     galleryUrls: [
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0286.jpg?v=1782351318",
@@ -411,8 +581,82 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     ],
   },
   {
-    handle: "cadena-franco-hombre4mm",
-    title: "Cadena Franco Hombre 4mm",
+    handle: "cadena-cartier-hombre--9mm-65cm",
+    title: "Cadena Eslabon Hombre · 9mm/65cm",
+    sku: "42540",
+    retailPrice: 75825,
+    compareAtPrice: 105100,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_CARTIER_7MM.jpg?v=1782351316",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_CARTIER_7MM.jpg?v=1782351316",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0286.jpg?v=1782351318",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/BLANCO-CARTER-4MM_188d3cf9-651f-4db2-810a-a2676ba00907.jpg?v=1782351315",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0287.jpg?v=1782351318",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/3X1_8e6a8688-27f8-4e53-800d-6aefc6be3449.jpg?v=1782351316",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-franco-hombre4mm--3mm-65cm-65cm",
+    title: "Cadena Franco Hombre 4mm · 3mm/65cm / 65cm",
+    sku: "",
+    retailPrice: 139900,
+    compareAtPrice: 199900,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_FRANCO_6MM_2_600a37fe-eb29-4d0f-9648-5a9d75618a35.jpg?v=1782351328",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_FRANCO_6MM_2_600a37fe-eb29-4d0f-9648-5a9d75618a35.jpg?v=1782351328",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena-Franco-6mm.webp?v=1782351328",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_Franco_4mm.png?v=1782351328",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_FRANCO_6MM_9df5be13-373b-4750-9ae8-5c82661c5eb6.jpg?v=1782351328",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Puesta-Cadena-Hombre-Serpiente-6mm-044_fb1af64e-1792-40ee-af6d-cf33a5ab0d48.webp?v=1782351328",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Puesta-Cadena-Hombre-Serpiente-Comparativa-047_41898cc6-2c23-485e-9539-c249fc5487a9.webp?v=1782351328",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-franco-hombre4mm--4mm-65cm-65cm",
+    title: "Cadena Franco Hombre 4mm · 4mm/65cm / 65cm",
+    sku: "",
+    retailPrice: 150500,
+    compareAtPrice: 215000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena-Franco-6mm.webp?v=1782351328",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena-Franco-6mm.webp?v=1782351328",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_FRANCO_6MM_2_600a37fe-eb29-4d0f-9648-5a9d75618a35.jpg?v=1782351328",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_Franco_4mm.png?v=1782351328",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_FRANCO_6MM_9df5be13-373b-4750-9ae8-5c82661c5eb6.jpg?v=1782351328",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Puesta-Cadena-Hombre-Serpiente-6mm-044_fb1af64e-1792-40ee-af6d-cf33a5ab0d48.webp?v=1782351328",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Puesta-Cadena-Hombre-Serpiente-Comparativa-047_41898cc6-2c23-485e-9539-c249fc5487a9.webp?v=1782351328",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-franco-hombre4mm--6mm-65cm-65cm",
+    title: "Cadena Franco Hombre 4mm · 6mm/65cm / 65cm",
     sku: "",
     retailPrice: 179900,
     compareAtPrice: 257000,
@@ -457,8 +701,56 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     ],
   },
   {
-    handle: "cadena-grabada-hombre",
-    title: "Cadena Grabada Hombre",
+    handle: "cadena-grabada-hombre--4mm-65cm-65cm",
+    title: "Cadena Grabada Hombre · 4mm/65cm / 65cm",
+    sku: "",
+    retailPrice: 169500,
+    compareAtPrice: 245000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA-GRABADA-6MM_19fc5c40-5282-41dd-9df4-f2898b87fd5d.webp?v=1782351327",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA-GRABADA-6MM_19fc5c40-5282-41dd-9df4-f2898b87fd5d.webp?v=1782351327",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENAS_GRABADA_6MM_947c2b2d-70d6-45e3-853d-3d541252a1a3.jpg?v=1782351328",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0316.jpg?v=1782351328",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA-GRABADA-4MM_1a2d2d56-7b83-4336-a434-2d669d5204b7.jpg?v=1782351327",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Puesta-Cadena-Hombre-Grabada-6mm_f6e3c3ce-0ae1-41b8-a6f1-42103b90c937.webp?v=1782351327",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-grabada-hombre--6mm-65cm-65cm",
+    title: "Cadena Grabada Hombre · 6mm/65cm / 65cm",
+    sku: "",
+    retailPrice: 179900,
+    compareAtPrice: 257000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENAS_GRABADA_6MM_947c2b2d-70d6-45e3-853d-3d541252a1a3.jpg?v=1782351328",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENAS_GRABADA_6MM_947c2b2d-70d6-45e3-853d-3d541252a1a3.jpg?v=1782351328",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA-GRABADA-6MM_19fc5c40-5282-41dd-9df4-f2898b87fd5d.webp?v=1782351327",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0316.jpg?v=1782351328",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA-GRABADA-4MM_1a2d2d56-7b83-4336-a434-2d669d5204b7.jpg?v=1782351327",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Puesta-Cadena-Hombre-Grabada-6mm_f6e3c3ce-0ae1-41b8-a6f1-42103b90c937.webp?v=1782351327",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-grabada-hombre--8mm-65cm-65cm",
+    title: "Cadena Grabada Hombre · 8mm/65cm / 65cm",
     sku: "",
     retailPrice: 227500,
     compareAtPrice: 325000,
@@ -481,8 +773,30 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     ],
   },
   {
-    handle: "cadena-granocafe-hombre",
-    title: "Cadena Grano de Café Hombre",
+    handle: "cadena-granocafe-hombre--6mm-65cm",
+    title: "Cadena Grano de Café Hombre · 6mm/65cm",
+    sku: "",
+    retailPrice: 179900,
+    compareAtPrice: 257000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_grano_de_cafe_6mm.png?v=1782351309",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_grano_de_cafe_6mm.png?v=1782351309",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/BLANCO_-ANCLA-4MM_63814d16-6681-47e4-8ba0-32ac62373f4c.webp?v=1782351309",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Combo_grano_de_cafe_6mm_2.png?v=1782351308",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-granocafe-hombre--7mm-65cm",
+    title: "Cadena Grano de Café Hombre · 7mm/65cm",
     sku: "",
     retailPrice: 189000,
     compareAtPrice: 270000,
@@ -503,16 +817,41 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     ],
   },
   {
-    handle: "cadena-lazo-hombre",
-    title: "Cadena Lazo Hombre",
+    handle: "cadena-lazo-hombre--4mm-65cm-65cm",
+    title: "Cadena Lazo Hombre · 4mm/65cm / 65cm",
     sku: "",
-    retailPrice: 227500,
-    compareAtPrice: 325000,
-    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_lazo_4mm.png?v=1782351314",
+    retailPrice: 150500,
+    compareAtPrice: 215000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0325.jpg?v=1782351314",
     galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0325.jpg?v=1782351314",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_lazo_4mm.png?v=1782351314",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/BLANCA_LAZO-4MM_3b65cfc8-5097-4963-9dc2-da1681965f2b.jpg?v=1782351313",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0117.jpg?v=1782351315",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_lazo_8mm.png?v=1782351314",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_lazo_4mm_2.png?v=1782351315",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-lazo-hombre--6mm-65cm-65cm",
+    title: "Cadena Lazo Hombre · 6mm/65cm / 65cm",
+    sku: "",
+    retailPrice: 179900,
+    compareAtPrice: 257000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0117.jpg?v=1782351315",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0117.jpg?v=1782351315",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_lazo_4mm.png?v=1782351314",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/BLANCA_LAZO-4MM_3b65cfc8-5097-4963-9dc2-da1681965f2b.jpg?v=1782351313",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_lazo_8mm.png?v=1782351314",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_lazo_4mm_2.png?v=1782351315",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0325.jpg?v=1782351314",
@@ -528,8 +867,54 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     ],
   },
   {
-    handle: "cadena-lazo-mujer2mm",
-    title: "Cadena Lazo Mujer 2mm",
+    handle: "cadena-lazo-hombre--8mm-65cm-65cm",
+    title: "Cadena Lazo Hombre · 8mm/65cm / 65cm",
+    sku: "",
+    retailPrice: 227500,
+    compareAtPrice: 325000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_lazo_8mm.png?v=1782351314",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_lazo_8mm.png?v=1782351314",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_lazo_4mm.png?v=1782351314",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/BLANCA_LAZO-4MM_3b65cfc8-5097-4963-9dc2-da1681965f2b.jpg?v=1782351313",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0117.jpg?v=1782351315",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_lazo_4mm_2.png?v=1782351315",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0325.jpg?v=1782351314",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-lazo-mujer2mm--2mm-45cm",
+    title: "Cadena Lazo Mujer 2mm · 2mm/45cm",
+    sku: "42782",
+    retailPrice: 97425,
+    compareAtPrice: 129900,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/IMG_9334.jpg?v=1766092537",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/IMG_9334.jpg?v=1766092537",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/IMG_9335.jpg?v=1766092535",
+    ],
+    tags: [
+      "Cadenas",
+      "Mujer",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Mujer",
+    ],
+  },
+  {
+    handle: "cadena-lazo-mujer2mm--3mm-45cm",
+    title: "Cadena Lazo Mujer 2mm · 3mm/45cm",
     sku: "42787",
     retailPrice: 104925,
     compareAtPrice: 139900,
@@ -562,7 +947,6 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     tags: [
     ],
     categories: [
-      "Cadenas",
     ],
   },
   {
@@ -580,13 +964,35 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     tags: [
     ],
     categories: [
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-rustica-hombre--4mm-65cm-65cm",
+    title: "Cadena Rustica Hombre · 4mm/65cm / 65cm",
+    sku: "",
+    retailPrice: 227500,
+    compareAtPrice: 325000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_RUSTICA_4MM.jpg?v=1782351325",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_RUSTICA_4MM.jpg?v=1782351325",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_RUSTICA_6MM_2_8b91c2c1-fcbc-4f71-8f6f-b26ff25050b6.jpg?v=1782351325",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA-RUSTICA_20ad8630-d531-4d85-be5c-3605b5cd06a6.webp?v=1782351324",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_RUSTICA_6MM_e91cfd20-3f3f-4152-aa86-f0e0884fe4f8.jpg?v=1782351326",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
       "Cadenas",
       "Hombre",
     ],
   },
   {
-    handle: "cadena-rustica-hombre",
-    title: "Cadena Rustica Hombre",
+    handle: "cadena-rustica-hombre--6mm-65cm-65cm",
+    title: "Cadena Rustica Hombre · 6mm/65cm / 65cm",
     sku: "",
     retailPrice: 248500,
     compareAtPrice: 355000,
@@ -608,15 +1014,65 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     ],
   },
   {
-    handle: "cadena-serpiente-hombre",
-    title: "Cadena Serpiente Hombre",
+    handle: "cadena-serpiente-hombre--4mm-65cm-65cm",
+    title: "Cadena Serpiente Hombre · 4mm/65cm / 65cm",
+    sku: "",
+    retailPrice: 169500,
+    compareAtPrice: 245000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Puesta-Cadena-Hombre-Serpiente-Comparativa-047_e020ec93-04b3-4259-a358-06f66022a48e.webp?v=1782351310",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Puesta-Cadena-Hombre-Serpiente-Comparativa-047_e020ec93-04b3-4259-a358-06f66022a48e.webp?v=1782351310",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/cadena_serpiente_8mm_2.png?v=1782351311",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA-SERPIENTE-6MM_6ed8e0d2-dad3-4d01-8206-4549142c6aa0.webp?v=1782351311",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_SERPIENTE_6MM_d498b465-db1e-4734-a59a-ddbfd86627f6.jpg?v=1782351313",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/cadena_serpiente_8mm.png?v=1782351311",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Puesta-Cadena-Hombre-Serpiente-6mm-044_1df61c85-60e2-4791-a2dc-a511326d1b67.webp?v=1782351310",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-serpiente-hombre--6mm-65cm-65cm",
+    title: "Cadena Serpiente Hombre · 6mm/65cm / 65cm",
+    sku: "",
+    retailPrice: 179900,
+    compareAtPrice: 257000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_SERPIENTE_6MM_d498b465-db1e-4734-a59a-ddbfd86627f6.jpg?v=1782351313",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_SERPIENTE_6MM_d498b465-db1e-4734-a59a-ddbfd86627f6.jpg?v=1782351313",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/cadena_serpiente_8mm_2.png?v=1782351311",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA-SERPIENTE-6MM_6ed8e0d2-dad3-4d01-8206-4549142c6aa0.webp?v=1782351311",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/cadena_serpiente_8mm.png?v=1782351311",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Puesta-Cadena-Hombre-Serpiente-Comparativa-047_e020ec93-04b3-4259-a358-06f66022a48e.webp?v=1782351310",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Puesta-Cadena-Hombre-Serpiente-6mm-044_1df61c85-60e2-4791-a2dc-a511326d1b67.webp?v=1782351310",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-serpiente-hombre--8mm-65cm-65cm",
+    title: "Cadena Serpiente Hombre · 8mm/65cm / 65cm",
     sku: "",
     retailPrice: 227500,
     compareAtPrice: 325000,
-    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/cadena_serpiente_8mm_2.png?v=1782351311",
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA-SERPIENTE-6MM_6ed8e0d2-dad3-4d01-8206-4549142c6aa0.webp?v=1782351311",
     galleryUrls: [
-      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/cadena_serpiente_8mm_2.png?v=1782351311",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA-SERPIENTE-6MM_6ed8e0d2-dad3-4d01-8206-4549142c6aa0.webp?v=1782351311",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/cadena_serpiente_8mm_2.png?v=1782351311",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/CADENA_SERPIENTE_6MM_d498b465-db1e-4734-a59a-ddbfd86627f6.jpg?v=1782351313",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/cadena_serpiente_8mm.png?v=1782351311",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Puesta-Cadena-Hombre-Serpiente-Comparativa-047_e020ec93-04b3-4259-a358-06f66022a48e.webp?v=1782351310",
@@ -646,7 +1102,6 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     tags: [
     ],
     categories: [
-      "Cadenas",
     ],
   },
   {
@@ -663,7 +1118,6 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     tags: [
     ],
     categories: [
-      "Cadenas",
     ],
   },
   {
@@ -682,7 +1136,6 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     tags: [
     ],
     categories: [
-      "Cadenas",
       "Hombre",
     ],
   },
@@ -700,12 +1153,35 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     tags: [
     ],
     categories: [
-      "Cadenas",
     ],
   },
   {
-    handle: "cadena-veneciana-hombre",
-    title: "Cadena Veneciana Hombre",
+    handle: "cadena-veneciana-hombre--4mm-65cm-65cm",
+    title: "Cadena Veneciana Hombre · 4mm/65cm / 65cm",
+    sku: "",
+    retailPrice: 150500,
+    compareAtPrice: 215000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0280_7f4c9cc0-5008-4819-a423-30869e38d059.jpg?v=1782351324",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0280_7f4c9cc0-5008-4819-a423-30869e38d059.jpg?v=1782351324",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_veneciana_6mm.png?v=1782351322",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/BLANCO_VENECIANA-4MM_47bb48c7-39f2-45cb-b5fa-b2228f7df6b8.jpg?v=1782351322",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_veneciana_6mm_3.png?v=1782351322",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cadena_veneciana_6mm_2.png?v=1782351322",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-veneciana-hombre--6mm-65cm-65cm",
+    title: "Cadena Veneciana Hombre · 6mm/65cm / 65cm",
     sku: "",
     retailPrice: 179900,
     compareAtPrice: 257000,
@@ -1008,28 +1484,11 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     tags: [
     ],
     categories: [
-      "Pulseras",
     ],
   },
   {
-    handle: "pulsera-balin-5-italiana-y-lisa",
-    title: "Pulsera Balín #5 Italiana y Lisa",
-    sku: "",
-    retailPrice: 199900,
-    compareAtPrice: 320000,
-    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/products/italianaylisa.jpg?v=1695327525",
-    galleryUrls: [
-      "https://cdn.shopify.com/s/files/1/0828/3540/7145/products/italianaylisa.jpg?v=1695327525",
-    ],
-    tags: [
-    ],
-    categories: [
-      "Pulseras",
-    ],
-  },
-  {
-    handle: "pulsera-balin-5-italiana-y-lisa-neopreno",
-    title: "Pulsera Balín #5 Italiana y Lisa + Neopreno",
+    handle: "pulsera-balin-5-italiana-y-lisa-neopreno--negra",
+    title: "Pulsera Balín #5 Italiana y Lisa + Neopreno · NEGRA",
     sku: "",
     retailPrice: 159000,
     compareAtPrice: 280000,
@@ -1040,7 +1499,96 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     tags: [
     ],
     categories: [
-      "Pulseras",
+    ],
+  },
+  {
+    handle: "pulsera-balin-5-italiana-y-lisa-neopreno--roja",
+    title: "Pulsera Balín #5 Italiana y Lisa + Neopreno · ROJA",
+    sku: "",
+    retailPrice: 159000,
+    compareAtPrice: 280000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/products/italianalisayneopreno.jpg?v=1695327522",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/products/italianalisayneopreno.jpg?v=1695327522",
+    ],
+    tags: [
+    ],
+    categories: [
+    ],
+  },
+  {
+    handle: "pulsera-balin-5-italiana-y-lisa--negro",
+    title: "Pulsera Balín #5 Italiana y Lisa · NEGRO",
+    sku: "",
+    retailPrice: 199900,
+    compareAtPrice: 320000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/products/italianaylisa.jpg?v=1695327525",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/products/italianaylisa.jpg?v=1695327525",
+    ],
+    tags: [
+    ],
+    categories: [
+    ],
+  },
+  {
+    handle: "pulsera-balin-5-italiana-y-lisa--rojo",
+    title: "Pulsera Balín #5 Italiana y Lisa · ROJO",
+    sku: "",
+    retailPrice: 199900,
+    compareAtPrice: 320000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/products/italianaylisa.jpg?v=1695327525",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/products/italianaylisa.jpg?v=1695327525",
+    ],
+    tags: [
+    ],
+    categories: [
+    ],
+  },
+  {
+    handle: "pulsera-balin-6-diamantado-ref-0210",
+    title: "Pulsera Balín #6 Diamantado  + NEOPRENO Ref 0210",
+    sku: "0210",
+    retailPrice: 159000,
+    compareAtPrice: 229000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/products/REF0210.jpg?v=1695327773",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/products/REF0210.jpg?v=1695327773",
+    ],
+    tags: [
+    ],
+    categories: [
+    ],
+  },
+  {
+    handle: "pulsera-balin-6-diamantado-ref-0209--negra",
+    title: "Pulsera Balín #6 Diamantado · NEGRA",
+    sku: "0210",
+    retailPrice: 239000,
+    compareAtPrice: 370000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/products/REF0209.jpg?v=1695327776",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/products/REF0209.jpg?v=1695327776",
+    ],
+    tags: [
+    ],
+    categories: [
+    ],
+  },
+  {
+    handle: "pulsera-balin-6-diamantado-ref-0209--roja",
+    title: "Pulsera Balín #6 Diamantado · ROJA",
+    sku: "0209",
+    retailPrice: 239000,
+    compareAtPrice: 370000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/products/REF0209.jpg?v=1695327776",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/products/REF0209.jpg?v=1695327776",
+    ],
+    tags: [
+    ],
+    categories: [
     ],
   },
   {
@@ -1079,13 +1627,52 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
       "Oro laminado",
     ],
     categories: [
-      "Pulseras",
       "Hombre",
     ],
   },
   {
-    handle: "pulsera-chinesca-hombre",
-    title: "Pulsera Chinesca Hombre",
+    handle: "pulsera-chinesca-hombre--4mm-20cm",
+    title: "Pulsera Chinesca Hombre · 4mm/20cm",
+    sku: "54883-0",
+    retailPrice: 114800,
+    compareAtPrice: 185000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0289.jpg?v=1782350841",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0289.jpg?v=1782350841",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_china_4mm_hombre.png?v=1782350840",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_CHINA_6MM_c6c09625-8f80-4cbc-a06c-2f7ae7277997.jpg?v=1782350840",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-chinesca-hombre--6mm-20cm",
+    title: "Pulsera Chinesca Hombre · 6mm/20cm",
+    sku: "54888-1",
+    retailPrice: 129500,
+    compareAtPrice: 199900,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_CHINA_6MM_c6c09625-8f80-4cbc-a06c-2f7ae7277997.jpg?v=1782350840",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_CHINA_6MM_c6c09625-8f80-4cbc-a06c-2f7ae7277997.jpg?v=1782350840",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/DSC_0289.jpg?v=1782350841",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_china_4mm_hombre.png?v=1782350840",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-chinesca-hombre--8mm-20cm",
+    title: "Pulsera Chinesca Hombre · 8mm/20cm",
     sku: "54890",
     retailPrice: 139900,
     compareAtPrice: 164000,
@@ -1100,7 +1687,6 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
       "Oro laminado",
     ],
     categories: [
-      "Pulseras",
       "Hombre",
     ],
   },
@@ -1182,13 +1768,60 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
       "Pulsera",
     ],
     categories: [
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-cubana-hombre--4mm-20cm",
+    title: "Pulsera Cubana Hombre · 4mm/20cm",
+    sku: "",
+    retailPrice: 99400,
+    compareAtPrice: 142000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Cubana_Varias.png?v=1782350830",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Cubana_Varias.png?v=1782350830",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_cubana_6mm.png?v=1782350830",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Cubana_4mm.png?v=1782350830",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Cubana_9mm.png?v=1782350830",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_CUBANA_6MM_bb095814-53b6-4ede-8730-de50c4a3c8b5.jpg?v=1782350831",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
       "Pulseras",
       "Hombre",
     ],
   },
   {
-    handle: "pulsera-cubana-hombre",
-    title: "Pulsera Cubana Hombre",
+    handle: "pulsera-cubana-hombre--6mm-20cm",
+    title: "Pulsera Cubana Hombre · 6mm/20cm",
+    sku: "",
+    retailPrice: 105000,
+    compareAtPrice: 150000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_CUBANA_6MM_bb095814-53b6-4ede-8730-de50c4a3c8b5.jpg?v=1782350831",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_CUBANA_6MM_bb095814-53b6-4ede-8730-de50c4a3c8b5.jpg?v=1782350831",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Cubana_Varias.png?v=1782350830",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_cubana_6mm.png?v=1782350830",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Cubana_4mm.png?v=1782350830",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Cubana_9mm.png?v=1782350830",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-cubana-hombre--8mm-20cm",
+    title: "Pulsera Cubana Hombre · 8mm/20cm",
     sku: "",
     retailPrice: 114800,
     compareAtPrice: 164000,
@@ -1292,7 +1925,6 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
       "Pulsera",
     ],
     categories: [
-      "Pulseras",
       "Hombre",
     ],
   },
@@ -1312,13 +1944,37 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
       "Pulsera",
     ],
     categories: [
-      "Pulseras",
       "Mujer",
     ],
   },
   {
-    handle: "pulsera-cartier-hombre",
-    title: "Pulsera Eslabon Hombre",
+    handle: "pulsera-cartier-hombre--6mm-20cm",
+    title: "Pulsera Eslabon Hombre · 6mm/20cm",
+    sku: "",
+    retailPrice: 105000,
+    compareAtPrice: 150000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Eslabon_6mm_2.png?v=1782350838",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Eslabon_6mm_2.png?v=1782350838",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/foto-puesta_carter-comparacion.jpg?v=1782350837",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cartier_6_mm_20_cm_3_17cc54cd-db81-4892-a1c6-a2acb08fe6a2.jpg?v=1782350838",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Cartier_6_mm_20_cm_2_b48ad8ea-9eef-4a04-ae83-e6ea236d2e09.jpg?v=1782350837",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Eslabon_6mm.png?v=1782350838",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/foto-puesta_carter6mm.webp?v=1782350837",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-cartier-hombre--9mm-20cm",
+    title: "Pulsera Eslabon Hombre · 9mm/20cm",
     sku: "",
     retailPrice: 139900,
     compareAtPrice: 199900,
@@ -1362,8 +2018,26 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     ],
   },
   {
-    handle: "cadena-china-65cm-copia-1",
-    title: "Pulsera Franco Hombre",
+    handle: "cadena-china-65cm-copia-1--4mm-20cm",
+    title: "Pulsera Franco Hombre · 4mm/20cm",
+    sku: "",
+    retailPrice: 99400,
+    compareAtPrice: 142000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Franco_4mm.png?v=1782350828",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Franco_4mm.png?v=1782350828",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/IMG_2441.jpg?v=1782350828",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/IMG_2440.jpg?v=1782350828",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-china-65cm-copia-1--6mm-20cm",
+    title: "Pulsera Franco Hombre · 6mm/20cm",
     sku: "",
     retailPrice: 105000,
     compareAtPrice: 150000,
@@ -1376,13 +2050,58 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     tags: [
     ],
     categories: [
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-grabada-hombre--4mmm-20cm",
+    title: "Pulsera Grabada Hombre · 4mmm/20cm",
+    sku: "",
+    retailPrice: 99400,
+    compareAtPrice: 142000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Grabada_varias.png?v=1782350848",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Grabada_varias.png?v=1782350848",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_GRABADA_6MM_2.jpg?v=1782350849",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Grabada_6_mm_20_cm_2_f99307b1-280e-470e-89e2-5d1e992155a1.jpg?v=1782350848",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Grabada_6_mm_20_cm_3_32f26b91-62b6-4d93-b467-84195b309441.jpg?v=1782350848",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
       "Pulseras",
       "Hombre",
     ],
   },
   {
-    handle: "pulsera-grabada-hombre",
-    title: "Pulsera Grabada Hombre",
+    handle: "pulsera-grabada-hombre--6mm-20cm",
+    title: "Pulsera Grabada Hombre · 6mm/20cm",
+    sku: "",
+    retailPrice: 105000,
+    compareAtPrice: 150000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_GRABADA_6MM_2.jpg?v=1782350849",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_GRABADA_6MM_2.jpg?v=1782350849",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Grabada_varias.png?v=1782350848",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Grabada_6_mm_20_cm_2_f99307b1-280e-470e-89e2-5d1e992155a1.jpg?v=1782350848",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Grabada_6_mm_20_cm_3_32f26b91-62b6-4d93-b467-84195b309441.jpg?v=1782350848",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-grabada-hombre--8mm-20cm",
+    title: "Pulsera Grabada Hombre · 8mm/20cm",
     sku: "",
     retailPrice: 114800,
     compareAtPrice: 164000,
@@ -1419,7 +2138,6 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
       "Pulsera",
     ],
     categories: [
-      "Pulseras",
       "Mujer",
     ],
   },
@@ -1447,17 +2165,63 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     ],
   },
   {
-    handle: "pulsera-lazo-hombre",
-    title: "Pulsera Lazo Hombre",
+    handle: "pulsera-lazo-hombre--4mm-20cm",
+    title: "Pulsera Lazo Hombre · 4mm/20cm",
+    sku: "",
+    retailPrice: 99400,
+    compareAtPrice: 142000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_LAZO_4MM_910d8031-52d2-4019-875c-f3f3c542c7ac.jpg?v=1782350836",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_LAZO_4MM_910d8031-52d2-4019-875c-f3f3c542c7ac.jpg?v=1782350836",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_lazo_6mm_Varias.png?v=1782350836",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_lazo_6mm.png?v=1782350836",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_lazo_8mm.png?v=1782350836",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-lazo-hombre--6mm-20cm",
+    title: "Pulsera Lazo Hombre · 6mm/20cm",
+    sku: "",
+    retailPrice: 105000,
+    compareAtPrice: 150000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_lazo_6mm.png?v=1782350836",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_lazo_6mm.png?v=1782350836",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_lazo_6mm_Varias.png?v=1782350836",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_LAZO_4MM_910d8031-52d2-4019-875c-f3f3c542c7ac.jpg?v=1782350836",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_lazo_8mm.png?v=1782350836",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-lazo-hombre--8mm-20cm",
+    title: "Pulsera Lazo Hombre · 8mm/20cm",
     sku: "",
     retailPrice: 114800,
     compareAtPrice: 164000,
-    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_lazo_6mm_Varias.png?v=1782350836",
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_lazo_8mm.png?v=1782350836",
     galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_lazo_8mm.png?v=1782350836",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_lazo_6mm_Varias.png?v=1782350836",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_lazo_6mm.png?v=1782350836",
       "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_LAZO_4MM_910d8031-52d2-4019-875c-f3f3c542c7ac.jpg?v=1782350836",
-      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_lazo_8mm.png?v=1782350836",
     ],
     tags: [
       "Hombre",
@@ -1486,7 +2250,6 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
       "Pulsera",
     ],
     categories: [
-      "Pulseras",
       "Mujer",
     ],
   },
@@ -1512,8 +2275,50 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     ],
   },
   {
-    handle: "pulsera-serpiente-hombre",
-    title: "Pulsera Serpiente Hombre",
+    handle: "pulsera-serpiente-hombre--4mm-20cm",
+    title: "Pulsera Serpiente Hombre · 4mm/20cm",
+    sku: "",
+    retailPrice: 99400,
+    compareAtPrice: 142000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_SERPIENTE_6MM_b5d0bf3b-bfbf-4961-86f3-104f2fefa313.jpg?v=1782350835",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_SERPIENTE_6MM_b5d0bf3b-bfbf-4961-86f3-104f2fefa313.jpg?v=1782350835",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Serpiente_6_mm_20_cm_3_cf42e28d-d94e-41a0-8893-785db616c685.jpg?v=1782350834",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-serpiente-hombre--6mm-20cm",
+    title: "Pulsera Serpiente Hombre · 6mm/20cm",
+    sku: "",
+    retailPrice: 105000,
+    compareAtPrice: 150000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_SERPIENTE_6MM_b5d0bf3b-bfbf-4961-86f3-104f2fefa313.jpg?v=1782350835",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/PULSERA_SERPIENTE_6MM_b5d0bf3b-bfbf-4961-86f3-104f2fefa313.jpg?v=1782350835",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Serpiente_6_mm_20_cm_3_cf42e28d-d94e-41a0-8893-785db616c685.jpg?v=1782350834",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-serpiente-hombre--8mm-20cm",
+    title: "Pulsera Serpiente Hombre · 8mm/20cm",
     sku: "",
     retailPrice: 114800,
     compareAtPrice: 164000,
@@ -1533,8 +2338,31 @@ export const COLOMBIA_PRODUCTS: CatalogProduct[] = [
     ],
   },
   {
-    handle: "pulsera-veneciana-hombre",
-    title: "Pulsera Veneciana Hombre",
+    handle: "pulsera-veneciana-hombre--4mm-20cm",
+    title: "Pulsera Veneciana Hombre · 4mm/20cm",
+    sku: "",
+    retailPrice: 99400,
+    compareAtPrice: 142000,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Veneciana_6mm.png?v=1782350844",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Veneciana_6mm.png?v=1782350844",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_Veneciana_varias.png?v=1782350845",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Pulsera_veneciana_4mm.png?v=1782350844",
+      "https://cdn.shopify.com/s/files/1/0828/3540/7145/files/Veneciana_6_mm_20_cm_2_a5c6c9eb-2c93-437b-bd82-207a7bf95538.jpg?v=1782350844",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-veneciana-hombre--6mm-20cm",
+    title: "Pulsera Veneciana Hombre · 6mm/20cm",
     sku: "",
     retailPrice: 105000,
     compareAtPrice: 150000,

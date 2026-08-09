@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "seed:catalogs": "node scripts/seed-investor-catalogs.mjs"
+    "seed:catalogs": "node scripts/seed-investor-catalogs.mjs",
+    "generate:packs": "python3 scripts/generate-packs-from-shopify.py"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
