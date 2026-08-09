@@ -1,0 +1,179 @@
+pais,codigo,titulo_tienda,sku_tienda,handle,precio_retail_tienda,motivo,sugerencia_excel_nombre,sugerencia_excel_sku,sugerencia_parecido,sugerencia_mayorista_excel
+CHILE,CL,Cadena Cartier Mujer,(vacío),cadena-cartier-mujer,38500.0,sin_sku,C. CARTIER 3mm  45cm,42490,0.4,23595.3
+CHILE,CL,Cadena China + Dije Virgen Piedras,44883 - 26085,cadena-china-dije-virgen-piedras,76930.0,sku_compuesto,D. VIRGEN PIEDRAS,26085,0.6,30780.700000000004
+CHILE,CL,Cadena Chinesca 3mm 65cm,(vacío),cadena-chinesca-3mm-65cm,51500.0,sin_sku,C. CARTIER 3mm  65cm,42496,0.6,29130
+CHILE,CL,Cadena Chinesca Edición Limitada Hombre,(vacío),cadena-chinesca-edicion-limitada-hombre,84000.0,sin_sku,C. CHINESCA 3mm  45cm,44881,0.29,26877.28
+CHILE,CL,Cadena Continua Hombre,(vacío),cadena-continua-hombre,72437.0,sin_sku,C. CUBANA CONTINUA 2mm  45cm,43585,0.33,21750.4
+CHILE,CL,Cadena Cordon Hombre,(vacío),cadena-cordon-hombre,52650.0,sin_sku,C. CORDON 3mm  45cm,44020,0.4,16601.325714285736
+CHILE,CL,Cadena Cubana + Dije Madero,42395 - 25444,cadena-cubana-dije-madero,82600.0,sku_compuesto,D. MADERO NUEVO,25444,0.4,29906.8
+CHILE,CL,Cadena Cubana + Dije Virgen Guadalupe,42395 - 26953,cadena-cubana-dije-virgen-milagrosa,82600.0,sku_compuesto,D. VIRGEN TALLADA,26062,0.33,23692.399999999998
+CHILE,CL,Cadena Cubana Hombre,42399,cadena-cubana-hombre,81900.0,sku_no_en_excel,C. CUBANA 3mm  45cm,42386,0.4,24663.399999999998
+CHILE,CL,Cadena Cubana Mujer,(vacío),cadena-cubana-mujer,38500.0,sin_sku,C. CUBANA 3mm  45cm,42386,0.4,24663.399999999998
+CHILE,CL,Cadena Egipcia Hombre,(vacío),cadena-egipcia-hombre,72500.0,sin_sku,C. EGIPCIA  3mm  45cm,43488,0.4,20973.600000000002
+CHILE,CL,Cadena Egipcia Mujer,(vacío),cadena-egipcia-mujer,42000.0,sin_sku,C. EGIPCIA  3mm  45cm,43488,0.4,20973.600000000002
+CHILE,CL,Cadena Entrelazada Hombre,(vacío),cadena-entrelazada-hombre,72825.0,sin_sku,C. GRABADA 4mm  65cm,41189,0.17,27382.200000000004
+CHILE,CL,Cadena Eslabon Hombre,42520,cadena-cartier-hombre,26392.0,nombre_ambiguo_o_bajo,C. GRABADA 4mm  65cm,41189,0.17,27382.200000000004
+CHILE,CL,Cadena Franco Mujer 2mm,(vacío),cadena-franco-mujer2mm,38500.0,sin_sku,C. VENECIANA 2mm  45cm,42687,0.33,17575.100000000002
+CHILE,CL,Cadena Grabada Hombre,(vacío),cadena-grabada-hombre,81900.0,sin_sku,C. GRABADA 4mm  65cm,41189,0.4,27382.200000000004
+CHILE,CL,Cadena Grabada Mujer,(vacío),cadena-grabada-mujer,38500.0,sin_sku,C. GRABADA 4mm  65cm,41189,0.4,27382.200000000004
+CHILE,CL,Cadena Grano de Cafe + Cruz Protectora,42900 - 24545,cadena-grano-de-cafe-cruz-protectora,73500.0,sku_compuesto,C. GRANO DE CAFE 6mm  45cm,42982,0.43,34664.700000000004
+CHILE,CL,Cadena Grano de Café Hombre,(vacío),cadena-granocafe-hombre,72825.0,sin_sku,C. GRANO DE CAFE 6mm  45cm,42982,0.5,34664.700000000004
+CHILE,CL,Cadena Lazo + Dije Dolar,42793 -26787,cadena-lazo-dije-dolar,80500.0,sku_compuesto,D. DOLAR,26930,0.5,21750.4
+CHILE,CL,Cadena Lazo + Dije Madero,42793 - 25444,cadena-lazo-dije-madero,80500.0,sku_compuesto,D. MADERO NUEVO,25444,0.4,29906.8
+CHILE,CL,Cadena Lazo + Dije Madero (PULSERA GRATIS,42793 - 25444 - 52793,cadena-lazo-dije-madero-pulsera-gratis,84900.0,sku_compuesto,D. MADERO NUEVO,25444,0.29,29906.8
+CHILE,CL,Cadena Lazo + Rostro Tallado (PULSERA GRATIS),42793 + 24557 + 52793,cadena-lazo-rostro-tallado-pulsera-gratis,84900.0,sku_compuesto,C. LAZO 2mm  45cm,42782,0.25,15827.299999999997
+CHILE,CL,Cadena Lazo Hombre,(vacío),cadena-lazo-hombre,81900.0,sin_sku,C. LAZO 2mm  45cm,42782,0.4,15827.299999999997
+CHILE,CL,Cadena Militar Hombre,(vacío),cadena-militar-65cm,58300.0,sin_sku,C. MILITAR 3mm  65cm,43100,0.4,26716.371428571412
+CHILE,CL,Cadena Rustica Hombre,(vacío),cadena-rustica-hombre,72500.0,sin_sku,C. RUSTICA 4mm  65cm,42598,0.4,42141.4
+CHILE,CL,Cadena Serpiente Hombre,(vacío),cadena-serpiente-hombre,81900.0,sin_sku,C. SERPIENTE 4mm  65cm,42287,0.4,27382.200000000004
+CHILE,CL,Cadena Singapur 65cm 3mm + Dije Virgen Tallada,44543 - 26062,cadena-singapur-65cm-3mm-dije-virgen-tallada,64500.0,sku_compuesto,C. SINGAPUR 3mm 65cm,44543,0.57,14137.759999999998
+CHILE,CL,Cadena Trigo Hombre 5mm,(vacío),cadena-trigo-hombre5mm,50978.0,sin_sku,C. CRUZADA 5mm  65cm,43390,0.33,39034.2
+CHILE,CL,Cadena Veneciana Hombre,(vacío),cadena-veneciana-hombre,65543.0,sin_sku,C. VENECIANA 2mm  45cm,42687,0.4,17575.100000000002
+CHILE,CL,Combo Chinesca Hombre,(vacío),combo-chinesca-hombre,91000.0,sin_sku,C. CHINESCA 3mm  45cm,44881,0.17,26877.28
+CHILE,CL,Combo Chinesca Mujer,(vacío),combo-chinesca-mujer,69184.0,sin_sku,C. CHINESCA 3mm  45cm,44881,0.17,26877.28
+CHILE,CL,Combo Cubana Continua Hombre,43596 - 53596,combo-cubana-continua-hombre,87500.0,sku_compuesto,C. CUBANA CONTINUA 2mm  45cm,43585,0.29,21750.4
+CHILE,CL,Combo Cubana Hombre,(vacío),combo-cubana-hombre,87500.0,sin_sku,C. CUBANA 3mm  45cm,42386,0.17,24663.399999999998
+CHILE,CL,Combo Cubana Mujer,(vacío),combo-cubana-mujer,50900.0,sin_sku,C. CUBANA 3mm  45cm,42386,0.17,24663.399999999998
+CHILE,CL,Combo Egipcia Hombre,(vacío),combo-egipcia-hombre,87500.0,sin_sku,C. EGIPCIA  3mm  45cm,43488,0.17,20973.600000000002
+CHILE,CL,Combo Egipcia Mujer,(vacío),combo-egipcia-mujer,65543.0,sin_sku,C. EGIPCIA  3mm  45cm,43488,0.17,20973.600000000002
+CHILE,CL,Combo Eslabon Hombre,(vacío),combo-cartier-hombre,87500.0,sin_sku,,,,
+CHILE,CL,Combo Franco Hombre,(vacío),combo-franco-hombre,84500.0,sin_sku,C. FRANCO 3mm  65cm,43192,0.17,26644.24
+CHILE,CL,Combo Grabada Hombre,(vacío),combo-grabada-hombre,87300.0,sin_sku,C. GRABADA 4mm  65cm,41189,0.17,27382.200000000004
+CHILE,CL,Combo Grano de Café Hombre,(vacío),combo-granocafe-hombre,87500.0,sin_sku,C. GRANO DE CAFE 6mm  45cm,42982,0.29,34664.700000000004
+CHILE,CL,Combo Lazo Hombre,(vacío),combo-lazo-hombre,87500.0,sin_sku,C. LAZO 2mm  45cm,42782,0.17,15827.299999999997
+CHILE,CL,Combo Rustica Hombre,(vacío),combo-rustica-hombre,87500.0,sin_sku,C. RUSTICA 4mm  65cm,42598,0.17,42141.4
+CHILE,CL,Combo Serpiente Hombre,(vacío),combo-serpienterosa-hombre,87500.0,sin_sku,C. SERPIENTE 4mm  65cm,42287,0.17,27382.200000000004
+CHILE,CL,Combo Veneciana Hombre,(vacío),combo-veneciana-hombre,87500.0,sin_sku,C. VENECIANA 2mm  45cm,42687,0.17,17575.100000000002
+CHILE,CL,Oferta HOY (Chinesca 65cm 4mm + Dije Gratis),44883 - 25221,china-65cm-4mm-dije-cruz,64500.0,sku_compuesto,C. CHINESCA 4mm  65cm,44883,0.38,36509.59999999999
+CHILE,CL,Pulsera Chinesca Edición Limitada Hombre,(vacío),pulsera-chinesca-edicion-limitada-hombre,42900.0,sin_sku,P. CHINESCA 3mm  18cm,54798,0.29,14273.700000000003
+CHILE,CL,Pulsera Chinesca Hombre,54888-1,pulsera-chinesca-hombre,42900.0,sku_compuesto,P. CHINESCA 3mm  18cm,54798,0.4,14273.700000000003
+CHILE,CL,Pulsera Chinesca Mujer,(vacío),pulsera-chinesca-mujer,40000.0,sin_sku,P. CHINESCA 3mm  18cm,54798,0.4,14273.700000000003
+CHILE,CL,Pulsera Cruzada Hombre,54203,china-doble-carrier-65cm-virgen-swarovski-44888-22146,50900.0,sku_no_en_excel,"P. CRUZADA 5mm, 20cm",53390,0.4,21264.899999999998
+CHILE,CL,Pulsera Cubana Continua Hombre,(vacío),pulsera-cubana-continua-hombre,41000.0,sin_sku,P. CUBANA CONTINUA 4mm  18cm,53588,0.5,20391
+CHILE,CL,Pulsera Cubana Hombre,(vacío),pulsera-cubana-hombre,46413.0,sin_sku,P. CUBANA 3mm  18cm,52387,0.4,21459.100000000002
+CHILE,CL,Pulsera Cubana Mujer,(vacío),pulsera-cubana-mujer,32700.0,sin_sku,P. CUBANA 3mm  18cm,52387,0.4,21459.100000000002
+CHILE,CL,Pulsera Egipcia Hombre,(vacío),pulsera-egipcia-hombre,54700.0,sin_sku,P. EGIPCIA 3mm  18cm,53488,0.4,16215.699999999999
+CHILE,CL,Pulsera Egipcia Mujer,(vacío),pulsera-egipcia-mujer,40000.0,sin_sku,P. EGIPCIA 3mm  18cm,53488,0.4,16215.699999999999
+CHILE,CL,Pulsera Entrelazada Hombre 6mm,(vacío),pulsera-entrelazada-hombre-6mm,43695.0,sin_sku,P. GRABADA  6mm  20cm,51200,0.33,19614.2
+CHILE,CL,Pulsera Entrelazada Mujer 3mm,(vacío),pulsera-entrelazada-mujer-3mm,36413.0,sin_sku,P. CUBANA 3mm  18cm,52387,0.33,21459.100000000002
+CHILE,CL,Pulsera Eslabon Hombre,(vacío),pulsera-cartier-hombre,48772.0,sin_sku,P. GRABADA   4mm  20cm,51189,0.17,18060.6
+CHILE,CL,Pulsera Eslabon Mujer,(vacío),pulsera-cartier-mujer,32700.0,sin_sku,P. GRABADA   4mm  20cm,51189,0.17,18060.6
+CHILE,CL,Pulsera Franco Hombre,(vacío),cadena-china-65cm-copia-1,43695.0,sin_sku,P. FRANCO 4mm  20cm,53195,0.4,24469.2
+CHILE,CL,Pulsera Grabada Hombre,(vacío),pulsera-grabada-hombre,46414.0,sin_sku,P. GRABADA   4mm  20cm,51189,0.4,18060.6
+CHILE,CL,Pulsera Grano de Cafe Mujer 5mm,(vacío),pulsera-gucci-mujer5mm,37400.0,sin_sku,P. GRANO DE CAFE 6mm  18cm,52892,0.43,22527.2
+CHILE,CL,Pulsera Grano de Café Hombre,(vacío),pulsera-granocafe-hombre,43695.0,sin_sku,P. GRANO DE CAFE 6mm  18cm,52892,0.5,22527.2
+CHILE,CL,Pulsera Lazo Hombre,(vacío),pulsera-lazo-hombre,46614.0,sin_sku,P. LAZO 2mm  18cm,52782,0.4,14273.700000000003
+CHILE,CL,Pulsera Rustica Hombre,(vacío),pulsera-rustica-hombre,43695.0,sin_sku,P. RUSTICA 4mm  20cm,52598,0.4,20682.299999999996
+CHILE,CL,Pulsera Serpiente Hombre,(vacío),pulsera-serpiente-hombre,46414.0,sin_sku,P. SERPIENTE 4mm  20cm,52287,0.4,18060.6
+CHILE,CL,Pulsera Veneciana Hombre,(vacío),pulsera-veneciana-hombre,43695.0,sin_sku,P. VENECIANA 2mm  18cm,52687,0.4,13691.100000000002
+COLOMBIA,CO,Arete Osos 33003,33003,copia-de-arete-corazon-piedras-33003,79000.0,sku_no_en_excel,,,,
+COLOMBIA,CO,Cadena China 45 cm,43888,cadena-china-45-cm,84.0,sku_no_en_excel,C. CHINA PLANA 6mm 65cm,43900,0.29,202560
+COLOMBIA,CO,Cadena China Hombre 3mm,43888,cadena-china,150500.0,sku_no_en_excel,C. CUBANA 3mm  45cm,42386,0.33,101600
+COLOMBIA,CO,Cadena Continua Hombre,(vacío),cadena-continua-hombre,179900.0,sin_sku,C. CUBANA CONTINUA 2mm  45cm,43585,0.33,89600.00000000001
+COLOMBIA,CO,Cadena Cordon Hombre,(vacío),cadena-cordon-hombre,150500.0,sin_sku,C. CORDON 3mm  45cm,44020,0.4,68388.57142857152
+COLOMBIA,CO,Cadena Cubana Hombre,42399,cadena-cubana-hombre,227500.0,sku_no_en_excel,C. CUBANA 3mm  45cm,42386,0.4,101600
+COLOMBIA,CO,Cadena Cubana Mujer,42389,cadena-cubana-mujer,105000.0,sku_no_en_excel,C. CUBANA 3mm  45cm,42386,0.4,101600
+COLOMBIA,CO,CADENA EGIPCIA 45 CM,44006,cadena-egipcia-45-cm,116175.0,sku_no_en_excel,C. EGIPCIA  3mm  45cm,43488,0.33,86400
+COLOMBIA,CO,Cadena Egipcia Hombre,(vacío),cadena-egipcia-hombre,227500.0,sin_sku,C. EGIPCIA  3mm  45cm,43488,0.4,86400
+COLOMBIA,CO,Cadena Entrelazada Hombre,(vacío),cadena-entrelazada-hombre,179900.0,sin_sku,C. GRABADA 4mm  65cm,41189,0.17,112800.00000000001
+COLOMBIA,CO,Cadena Grabada Hombre,(vacío),cadena-grabada-hombre,227500.0,sin_sku,C. GRABADA 4mm  65cm,41189,0.4,112800.00000000001
+COLOMBIA,CO,Cadena Grano de Café Hombre,(vacío),cadena-granocafe-hombre,189000.0,sin_sku,C. GRANO DE CAFE 6mm  45cm,42982,0.5,142800
+COLOMBIA,CO,Cadena Lazo Hombre,(vacío),cadena-lazo-hombre,227500.0,sin_sku,C. LAZO 2mm  45cm,42782,0.4,65199.999999999985
+COLOMBIA,CO,Cadena Militar Hombre,(vacío),cadena-militar-65cm,139900.0,sin_sku,C. MILITAR 3mm  65cm,43100,0.4,110057.1428571428
+COLOMBIA,CO,Cadena Rustica Hombre,(vacío),cadena-rustica-hombre,248500.0,sin_sku,C. RUSTICA 4mm  65cm,42598,0.4,173600
+COLOMBIA,CO,Cadena Serpiente Hombre,(vacío),cadena-serpiente-hombre,227500.0,sin_sku,C. SERPIENTE 4mm  65cm,42287,0.4,112800.00000000001
+COLOMBIA,CO,Cadena Singapur Hombre,44543,cadena-singapur,134925.0,nombre_ambiguo_o_bajo,C. SINGAPUR 2mm 45cm,44539,0.4,45120.00000000001
+COLOMBIA,CO,Cadena Veneciana Hombre,(vacío),cadena-veneciana-hombre,179900.0,sin_sku,C. VENECIANA 2mm  45cm,42687,0.4,72400
+COLOMBIA,CO,Combo Veneciana Mujer,42687 - 52687,combo-veneciana-mujer,142425.0,sku_compuesto,C. VENECIANA 2mm  45cm,42687,0.17,72400
+COLOMBIA,CO,Pulsera Balín #5 Italiana ( EL PAR),(vacío),pulsera-balin-5-italiana-el-par,149000.0,sin_sku,P. GRABADA   4mm  20cm,51189,0.12,74399.99999999999
+COLOMBIA,CO,Pulsera Balín #5 Italiana y Lisa,(vacío),pulsera-balin-5-italiana-y-lisa,199900.0,sin_sku,P. GRABADA   4mm  20cm,51189,0.12,74399.99999999999
+COLOMBIA,CO,Pulsera Balín #5 Italiana y Lisa + Neopreno,(vacío),pulsera-balin-5-italiana-y-lisa-neopreno,159000.0,sin_sku,P. GRABADA   4mm  20cm,51189,0.11,74399.99999999999
+COLOMBIA,CO,Pulsera Chinesca Edición Limitada Hombre,(vacío),pulsera-chinesca-edicion-limitada-hombre,139900.0,sin_sku,P. CHINESCA 3mm  18cm,54798,0.29,58800.000000000015
+COLOMBIA,CO,Pulsera Chinesca Mujer,(vacío),pulsera-chinesca-mujer,105000.0,sin_sku,P. CHINESCA 3mm  18cm,54798,0.4,58800.000000000015
+COLOMBIA,CO,Pulsera Cubana Continua Hombre,(vacío),pulsera-cubana-continua-hombre,105000.0,sin_sku,P. CUBANA CONTINUA 4mm  18cm,53588,0.5,84000
+COLOMBIA,CO,Pulsera Cubana Hombre,(vacío),pulsera-cubana-hombre,114800.0,sin_sku,P. CUBANA 3mm  18cm,52387,0.4,88400
+COLOMBIA,CO,Pulsera Cubana Mujer,(vacío),pulsera-cubana-mujer,89950.0,sin_sku,P. CUBANA 3mm  18cm,52387,0.4,88400
+COLOMBIA,CO,Pulsera Egipcia Hombre,(vacío),pulsera-egipcia-hombre,129500.0,sin_sku,P. EGIPCIA 3mm  18cm,53488,0.4,66800
+COLOMBIA,CO,Pulsera Egipcia Mujer,(vacío),pulsera-egipcia-mujer,105000.0,sin_sku,P. EGIPCIA 3mm  18cm,53488,0.4,66800
+COLOMBIA,CO,Pulsera Entrelazada Hombre 6mm,(vacío),pulsera-entrelazada-hombre-6mm,105000.0,sin_sku,P. GRABADA  6mm  20cm,51200,0.33,80800
+COLOMBIA,CO,Pulsera Entrelazada Mujer 3mm,(vacío),pulsera-entrelazada-mujer-3mm,89950.0,sin_sku,P. CUBANA 3mm  18cm,52387,0.33,88400
+COLOMBIA,CO,Pulsera Eslabon Hombre,(vacío),pulsera-cartier-hombre,139900.0,sin_sku,P. GRABADA   4mm  20cm,51189,0.17,74399.99999999999
+COLOMBIA,CO,Pulsera Eslabon Mujer,(vacío),pulsera-cartier-mujer,89950.0,sin_sku,P. GRABADA   4mm  20cm,51189,0.17,74399.99999999999
+COLOMBIA,CO,Pulsera Franco Hombre,(vacío),cadena-china-65cm-copia-1,105000.0,sin_sku,P. FRANCO 4mm  20cm,53195,0.4,100800
+COLOMBIA,CO,Pulsera Grabada Hombre,(vacío),pulsera-grabada-hombre,114800.0,sin_sku,P. GRABADA   4mm  20cm,51189,0.4,74399.99999999999
+COLOMBIA,CO,Pulsera Grano de Cafe Mujer 5mm,(vacío),pulsera-gucci-mujer5mm,89950.0,sin_sku,P. GRANO DE CAFE 6mm  18cm,52892,0.43,92800
+COLOMBIA,CO,Pulsera Grano de Café Hombre,(vacío),pulsera-granocafe-hombre,150000.0,sin_sku,P. GRANO DE CAFE 6mm  18cm,52892,0.5,92800
+COLOMBIA,CO,Pulsera Lazo Hombre,(vacío),pulsera-lazo-hombre,114800.0,sin_sku,P. LAZO 2mm  18cm,52782,0.4,58800.000000000015
+COLOMBIA,CO,Pulsera Serpiente Hombre,(vacío),pulsera-serpiente-hombre,114800.0,sin_sku,P. SERPIENTE 4mm  20cm,52287,0.4,74399.99999999999
+COLOMBIA,CO,Pulsera Veneciana Hombre,(vacío),pulsera-veneciana-hombre,105000.0,sin_sku,P. VENECIANA 2mm  18cm,52687,0.4,56400.00000000001
+ECUADOR,EC,Cadena 3x1 5mm,44143,cadena-3x1-5mm-1,108.75,sku_no_en_excel,C. CRUZADA 5mm  65cm,43390,0.4,40.199999999999996
+ECUADOR,EC,Cadena China,43888,cadena-china,69.0,sku_no_en_excel,C. CHINA PLANA 6mm 65cm,43900,0.4,50.64
+ECUADOR,EC,Cadena Cilindro 3mm,43630,cadena-cilindro-3mm,59.0,sku_no_en_excel,C. CUBANA 3mm  45cm,42386,0.4,25.4
+ECUADOR,EC,Cadena Cubana,40258,cadena-cubana,63.0,sku_no_en_excel,C. CUBANA 3mm  45cm,42386,0.5,25.4
+ECUADOR,EC,Cadena Cubana Mujer,42389,cadena-cubana-mujer,45.0,sku_no_en_excel,C. CUBANA 3mm  45cm,42386,0.4,25.4
+ECUADOR,EC,Cadena Egipcia Hombre,44006,cadena-egipcia-hombre,54.0,sku_no_en_excel,C. EGIPCIA  3mm  45cm,43488,0.4,21.6
+ECUADOR,EC,Cadena Van Cleef,(vacío),cadena-van-cleef,70.0,sin_sku,C. GRABADA 4mm  65cm,41189,0.17,28.200000000000003
+ECUADOR,EC,Candonga Corrugada Medina,71149,copia-de-candonga-lisa-grande,29.0,sku_no_en_excel,,,,
+ECUADOR,EC,Candonga Lisa Grande,71115,copia-de-topo-balin-6mm,29.0,sku_no_en_excel,D. ROSTRO GRANDE,24557,0.2,28.800000000000004
+ECUADOR,EC,Colgante Rostro,24552,34008,44.0,sku_no_en_excel,D. ROSTRO GRANDE,24557,0.25,28.800000000000004
+ECUADOR,EC,COMBO Pulseras Cruz,(vacío),combo-pulseras-cruz,49.0,sin_sku,D. CRUZ PIEDRAS,25221,0.2,35.8
+ECUADOR,EC,Dije Cristo Madero Mediano,23295,dije-cristo-madero,34.0,sku_no_en_excel,D. MADERO NUEVO,25444,0.4,30.8
+ECUADOR,EC,Dije Cristo Redentor,27312,copia-de-dije-cruz-circonias-central,29.0,sku_no_en_excel,D. LEON,26787,0.25,36.6
+ECUADOR,EC,Dije Cruz Mediana Circonias,23000,dije-cruz-mediana-circonias,39.0,sku_no_en_excel,D. CRUZ CIRCONIAS,25481,0.75,31.8
+ECUADOR,EC,Dije Cruz Rostro,23044,dije-cruz-rostro,49.0,sku_no_en_excel,D. ROSTRO GRANDE,24557,0.5,28.800000000000004
+ECUADOR,EC,Dije Cruz Sagrada,230352,24441,59.0,sku_no_en_excel,D. CRUZ PIEDRAS,25221,0.5,35.8
+ECUADOR,EC,Dije Cruz Sagrada Verde,23035,copia-de-dije-corazon-con-piedras,49.0,sku_no_en_excel,D. CRUZ PIEDRAS,25221,0.4,35.8
+ECUADOR,EC,Dije Cruz San Benito,23258,dije-cruz-san-benito,49.0,sku_no_en_excel,D. CRUZ PIEDRAS,25221,0.4,35.8
+ECUADOR,EC,Dije Cruz Toreto,23056,dije-cruz-toreto,49.0,sku_no_en_excel,D. CRUZ PIEDRAS,25221,0.5,35.8
+ECUADOR,EC,Dije Guadalupe Tallada,24550,24853,29.0,sku_no_en_excel,D. VIRGEN TALLADA,26062,0.5,24.4
+ECUADOR,EC,Dije Madero Grande,23294,dije-madero-grande,49.0,sku_no_en_excel,D. ROSTRO GRANDE,24557,0.5,28.800000000000004
+ECUADOR,EC,Dije Salmo,23481,dije-salmo,34.0,sku_no_en_excel,D. LEON,26787,0.33,36.6
+ECUADOR,EC,Dije San Benito Redondo,24476,copia-de-dije-cristo-3d,29.0,sku_no_en_excel,D. LEON,26787,0.2,36.6
+ECUADOR,EC,Dije Virgen Swarovski Cristal,22147,copia-de-dije-virgen-del-carmen,70.0,sku_no_en_excel,D. VIRGEN TALLADA,26062,0.4,24.4
+ECUADOR,EC,Pulsera Balín 7 Nudos,1051,pulsera-balin-7-nudos,62.0,sku_no_en_excel,P. GRABADA   4mm  20cm,51189,0.14,18.599999999999998
+ECUADOR,EC,Pulsera Balín Diamantada,1067,pulsera-balin-diamantada-6-copia,65.0,sku_no_en_excel,P. GRABADA   4mm  20cm,51189,0.17,18.599999999999998
+ECUADOR,EC,Pulsera Balín Diamantada #6,1007,pulsera-balin-diamantada-6,65.0,sku_no_en_excel,P. GRABADA   4mm  20cm,51189,0.14,18.599999999999998
+ECUADOR,EC,Pulsera Balín Diamantada #8,1065,pulsera-balin-diamantada,66.0,sku_no_en_excel,P. GRABADA   4mm  20cm,51189,0.14,18.599999999999998
+ECUADOR,EC,Pulsera Cartier Mujer,54261,pulsera-cartier-mujer,34.0,sku_no_en_excel,P. CARTIER 3mm  18cm,52490,0.4,19.900000000000002
+ECUADOR,EC,Pulsera Cilindros Hombre,53260,pulsera-cilindros-hombre,39.0,sku_no_en_excel,P. CILINDROS 3mm  18cm,53616,0.4,14.814285714285711
+ECUADOR,EC,Pulsera Cubana Diamantada,54417,54461,50.0,sku_no_en_excel,P. CUBANA 3mm  18cm,52387,0.4,22.1
+ECUADOR,EC,Pulsera Cubana Mujer,54286,pulsera-cubana-mujer,34.0,sku_no_en_excel,P. CUBANA 3mm  18cm,52387,0.4,22.1
+ECUADOR,EC,Pulsera Escalera Plana 4mm,54936,pulsera-tenis-3mm-copia,49.0,sku_no_en_excel,P. GRABADA   4mm  20cm,51189,0.33,18.599999999999998
+ECUADOR,EC,Pulsera San Benito Protector,(vacío),pulsera-san-benito-protector,47.0,sin_sku,P. GRABADA   4mm  20cm,51189,0.14,18.599999999999998
+ECUADOR,EC,Pulsera Van Cleef,(vacío),pulsera-van-cleef,59.0,sin_sku,P. GRABADA   4mm  20cm,51189,0.17,18.599999999999998
+ECUADOR,EC,Topito Balín Diamantado 8mm,71002,copia-de-candonga-lisa-pequena,21.0,sku_no_en_excel,C. GRABADA 8mm  65cm,41220,0.14,46.89999999999999
+ECUADOR,EC,Topo Ala,71170,topo-ala,21.0,sku_no_en_excel,,,,
+ECUADOR,EC,Topo Chispa,(vacío),topo-chispa,19.0,sin_sku,,,,
+ECUADOR,EC,Topo Elefantes,34082,topo-elefantes,24.0,sku_no_en_excel,,,,
+ECUADOR,EC,Topo Oso Circonias,33003,topo-oso-circonias,24.0,sku_no_en_excel,D. CRUZ CIRCONIAS,25481,0.2,31.8
+ECUADOR,EC,Topos Balín,33032 - 33034 - 34011 -34012,copia-de-candonga-bambu,49.0,sku_compuesto,,,,
+ESPANA,ES,Cadena China 45 cm,43888,cadena-china-45-cm,84.0,sku_no_en_excel,C. CHINA PLANA 6mm 65cm,43900,0.29,50.64
+ESPANA,ES,Cadena China Hombre 3mm,43888,cadena-china,65.0,sku_no_en_excel,C. CUBANA 3mm  45cm,42386,0.33,25.4
+ESPANA,ES,Cadena Cubana Mujer,42389,cadena-cubana-mujer,45.0,sku_no_en_excel,C. CUBANA 3mm  45cm,42386,0.4,25.4
+ESPANA,ES,Cadena Engranaje Hombre,45159,cadena-engranaje-hombre,80.0,sku_no_en_excel,C. GRABADA 4mm  65cm,41189,0.17,28.200000000000003
+ESPANA,ES,Cadena Militar Hombre,(vacío),cadena-militar-65cm,65.0,sin_sku,C. MILITAR 3mm  65cm,43100,0.4,27.5142857142857
+ESPANA,ES,Colgante Rostro,24552,34008,44.0,sku_no_en_excel,D. ROSTRO GRANDE,24557,0.25,28.800000000000004
+ESPANA,ES,Dije Caballo,20551,dije-caballo,34.0,sku_no_en_excel,D. HERRADURA CABALLO,26947,0.67,27.6
+ESPANA,ES,Dije Corona,248541,dije-corona,34.0,sku_no_en_excel,D. LEON,26787,0.33,36.6
+ESPANA,ES,Dije Cristo Madero Mediano,23295,dije-cristo-madero,34.0,sku_no_en_excel,D. MADERO NUEVO,25444,0.4,30.8
+ESPANA,ES,Dije Cruz Mediana Circonias,23000,dije-cruz-mediana-circonias,39.0,sku_no_en_excel,D. CRUZ CIRCONIAS,25481,0.75,31.8
+ESPANA,ES,Dije Cruz Sagrada,23035,24441,59.0,sku_no_en_excel,D. CRUZ PIEDRAS,25221,0.5,35.8
+ESPANA,ES,Dije Cruz San Benito,23258,dije-cruz-san-benito-1,49.0,sku_no_en_excel,D. CRUZ PIEDRAS,25221,0.4,35.8
+ESPANA,ES,Dije Cruz Toreto,23056,dije-cruz-toreto,49.0,sku_no_en_excel,D. CRUZ PIEDRAS,25221,0.5,35.8
+ESPANA,ES,Dije Dalí,23055,7,45.0,sku_no_en_excel,D. LEON,26787,0.33,36.6
+ESPANA,ES,Dije Guadalupe Tallada,24550,24853,35.0,sku_no_en_excel,D. VIRGEN TALLADA,26062,0.5,24.4
+ESPANA,ES,Dije Madero Grande,23294,dije-madero-grande,40.0,sku_no_en_excel,D. ROSTRO GRANDE,24557,0.5,28.800000000000004
+ESPANA,ES,Dije Milagroso Mediana,23369,dije-1,45.0,sku_no_en_excel,D. LEON,26787,0.25,36.6
+ESPANA,ES,Dije Salmo,23481,dije-salmo,34.0,sku_no_en_excel,D. LEON,26787,0.33,36.6
+ESPANA,ES,Dije Virgen Piedras,23148,dije-virgen-piedras,49.0,sku_no_en_excel,D. VIRGEN PIEDRAS,26085,1.0,31.700000000000003
+ESPANA,ES,Dije Árbol de la Vida,24853,23267,35.0,sku_no_en_excel,D. LEON,26787,0.25,36.6
+ESPANA,ES,Entorchada Mediana,34596,33452,47.0,sku_no_en_excel,,,,
+ESPANA,ES,Pulsera 3x1 Mujer,(vacío),pulsera-cartier-mujer,37.7,sin_sku,P. GRABADA   4mm  20cm,51189,0.17,18.599999999999998
+ESPANA,ES,Pulsera Chinesca Mujer,(vacío),pulsera-chinesca-mujer,45.2,sin_sku,P. CHINESCA 3mm  18cm,54798,0.4,14.700000000000003
+ESPANA,ES,Pulsera Cubana Mujer,(vacío),pulsera-cubana-mujer,37.7,sin_sku,P. CUBANA 3mm  18cm,52387,0.4,22.1
+ESPANA,ES,Pulsera Egipcia Mujer,(vacío),pulsera-egipcia-mujer,45.2,sin_sku,P. EGIPCIA 3mm  18cm,53488,0.4,16.7
+ESPANA,ES,Pulsera Entrelazada Mujer 3mm,(vacío),pulsera-entrelazada-mujer-3mm,41.5,sin_sku,P. CUBANA 3mm  18cm,52387,0.33,22.1
+ESPANA,ES,Pulsera Grano de cafe Mujer 5mm,(vacío),pulsera-gucci-mujer5mm,42.55,sin_sku,P. GRANO DE CAFE 6mm  18cm,52892,0.43,23.2
+ESPANA,ES,Tobillera Escalera destellos,54754,tobillera-militar-ref-54661,50.0,sku_no_en_excel,,,,
+ESPANA,ES,Tobillera Militar,53984,tobillera-militar-ref-53984,49.0,sku_no_en_excel,C. MILITAR 3mm  65cm,43100,0.2,27.5142857142857
+ESPANA,ES,Tobillera Veneciana Puntos,54861,tobillera-veneciana-puntos-ref-54861,50.0,sku_no_en_excel,C. VENECIANA 2mm  45cm,42687,0.17,18.1
