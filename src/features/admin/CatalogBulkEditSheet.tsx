@@ -18,13 +18,22 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import type { CatalogCategory, CatalogProduct } from "@/features/catalog/types";
-import { ALL_CATEGORIES } from "./catalog-local-store";
+import type { CatalogCurrency } from "@/features/catalog/catalog-meta";
 import {
   empresarioPrice,
-  formatClp,
-  mayoristaPrice,
+  formatPrice,
+  roundMoney,
   type PricingConfig,
 } from "@/features/catalog/pricing";
+
+const ALL_CATEGORIES: CatalogCategory[] = [
+  "Cadenas",
+  "Pulseras",
+  "Dijes",
+  "Combos",
+  "Hombre",
+  "Mujer",
+];
 
 export type BulkRowDraft = {
   handle: string;
@@ -32,6 +41,7 @@ export type BulkRowDraft = {
   sku: string;
   retailPrice: string;
   compareAtPrice: string;
+  mayoristaPrice: string;
   imageUrl: string;
   categories: CatalogCategory[];
 };
@@ -41,7 +51,9 @@ type Props = {
   onOpenChange: (open: boolean) => void;
   products: CatalogProduct[];
   pricing: PricingConfig;
-  onSave: (updated: CatalogProduct[]) => void;
+  currency?: CatalogCurrency;
+  locale?: string;
+  onSave: (updated: CatalogProduct[]) => void | Promise<void>;
 };
 
 function toDraft(p: CatalogProduct): BulkRowDraft {
@@ -51,6 +63,7 @@ function toDraft(p: CatalogProduct): BulkRowDraft {
     sku: p.sku,
     retailPrice: String(p.retailPrice),
     compareAtPrice: p.compareAtPrice != null ? String(p.compareAtPrice) : "",
+    mayoristaPrice: String(p.mayoristaPrice),
     imageUrl: p.imageUrl,
     categories: [...p.categories],
   };
@@ -61,21 +74,27 @@ export function CatalogBulkEditSheet({
   onOpenChange,
   products,
   pricing,
+  currency = "CLP",
+  locale = "es-CL",
   onSave,
 }: Props) {
   const [rows, setRows] = useState<BulkRowDraft[]>([]);
   const [error, setError] = useState("");
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     if (!open) return;
     setRows(products.map(toDraft));
     setError("");
+    setSaving(false);
   }, [open, products]);
 
   const byHandle = useMemo(
     () => new Map(products.map((p) => [p.handle, p])),
     [products],
   );
+
+  const money = (n: number) => formatPrice(n, currency, locale);
 
   const updateRow = (handle: string, patch: Partial<BulkRowDraft>) => {
     setRows((prev) => prev.map((r) => (r.handle === handle ? { ...r, ...patch } : r)));
@@ -109,28 +128,39 @@ export function CatalogBulkEditSheet({
     );
   };
 
-  const applyPricePctToAll = (field: "retailPrice" | "compareAtPrice", pct: number) => {
+  const applyPricePctToAll = (
+    field: "retailPrice" | "mayoristaPrice" | "compareAtPrice",
+    pct: number,
+  ) => {
     setRows((prev) =>
       prev.map((r) => {
         const current = Number(r[field]);
         if (!Number.isFinite(current) || current <= 0) return r;
-        return { ...r, [field]: String(Math.round(current * (1 + pct / 100))) };
+        return {
+          ...r,
+          [field]: String(roundMoney(current * (1 + pct / 100), currency)),
+        };
       }),
     );
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     const updated: CatalogProduct[] = [];
     for (const row of rows) {
       const base = byHandle.get(row.handle);
       if (!base) continue;
       const retail = Number(row.retailPrice);
+      const mayorista = Number(row.mayoristaPrice);
       if (!row.title.trim()) {
         setError(`Falta título en ${row.handle}`);
         return;
       }
       if (!Number.isFinite(retail) || retail <= 0) {
-        setError(`Precio inválido en “${row.title || row.handle}”`);
+        setError(`Retail inválido en “${row.title || row.handle}”`);
+        return;
+      }
+      if (!Number.isFinite(mayorista) || mayorista <= 0) {
+        setError(`Mayorista inválido en “${row.title || row.handle}”`);
         return;
       }
       const compare = row.compareAtPrice.trim() ? Number(row.compareAtPrice) : null;
@@ -150,15 +180,27 @@ export function CatalogBulkEditSheet({
         ...base,
         title: row.title.trim(),
         sku: row.sku.trim(),
-        retailPrice: Math.round(retail),
-        compareAtPrice: compare != null ? Math.round(compare) : null,
+        retailPrice: roundMoney(retail, currency),
+        compareAtPrice: compare != null ? roundMoney(compare, currency) : null,
+        mayoristaPrice: roundMoney(mayorista, currency),
+        mayoristaIsProvisional: false,
+        mayoristaMatch: "manual",
         imageUrl: imageUrl || gallery[0] || "",
         galleryUrls: gallery,
         categories: row.categories,
       });
     }
-    onSave(updated);
-    onOpenChange(false);
+
+    setSaving(true);
+    setError("");
+    try {
+      await onSave(updated);
+      onOpenChange(false);
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : "Error al guardar");
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
@@ -195,6 +237,22 @@ export function CatalogBulkEditSheet({
             >
               Retail −10%
             </Button>
+            <Button
+              type="button"
+              size="sm"
+              variant="outline"
+              onClick={() => applyPricePctToAll("mayoristaPrice", 10)}
+            >
+              Mayorista +10%
+            </Button>
+            <Button
+              type="button"
+              size="sm"
+              variant="outline"
+              onClick={() => applyPricePctToAll("mayoristaPrice", -10)}
+            >
+              Mayorista −10%
+            </Button>
             {ALL_CATEGORIES.slice(0, 4).map((cat) => (
               <Button
                 key={`add-${cat}`}
@@ -218,7 +276,7 @@ export function CatalogBulkEditSheet({
                 <TableHead className="min-w-[110px]">SKU</TableHead>
                 <TableHead className="min-w-[110px]">Retail</TableHead>
                 <TableHead className="min-w-[110px]">Compare</TableHead>
-                <TableHead className="min-w-[120px]">Mayorista*</TableHead>
+                <TableHead className="min-w-[110px]">Mayorista</TableHead>
                 <TableHead className="min-w-[120px]">Empresario*</TableHead>
                 <TableHead className="min-w-[220px]">Imagen URL</TableHead>
                 <TableHead className="min-w-[280px]">Categorías</TableHead>
@@ -226,8 +284,8 @@ export function CatalogBulkEditSheet({
             </TableHeader>
             <TableBody>
               {rows.map((row) => {
-                const retailNum = Number(row.retailPrice);
-                const retailOk = Number.isFinite(retailNum) && retailNum > 0;
+                const mayoristaNum = Number(row.mayoristaPrice);
+                const mayoristaOk = Number.isFinite(mayoristaNum) && mayoristaNum > 0;
                 return (
                   <TableRow key={row.handle} className="border-gold/10">
                     <TableCell>
@@ -275,11 +333,20 @@ export function CatalogBulkEditSheet({
                         className="h-8 border-gold/20 bg-transparent text-xs tabular-nums"
                       />
                     </TableCell>
-                    <TableCell className="text-xs tabular-nums text-muted-foreground">
-                      {retailOk ? formatClp(mayoristaPrice(retailNum, pricing)) : "—"}
+                    <TableCell>
+                      <Input
+                        type="number"
+                        value={row.mayoristaPrice}
+                        onChange={(e) =>
+                          updateRow(row.handle, { mayoristaPrice: e.target.value })
+                        }
+                        className="h-8 border-gold/20 bg-transparent text-xs tabular-nums"
+                      />
                     </TableCell>
                     <TableCell className="text-xs tabular-nums text-muted-foreground">
-                      {retailOk ? formatClp(empresarioPrice(retailNum, pricing)) : "—"}
+                      {mayoristaOk
+                        ? money(empresarioPrice(mayoristaNum, pricing, currency))
+                        : "—"}
                     </TableCell>
                     <TableCell>
                       <Input
@@ -318,18 +385,24 @@ export function CatalogBulkEditSheet({
             </TableBody>
           </Table>
           <p className="mt-2 px-2 text-[10px] text-muted-foreground">
-            * Mayorista / Empresario se recalculan según los descuentos del catálogo (solo lectura).
+            * Empresario = mayorista −{Math.round(pricing.empresarioDiscount * 100)}% (solo
+            lectura).
           </p>
         </div>
 
         <div className="shrink-0 space-y-2 border-t border-gold/15 px-5 py-4">
           {error && <p className="text-[11px] text-destructive">{error}</p>}
           <div className="flex flex-wrap justify-end gap-2">
-            <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
+            <Button
+              type="button"
+              variant="outline"
+              disabled={saving}
+              onClick={() => onOpenChange(false)}
+            >
               Cancelar
             </Button>
-            <Button type="button" onClick={handleSave}>
-              Guardar {rows.length} cambios
+            <Button type="button" disabled={saving} onClick={() => void handleSave()}>
+              {saving ? "Guardando…" : `Guardar ${rows.length} cambios`}
             </Button>
           </div>
         </div>

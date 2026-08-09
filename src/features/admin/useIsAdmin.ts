@@ -1,45 +1,46 @@
 import { useEffect, useState } from "react";
+import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
-import { ADMIN_AUTH_BYPASS } from "./auth-bypass";
 
 export function useIsAdmin() {
-  const [loading, setLoading] = useState(!ADMIN_AUTH_BYPASS);
-  const [isAdmin, setIsAdmin] = useState(ADMIN_AUTH_BYPASS);
-  const [hasAnyAdmin, setHasAnyAdmin] = useState(true);
-  const [userId, setUserId] = useState<string | null>(null);
-
-  const refresh = async () => {
-    if (ADMIN_AUTH_BYPASS) {
-      setIsAdmin(true);
-      setHasAnyAdmin(true);
-      setUserId("local-bypass");
-      setLoading(false);
-      return;
-    }
-
-    setLoading(true);
-    const { data: userData } = await supabase.auth.getUser();
-    const uid = userData.user?.id ?? null;
-    setUserId(uid);
-    if (!uid) {
-      setIsAdmin(false);
-      setLoading(false);
-      return;
-    }
-    const { data: roles } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", uid);
-    setIsAdmin((roles ?? []).some((r) => r.role === "admin"));
-
-    const { data: claimed } = await supabase.rpc("admin_bootstrap_claimed");
-    setHasAnyAdmin(Boolean(claimed));
-    setLoading(false);
-  };
+  const [user, setUser] = useState<User | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    refresh();
+    let cancelled = false;
+
+    const refresh = async (nextUser: User | null) => {
+      if (!nextUser) {
+        if (!cancelled) {
+          setUser(null);
+          setIsAdmin(false);
+          setLoading(false);
+        }
+        return;
+      }
+      const { data, error } = await supabase.rpc("is_admin");
+      if (!cancelled) {
+        setUser(nextUser);
+        setIsAdmin(!error && data === true);
+        setLoading(false);
+      }
+    };
+
+    supabase.auth.getSession().then(({ data }) => {
+      void refresh(data.session?.user ?? null);
+    });
+
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      setLoading(true);
+      void refresh(session?.user ?? null);
+    });
+
+    return () => {
+      cancelled = true;
+      sub.subscription.unsubscribe();
+    };
   }, []);
 
-  return { loading, isAdmin, hasAnyAdmin, userId, refresh };
+  return { user, isAdmin, loading, userId: user?.id ?? null };
 }

@@ -1,171 +1,195 @@
-import { useEffect, useState, type ReactNode } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import type { CatalogCategory, CatalogProduct } from "@/features/catalog/types";
-import { ALL_CATEGORIES, slugifyHandle } from "./catalog-local-store";
+import { empresarioPrice, DEFAULT_PRICING, formatPrice } from "@/features/catalog/pricing";
+import type { CatalogCurrency } from "@/features/catalog/catalog-meta";
+
+const ALL_CATEGORIES: CatalogCategory[] = [
+  "Cadenas",
+  "Pulseras",
+  "Dijes",
+  "Combos",
+  "Hombre",
+  "Mujer",
+];
+
+export type CatalogProductFormValues = {
+  handle: string;
+  title: string;
+  sku: string;
+  retailPrice: number;
+  compareAtPrice: number | null;
+  mayoristaPrice: number;
+  imageUrl: string;
+  galleryText: string;
+  tagsText: string;
+  categories: CatalogCategory[];
+  isActive: boolean;
+};
 
 type Props = {
   open: boolean;
-  onOpenChange: (v: boolean) => void;
+  onOpenChange: (open: boolean) => void;
   initial?: CatalogProduct | null;
-  onSubmit: (product: CatalogProduct) => void;
+  currency?: CatalogCurrency;
+  locale?: string;
+  onSubmit: (values: CatalogProductFormValues) => Promise<void>;
 };
 
-export function CatalogProductFormDialog({ open, onOpenChange, initial, onSubmit }: Props) {
-  const [title, setTitle] = useState("");
-  const [sku, setSku] = useState("");
-  const [retailPrice, setRetailPrice] = useState("");
-  const [compareAtPrice, setCompareAtPrice] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [categories, setCategories] = useState<CatalogCategory[]>([]);
-  const [error, setError] = useState("");
+function toForm(p?: CatalogProduct | null): CatalogProductFormValues {
+  return {
+    handle: p?.handle ?? "",
+    title: p?.title ?? "",
+    sku: p?.sku ?? "",
+    retailPrice: p?.retailPrice ?? 0,
+    compareAtPrice: p?.compareAtPrice ?? null,
+    mayoristaPrice: p?.mayoristaPrice ?? 0,
+    imageUrl: p?.imageUrl ?? "",
+    galleryText: (p?.galleryUrls ?? []).join("\n"),
+    tagsText: (p?.tags ?? []).join(", "),
+    categories: p?.categories ?? [],
+    isActive: true,
+  };
+}
+
+export function CatalogProductFormDialog({
+  open,
+  onOpenChange,
+  initial,
+  currency = "CLP",
+  locale = "es-CL",
+  onSubmit,
+}: Props) {
+  const editing = !!initial;
+  const { register, handleSubmit, reset, watch, setValue } = useForm<CatalogProductFormValues>({
+    defaultValues: toForm(initial),
+  });
 
   useEffect(() => {
-    if (!open) return;
-    setTitle(initial?.title ?? "");
-    setSku(initial?.sku ?? "");
-    setRetailPrice(initial ? String(initial.retailPrice) : "");
-    setCompareAtPrice(initial?.compareAtPrice != null ? String(initial.compareAtPrice) : "");
-    setImageUrl(initial?.imageUrl ?? "");
-    setCategories(initial?.categories ?? []);
-    setError("");
-  }, [open, initial]);
+    if (open) reset(toForm(initial));
+  }, [open, initial, reset]);
 
-  const toggleCategory = (cat: CatalogCategory) => {
-    setCategories((prev) =>
-      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat],
-    );
-  };
+  const mayorista = watch("mayoristaPrice") || 0;
+  const cats = watch("categories") || [];
+  const empresario = empresarioPrice(
+    { mayoristaPrice: Number(mayorista) || 0 },
+    DEFAULT_PRICING,
+    currency,
+  );
+  const money = (n: number) => formatPrice(n, currency, locale);
 
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const price = Number(retailPrice);
-    if (!title.trim()) {
-      setError("El título es obligatorio");
-      return;
-    }
-    if (!Number.isFinite(price) || price <= 0) {
-      setError("Precio retail inválido");
-      return;
-    }
-    const compare = compareAtPrice.trim() ? Number(compareAtPrice) : null;
-    if (compare != null && (!Number.isFinite(compare) || compare < 0)) {
-      setError("Compare-at inválido");
-      return;
-    }
-
-    const handle = initial?.handle || slugifyHandle(title) || `producto-${Date.now()}`;
-    const gallery = initial?.galleryUrls?.length
-      ? initial.galleryUrls.map((u, i) => (i === 0 && imageUrl.trim() ? imageUrl.trim() : u))
-      : imageUrl.trim()
-        ? [imageUrl.trim()]
-        : [];
-
-    onSubmit({
-      handle,
-      title: title.trim(),
-      sku: sku.trim(),
-      retailPrice: Math.round(price),
-      compareAtPrice: compare != null ? Math.round(compare) : null,
-      imageUrl: imageUrl.trim() || gallery[0] || "",
-      galleryUrls: gallery.length ? gallery : imageUrl.trim() ? [imageUrl.trim()] : [],
-      tags: initial?.tags ?? [],
-      categories,
-    });
-    onOpenChange(false);
+  const toggleCat = (c: CatalogCategory) => {
+    const next = cats.includes(c) ? cats.filter((x) => x !== c) : [...cats, c];
+    setValue("categories", next, { shouldDirty: true });
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto border-gold/20 sm:max-w-lg">
+      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle className="font-display text-xl font-normal">
-            {initial ? "Editar producto" : "Nuevo producto"}
-          </DialogTitle>
+          <DialogTitle>{editing ? "Editar producto" : "Nuevo producto"}</DialogTitle>
         </DialogHeader>
-
-        <form onSubmit={submit} className="mt-2 space-y-4">
-          <Field label="Título">
-            <Input value={title} onChange={(e) => setTitle(e.target.value)} />
-          </Field>
+        <form
+          className="grid gap-3"
+          onSubmit={handleSubmit(async (v) => {
+            try {
+              await onSubmit({
+                ...v,
+                retailPrice: Number(v.retailPrice),
+                mayoristaPrice: Number(v.mayoristaPrice),
+                compareAtPrice:
+                  v.compareAtPrice == null || v.compareAtPrice === ("" as unknown as number)
+                    ? null
+                    : Number(v.compareAtPrice),
+              });
+              onOpenChange(false);
+            } catch (e: unknown) {
+              toast.error(e instanceof Error ? e.message : "No se pudo guardar");
+            }
+          })}
+        >
+          <div className="grid gap-1.5">
+            <Label>Título</Label>
+            <Input {...register("title", { required: true })} />
+          </div>
           <div className="grid grid-cols-2 gap-3">
-            <Field label="SKU">
-              <Input value={sku} onChange={(e) => setSku(e.target.value)} />
-            </Field>
-            <Field label="Precio retail (CLP)">
+            <div className="grid gap-1.5">
+              <Label>Handle</Label>
+              <Input {...register("handle", { required: true })} disabled={editing} />
+            </div>
+            <div className="grid gap-1.5">
+              <Label>SKU</Label>
+              <Input {...register("sku")} />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="grid gap-1.5">
+              <Label>Retail</Label>
+              <Input type="number" step="any" {...register("retailPrice", { valueAsNumber: true })} />
+            </div>
+            <div className="grid gap-1.5">
+              <Label>Mayorista</Label>
               <Input
                 type="number"
-                min={0}
-                value={retailPrice}
-                onChange={(e) => setRetailPrice(e.target.value)}
+                step="any"
+                {...register("mayoristaPrice", { valueAsNumber: true })}
               />
-            </Field>
-          </div>
-          <Field label="Compare at (opcional)">
-            <Input
-              type="number"
-              min={0}
-              value={compareAtPrice}
-              onChange={(e) => setCompareAtPrice(e.target.value)}
-            />
-          </Field>
-          <Field label="URL imagen principal">
-            <Input
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              placeholder="https://cdn.shopify.com/..."
-            />
-          </Field>
-          {imageUrl && (
-            <div className="h-28 w-28 overflow-hidden rounded-xl border border-gold/20">
-              <img src={imageUrl} alt="" className="h-full w-full object-cover" />
             </div>
-          )}
-
-          <div className="space-y-2">
+          </div>
+          <p className="text-[11px] text-muted-foreground">
+            Empresario (auto −30% s/ mayorista):{" "}
+            <span className="text-gold">{money(empresario)}</span>
+          </p>
+          <div className="grid gap-1.5">
+            <Label>Imagen principal (URL Shopify)</Label>
+            <Input {...register("imageUrl")} placeholder="https://cdn.shopify.com/..." />
+          </div>
+          <div className="grid gap-1.5">
+            <Label>Galería (una URL por línea)</Label>
+            <Textarea rows={4} {...register("galleryText")} placeholder="https://..." />
+          </div>
+          <div className="grid gap-1.5">
+            <Label>Tags (separados por coma)</Label>
+            <Input {...register("tagsText")} />
+          </div>
+          <div className="grid gap-1.5">
             <Label>Categorías</Label>
             <div className="flex flex-wrap gap-2">
-              {ALL_CATEGORIES.map((cat) => {
-                const active = categories.includes(cat);
-                return (
-                  <button
-                    key={cat}
-                    type="button"
-                    onClick={() => toggleCategory(cat)}
-                    className={`rounded-full border px-3 py-1 text-[11px] uppercase tracking-[0.12em] ${
-                      active
-                        ? "border-gold/50 bg-gold/15 text-gold"
-                        : "border-gold/20 text-muted-foreground"
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                );
-              })}
+              {ALL_CATEGORIES.map((c) => (
+                <button
+                  key={c}
+                  type="button"
+                  onClick={() => toggleCat(c)}
+                  className={`rounded-full border px-2.5 py-1 text-[10px] uppercase tracking-wider ${
+                    cats.includes(c)
+                      ? "border-gold/50 bg-gold/15 text-gold"
+                      : "border-gold/20 text-muted-foreground"
+                  }`}
+                >
+                  {c}
+                </button>
+              ))}
             </div>
           </div>
-
-          {error && <p className="text-[11px] text-destructive">{error}</p>}
-
           <div className="flex justify-end gap-2 pt-2">
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
               Cancelar
             </Button>
-            <Button type="submit">{initial ? "Guardar" : "Crear"}</Button>
+            <Button type="submit">Guardar</Button>
           </div>
         </form>
       </DialogContent>
     </Dialog>
-  );
-}
-
-function Field({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <div className="space-y-1.5">
-      <Label>{label}</Label>
-      {children}
-    </div>
   );
 }

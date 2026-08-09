@@ -1,5 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   ArrowLeft,
   ExternalLink,
@@ -7,37 +8,34 @@ import {
   Package,
   Pencil,
   Plus,
-  RotateCcw,
   Search,
   Sheet,
   Trash2,
 } from "lucide-react";
 import { toast } from "sonner";
-import { useIsAdmin } from "@/features/admin/useIsAdmin";
+
 import { AdminNav } from "@/features/admin/AdminNav";
-import { CatalogProductFormDialog } from "@/features/admin/CatalogProductFormDialog";
 import { CatalogBulkEditSheet } from "@/features/admin/CatalogBulkEditSheet";
 import {
-  loadCatalogDemoState,
-  resetCatalogDemoState,
-  saveCatalogDemoState,
-  type CatalogDemoState,
-  type ManagedCatalog,
-} from "@/features/admin/catalog-local-store";
+  CatalogProductFormDialog,
+  type CatalogProductFormValues,
+} from "@/features/admin/CatalogProductFormDialog";
+import { supabase } from "@/integrations/supabase/client";
+import {
+  adminCatalogsQuery,
+  adminProductsQuery,
+} from "@/features/catalog/queries";
 import type { CatalogProduct } from "@/features/catalog/types";
 import {
+  DEFAULT_PRICING,
   empresarioPct,
   empresarioPrice,
-  formatClp,
-  mayoristaPct,
+  formatPrice,
   mayoristaPrice,
-  type PricingConfig,
 } from "@/features/catalog/pricing";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -53,99 +51,48 @@ export const Route = createFileRoute("/_authenticated/admin_/catalogs")({
   component: CatalogsAdminPage,
 });
 
-type Tab = "settings" | "products";
-
 function CatalogsAdminPage() {
   const navigate = useNavigate();
-  const { loading, isAdmin } = useIsAdmin();
-  const [state, setState] = useState<CatalogDemoState | null>(null);
+  const qc = useQueryClient();
+  const { data: catalogs = [], isLoading: catalogsLoading } = useQuery(adminCatalogsQuery);
   const [selectedCode, setSelectedCode] = useState<string | null>(null);
-  const [tab, setTab] = useState<Tab>("products");
   const [search, setSearch] = useState("");
   const deferredSearch = useDeferredValue(search.trim().toLowerCase());
-  const [creating, setCreating] = useState(false);
   const [editing, setEditing] = useState<CatalogProduct | null>(null);
+  const [creating, setCreating] = useState(false);
   const [deleting, setDeleting] = useState<CatalogProduct | null>(null);
   const [selectedHandles, setSelectedHandles] = useState<Set<string>>(new Set());
   const [bulkOpen, setBulkOpen] = useState(false);
-
-  useEffect(() => {
-    setState(loadCatalogDemoState());
-  }, []);
 
   useEffect(() => {
     setSelectedHandles(new Set());
     setBulkOpen(false);
   }, [selectedCode]);
 
-  const persist = (next: CatalogDemoState) => {
-    setState(next);
-    saveCatalogDemoState(next);
+  const selected = catalogs.find((c) => c.code === selectedCode) ?? null;
+  const { data: products = [], isLoading: productsLoading } = useQuery({
+    ...adminProductsQuery(selectedCode ?? ""),
+    enabled: !!selectedCode,
+  });
+
+  const currency = selected?.currency ?? "CLP";
+  const locale = selected?.locale ?? "es-CL";
+  const money = (n: number) => formatPrice(n, currency, locale);
+  const pricing = {
+    empresarioDiscount:
+      selected?.empresarioDiscount ?? DEFAULT_PRICING.empresarioDiscount,
   };
-
-  const selected = state?.catalogs.find((c) => c.code === selectedCode) ?? null;
-  const products = selected ? (state?.productsByCode[selected.code] ?? []) : [];
-
-  const pricing: PricingConfig = useMemo(
-    () => ({
-      mayoristaDiscount: selected?.mayoristaDiscount ?? 0.3,
-      empresarioExtra: selected?.empresarioExtra ?? 0.3,
-    }),
-    [selected?.mayoristaDiscount, selected?.empresarioExtra],
-  );
+  const ePct = empresarioPct(pricing);
 
   const filteredProducts = useMemo(() => {
     if (!deferredSearch) return products;
     return products.filter((p) => {
-      const hay = [p.title, p.sku, p.handle, ...p.categories, ...p.tags].join(" ").toLowerCase();
+      const hay = [p.title, p.sku, p.handle, ...p.categories, ...p.tags]
+        .join(" ")
+        .toLowerCase();
       return hay.includes(deferredSearch);
     });
   }, [products, deferredSearch]);
-
-  const updateCatalog = (
-    code: string,
-    patch: Partial<ManagedCatalog>,
-    opts?: { toast?: boolean },
-  ) => {
-    if (!state) return;
-    persist({
-      ...state,
-      catalogs: state.catalogs.map((c) => (c.code === code ? { ...c, ...patch } : c)),
-    });
-    if (opts?.toast) toast.success("Catálogo actualizado (demo local)");
-  };
-
-  const upsertProduct = (product: CatalogProduct) => {
-    if (!state || !selected) return;
-    const list = state.productsByCode[selected.code] ?? [];
-    const idx = list.findIndex((p) => p.handle === product.handle);
-    const nextList =
-      idx >= 0 ? list.map((p, i) => (i === idx ? product : p)) : [product, ...list];
-    persist({
-      ...state,
-      productsByCode: { ...state.productsByCode, [selected.code]: nextList },
-    });
-    toast.success(idx >= 0 ? "Producto guardado" : "Producto creado");
-  };
-
-  const removeProduct = (handle: string) => {
-    if (!state || !selected) return;
-    persist({
-      ...state,
-      productsByCode: {
-        ...state.productsByCode,
-        [selected.code]: (state.productsByCode[selected.code] ?? []).filter(
-          (p) => p.handle !== handle,
-        ),
-      },
-    });
-    setSelectedHandles((prev) => {
-      const next = new Set(prev);
-      next.delete(handle);
-      return next;
-    });
-    toast.success("Producto eliminado");
-  };
 
   const bulkProducts = useMemo(
     () => products.filter((p) => selectedHandles.has(p.handle)),
@@ -176,39 +123,131 @@ function CatalogsAdminPage() {
     });
   };
 
-  const applyBulkUpdates = (updated: CatalogProduct[]) => {
-    if (!state || !selected) return;
-    const map = new Map(updated.map((p) => [p.handle, p]));
-    persist({
-      ...state,
-      productsByCode: {
-        ...state.productsByCode,
-        [selected.code]: (state.productsByCode[selected.code] ?? []).map(
-          (p) => map.get(p.handle) ?? p,
-        ),
-      },
-    });
-    setSelectedHandles(new Set());
-    toast.success(`${updated.length} productos actualizados`);
+  const invalidate = () => {
+    if (selectedCode) {
+      void qc.invalidateQueries({ queryKey: ["investor_products", "admin", selectedCode] });
+      void qc.invalidateQueries({ queryKey: ["investor_products", "public", selectedCode] });
+    }
+    void qc.invalidateQueries({ queryKey: ["investor_catalogs"] });
   };
 
-  if (loading || !state) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-background text-muted-foreground">
-        Cargando...
-      </div>
-    );
-  }
+  const saveMut = useMutation({
+    mutationFn: async ({
+      values,
+      existing,
+    }: {
+      values: CatalogProductFormValues;
+      existing: CatalogProduct | null;
+    }) => {
+      if (!selectedCode) throw new Error("Sin catálogo");
+      const gallery_urls = values.galleryText
+        .split("\n")
+        .map((s) => s.trim())
+        .filter(Boolean);
+      const tags = values.tagsText
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+      const payload = {
+        catalog_code: selectedCode,
+        handle: values.handle.trim(),
+        title: values.title.trim(),
+        sku: values.sku.trim(),
+        retail_price: values.retailPrice,
+        compare_at_price: values.compareAtPrice,
+        mayorista_price: values.mayoristaPrice,
+        mayorista_is_provisional: false,
+        mayorista_match: "manual" as const,
+        image_url: values.imageUrl.trim(),
+        gallery_urls,
+        tags,
+        categories: values.categories,
+        is_active: values.isActive,
+      };
 
-  if (!isAdmin) {
-    return (
-      <main className="flex min-h-screen items-center justify-center bg-background px-6 text-foreground">
-        <div className="w-full max-w-sm rounded-2xl border border-gold/20 bg-white/[0.02] p-6 text-center">
-          <h1 className="font-display text-xl font-light">Acceso restringido</h1>
-        </div>
-      </main>
-    );
-  }
+      if (existing) {
+        const { error } = await supabase
+          .from("investor_products")
+          .update(payload)
+          .eq("catalog_code", selectedCode)
+          .eq("handle", existing.handle);
+        if (error) throw error;
+      } else {
+        const { error } = await supabase.from("investor_products").insert(payload);
+        if (error) throw error;
+      }
+    },
+    onSuccess: () => {
+      toast.success("Producto guardado");
+      invalidate();
+      setEditing(null);
+      setCreating(false);
+    },
+    onError: (e: Error) => toast.error(e.message),
+  });
+
+  const deleteMut = useMutation({
+    mutationFn: async (product: CatalogProduct) => {
+      if (!selectedCode) throw new Error("Sin catálogo");
+      const { error } = await supabase
+        .from("investor_products")
+        .delete()
+        .eq("catalog_code", selectedCode)
+        .eq("handle", product.handle);
+      if (error) throw error;
+    },
+    onSuccess: (_data, product) => {
+      toast.success("Producto eliminado");
+      invalidate();
+      setDeleting(null);
+      setSelectedHandles((prev) => {
+        const next = new Set(prev);
+        next.delete(product.handle);
+        return next;
+      });
+    },
+    onError: (e: Error) => toast.error(e.message),
+  });
+
+  const bulkSaveMut = useMutation({
+    mutationFn: async (updated: CatalogProduct[]) => {
+      if (!selectedCode) throw new Error("Sin catálogo");
+      await Promise.all(
+        updated.map(async (p) => {
+          const { error } = await supabase
+            .from("investor_products")
+            .update({
+              title: p.title,
+              sku: p.sku,
+              retail_price: p.retailPrice,
+              compare_at_price: p.compareAtPrice,
+              mayorista_price: p.mayoristaPrice,
+              mayorista_is_provisional: false,
+              mayorista_match: "manual" as const,
+              image_url: p.imageUrl,
+              gallery_urls: p.galleryUrls,
+              categories: p.categories,
+            })
+            .eq("catalog_code", selectedCode)
+            .eq("handle", p.handle);
+          if (error) throw error;
+        }),
+      );
+      return updated.length;
+    },
+    onSuccess: (count) => {
+      toast.success(`${count} productos actualizados`);
+      invalidate();
+      setSelectedHandles(new Set());
+      setBulkOpen(false);
+    },
+    onError: (e: Error) => toast.error(e.message),
+  });
+
+  const signOut = async () => {
+    await supabase.auth.signOut();
+    navigate({ to: "/auth" });
+  };
 
   return (
     <main className="min-h-screen bg-background px-4 pb-12 pt-6 text-foreground">
@@ -217,44 +256,29 @@ function CatalogsAdminPage() {
           <div>
             <AdminNav current="/admin/catalogs" />
             <h1 className="font-display mt-1 text-2xl font-light tracking-wide">
-              Gestionar catálogos
+              Catálogos
             </h1>
           </div>
-          <div className="flex gap-2">
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() => {
-                persist(resetCatalogDemoState());
-                setSelectedCode(null);
-                toast.message("Demo restablecida");
-              }}
-            >
-              <RotateCcw className="h-3.5 w-3.5" />
-            </Button>
-            <Button size="sm" variant="outline" onClick={() => navigate({ to: "/" })}>
-              <LogOut className="h-4 w-4" />
-            </Button>
-          </div>
+          <Button size="sm" variant="outline" onClick={signOut}>
+            <LogOut className="h-4 w-4" />
+          </Button>
         </header>
 
-        <p className="mt-2 text-xs text-muted-foreground">
-          Vista previa del gestor (datos locales en este navegador). No escribe en Supabase.
+        <p className="mt-2 rounded-lg border border-gold/20 bg-white/[0.03] px-3 py-2 text-xs text-muted-foreground">
+          Edición en vivo en Supabase. El mayorista se guarda a mano; el empresario se calcula
+          (−{ePct}% sobre mayorista). Imágenes = URLs Shopify.
         </p>
 
         {!selected ? (
           <section className="mt-5 space-y-2.5">
-            {state.catalogs.map((catalog) => {
-              const count = state.productsByCode[catalog.code]?.length ?? 0;
-              const mPct = mayoristaPct({
-                mayoristaDiscount: catalog.mayoristaDiscount,
-                empresarioExtra: catalog.empresarioExtra,
-              });
-              const ePct = empresarioPct({
-                mayoristaDiscount: catalog.mayoristaDiscount,
-                empresarioExtra: catalog.empresarioExtra,
-              });
-              return (
+            {catalogsLoading ? (
+              <p className="text-sm text-muted-foreground">Cargando catálogos…</p>
+            ) : catalogs.length === 0 ? (
+              <p className="text-sm text-muted-foreground">
+                No hay catálogos. Corre <code className="text-gold">npm run seed:catalogs</code>.
+              </p>
+            ) : (
+              catalogs.map((catalog) => (
                 <article
                   key={catalog.code}
                   className="rounded-2xl border border-gold/15 bg-white/[0.02] px-4 py-3"
@@ -264,367 +288,166 @@ function CatalogsAdminPage() {
                       {catalog.flag}
                     </span>
                     <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h2 className="font-display text-lg font-normal">{catalog.name}</h2>
-                        <span
-                          className={`rounded-full px-2 py-0.5 text-[10px] uppercase tracking-[0.14em] ${
-                            catalog.isActive
-                              ? "bg-gold/15 text-gold"
-                              : "bg-white/5 text-muted-foreground"
-                          }`}
-                        >
-                          {catalog.isActive ? "Activo" : "Inactivo"}
-                        </span>
-                        {!catalog.hasProducts && (
-                          <span className="rounded-full bg-white/5 px-2 py-0.5 text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-                            Sin pack
-                          </span>
-                        )}
-                      </div>
+                      <h2 className="font-display text-lg font-normal">{catalog.name}</h2>
                       <p className="mt-0.5 text-[11px] text-muted-foreground">
-                        /{catalog.slug}/catalogo · Mayorista −{mPct}% · Empresario −{ePct}% ·{" "}
+                        /{catalog.slug}/catalogo ·{" "}
                         <Package className="mr-0.5 inline h-3 w-3" />
-                        {count} productos
+                        {catalog.isActive ? "Activo" : "Inactivo"}
                       </p>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Switch
-                        checked={catalog.isActive}
-                        onCheckedChange={(v) =>
-                          updateCatalog(catalog.code, { isActive: v }, { toast: true })
-                        }
-                      />
-                      <Button size="sm" onClick={() => setSelectedCode(catalog.code)}>
-                        Gestionar
-                      </Button>
-                      {catalog.code === "CL" && catalog.isActive && (
-                        <Button size="sm" variant="outline" asChild>
-                          <Link to="/chile/catalogo" target="_blank">
-                            <ExternalLink className="h-3.5 w-3.5" />
-                          </Link>
-                        </Button>
-                      )}
-                    </div>
+                    <Button size="sm" onClick={() => setSelectedCode(catalog.code)}>
+                      Gestionar
+                    </Button>
+                    <Button size="sm" variant="outline" asChild>
+                      <Link
+                        to="/$slug/catalogo"
+                        params={{ slug: catalog.slug }}
+                        target="_blank"
+                      >
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </Link>
+                    </Button>
                   </div>
                 </article>
-              );
-            })}
+              ))
+            )}
           </section>
         ) : (
           <section className="mt-5">
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedCode(null);
-                setSearch("");
-                setTab("products");
-              }}
-              className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-gold/80 hover:text-gold"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" />
-              Todos los catálogos
-            </button>
+            <div className="mb-4 flex flex-wrap items-center gap-2">
+              <Button size="sm" variant="outline" onClick={() => setSelectedCode(null)}>
+                <ArrowLeft className="mr-1 h-3.5 w-3.5" /> Volver
+              </Button>
+              <span className="text-2xl" aria-hidden>
+                {selected.flag}
+              </span>
+              <h2 className="font-display text-lg font-normal">{selected.name}</h2>
+              <span className="text-[11px] text-muted-foreground">
+                {productsLoading ? "…" : `${products.length} productos`}
+              </span>
+              <Button
+                size="sm"
+                variant="outline"
+                className="ml-auto"
+                disabled={selectedHandles.size === 0}
+                onClick={() => setBulkOpen(true)}
+              >
+                <Sheet className="mr-1 h-3.5 w-3.5" />
+                Edición masiva
+                {selectedHandles.size > 0 ? ` (${selectedHandles.size})` : ""}
+              </Button>
+              <Button size="sm" onClick={() => setCreating(true)}>
+                <Plus className="mr-1 h-3.5 w-3.5" /> Nuevo
+              </Button>
+            </div>
 
-            <div className="mt-3 flex flex-wrap items-end justify-between gap-3">
-              <div>
-                <h2 className="font-display text-2xl font-normal">
-                  <span className="mr-2">{selected.flag}</span>
-                  {selected.name}
-                </h2>
-                <p className="text-xs text-muted-foreground">
-                  {selected.title} · /{selected.slug}/catalogo
-                </p>
-              </div>
-              {selected.code === "CL" && (
-                <Button size="sm" variant="outline" asChild>
-                  <Link to="/chile/catalogo" target="_blank">
-                    <ExternalLink className="mr-1 h-3.5 w-3.5" />
-                    Ver público
-                  </Link>
-                </Button>
+            <div className="relative mb-3">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Buscar…"
+                className="pl-9"
+              />
+            </div>
+
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+              <p className="text-[11px] text-muted-foreground">
+                {filteredProducts.length} de {products.length} productos
+                {selectedHandles.size > 0
+                  ? ` · ${selectedHandles.size} seleccionados`
+                  : ""}
+              </p>
+              {filteredProducts.length > 0 && (
+                <label className="inline-flex cursor-pointer items-center gap-2 text-[11px] text-muted-foreground">
+                  <Checkbox
+                    checked={allFilteredSelected}
+                    onCheckedChange={(v) => toggleSelectAllFiltered(v === true)}
+                    className="border-gold/40"
+                  />
+                  Seleccionar visibles
+                </label>
               )}
             </div>
 
-            <div className="mt-4 grid grid-cols-2 gap-2 rounded-2xl border border-gold/20 bg-white/[0.02] p-1.5 sm:max-w-md">
-              {(
-                [
-                  { id: "products" as const, label: "Productos" },
-                  { id: "settings" as const, label: "Configuración" },
-                ] as const
-              ).map((opt) => (
-                <button
-                  key={opt.id}
-                  type="button"
-                  onClick={() => setTab(opt.id)}
-                  className={`rounded-xl px-3 py-2.5 text-xs font-medium uppercase tracking-[0.16em] transition-all ${
-                    tab === opt.id
-                      ? "bg-gold/15 text-gold shadow-[inset_0_0_0_1px] shadow-gold/40"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
-
-            {tab === "settings" ? (
-              <div className="mt-5 space-y-4 rounded-2xl border border-gold/15 bg-white/[0.02] p-4">
-                <div className="flex items-center justify-between rounded-xl border border-gold/15 px-3 py-2">
-                  <Label>Mostrar en landing</Label>
-                  <Switch
-                    checked={selected.isActive}
-                    onCheckedChange={(v) =>
-                      updateCatalog(selected.code, { isActive: v }, { toast: true })
-                    }
-                  />
-                </div>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="space-y-1.5">
-                    <Label>Título</Label>
-                    <Input
-                      value={selected.title}
-                      onChange={(e) => updateCatalog(selected.code, { title: e.target.value })}
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label>Texto del botón</Label>
-                    <Input
-                      value={selected.buttonLabel}
-                      onChange={(e) =>
-                        updateCatalog(selected.code, { buttonLabel: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label>Slug URL</Label>
-                    <Input
-                      value={selected.slug}
-                      onChange={(e) =>
-                        updateCatalog(selected.code, {
-                          slug: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""),
-                        })
-                      }
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label>Código país</Label>
-                    <Input value={selected.code} disabled />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label>% desc. mayorista (0–1)</Label>
-                    <Input
-                      type="number"
-                      step="0.01"
-                      min={0}
-                      max={0.99}
-                      value={selected.mayoristaDiscount}
-                      onChange={(e) =>
-                        updateCatalog(selected.code, {
-                          mayoristaDiscount: Number(e.target.value) || 0,
-                        })
-                      }
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label>% extra empresario (0–1)</Label>
-                    <Input
-                      type="number"
-                      step="0.01"
-                      min={0}
-                      max={0.99}
-                      value={selected.empresarioExtra}
-                      onChange={(e) =>
-                        updateCatalog(selected.code, {
-                          empresarioExtra: Number(e.target.value) || 0,
-                        })
-                      }
-                    />
-                  </div>
-                </div>
-                <p className="text-[11px] text-muted-foreground">
-                  Demo local: Mayorista −{mayoristaPct(pricing)}% · Empresario −
-                  {empresarioPct(pricing)}%. La tienda pública de Chile sigue usando los % del
-                  código hasta conectar backend.
-                </p>
-              </div>
-            ) : (
-              <div className="mt-5">
-                <div className="flex flex-wrap items-center gap-2">
-                  <div className="relative min-w-[200px] flex-1">
-                    <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gold/70" />
-                    <Input
-                      value={search}
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Buscar producto…"
-                      className="h-10 border-gold/25 bg-white/[0.03] pl-9"
-                    />
-                  </div>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    disabled={selectedHandles.size === 0}
-                    onClick={() => setBulkOpen(true)}
+            <ul className="grid gap-2">
+              {filteredProducts.map((p) => {
+                const checked = selectedHandles.has(p.handle);
+                return (
+                  <li
+                    key={p.handle}
+                    className={`flex items-start gap-3 rounded-xl border bg-white/[0.02] p-3 ${
+                      checked ? "border-gold/40" : "border-gold/15"
+                    }`}
                   >
-                    <Sheet className="mr-1 h-3.5 w-3.5" />
-                    Edición masiva
-                    {selectedHandles.size > 0 ? ` (${selectedHandles.size})` : ""}
-                  </Button>
-                  <Button
-                    size="sm"
-                    onClick={() => {
-                      if (!selected.hasProducts && products.length === 0) {
-                        persist({
-                          ...state,
-                          productsByCode: {
-                            ...state.productsByCode,
-                            [selected.code]: state.productsByCode[selected.code] ?? [],
-                          },
-                          catalogs: state.catalogs.map((c) =>
-                            c.code === selected.code ? { ...c, hasProducts: true } : c,
-                          ),
-                        });
-                      }
-                      setCreating(true);
-                    }}
-                  >
-                    <Plus className="mr-1 h-4 w-4" />
-                    Nuevo
-                  </Button>
-                </div>
-
-                <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
-                  <p className="text-[11px] text-muted-foreground">
-                    {filteredProducts.length} de {products.length} productos
-                    {selectedHandles.size > 0
-                      ? ` · ${selectedHandles.size} seleccionados`
-                      : ""}
-                  </p>
-                  {filteredProducts.length > 0 && (
-                    <label className="inline-flex cursor-pointer items-center gap-2 text-[11px] text-muted-foreground">
-                      <Checkbox
-                        checked={allFilteredSelected}
-                        onCheckedChange={(v) => toggleSelectAllFiltered(v === true)}
-                        className="border-gold/40"
+                    <Checkbox
+                      checked={checked}
+                      onCheckedChange={(v) => toggleHandle(p.handle, v === true)}
+                      className="mt-1 border-gold/40"
+                      aria-label={`Seleccionar ${p.title}`}
+                    />
+                    {p.imageUrl ? (
+                      <img
+                        src={p.imageUrl}
+                        alt=""
+                        className="h-12 w-12 shrink-0 rounded-md object-cover"
                       />
-                      Seleccionar visibles
-                    </label>
-                  )}
-                </div>
-
-                {products.length === 0 ? (
-                  <div className="mt-6 rounded-2xl border border-dashed border-gold/25 px-6 py-12 text-center">
-                    <p className="font-display text-xl">Sin productos</p>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      Este país aún no tiene pack de productos. Puedes crear algunos para probar el
-                      flujo.
-                    </p>
-                    <Button className="mt-5" size="sm" onClick={() => setCreating(true)}>
-                      <Plus className="mr-1 h-4 w-4" />
-                      Agregar producto
-                    </Button>
-                  </div>
-                ) : (
-                  <ul className="mt-3 grid gap-2">
-                    {filteredProducts.map((product) => {
-                      const checked = selectedHandles.has(product.handle);
-                      return (
-                        <li
-                          key={product.handle}
-                          className={`flex gap-3 rounded-2xl border p-2.5 transition-colors ${
-                            checked
-                              ? "border-gold/40 bg-gold/5"
-                              : "border-gold/15 bg-white/[0.02]"
-                          }`}
-                        >
-                          <div className="flex items-start pt-1">
-                            <Checkbox
-                              checked={checked}
-                              onCheckedChange={(v) =>
-                                toggleHandle(product.handle, v === true)
-                              }
-                              className="border-gold/40"
-                              aria-label={`Seleccionar ${product.title}`}
-                            />
-                          </div>
-                          <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-white/[0.04]">
-                            {product.imageUrl ? (
-                              <img
-                                src={product.imageUrl}
-                                alt=""
-                                className="h-full w-full object-cover"
-                              />
-                            ) : null}
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <p className="truncate text-sm font-medium">{product.title}</p>
-                            <p className="mt-0.5 text-[11px] text-muted-foreground">
-                              {product.sku ? `SKU ${product.sku} · ` : ""}
-                              Retail {formatClp(product.retailPrice)} · Mayorista{" "}
-                              {formatClp(mayoristaPrice(product.retailPrice, pricing))} ·
-                              Empresario{" "}
-                              {formatClp(empresarioPrice(product.retailPrice, pricing))}
-                            </p>
-                            {product.categories.length > 0 && (
-                              <div className="mt-1.5 flex flex-wrap gap-1">
-                                {product.categories.map((cat) => (
-                                  <span
-                                    key={cat}
-                                    className="rounded-full border border-gold/20 px-2 py-0.5 text-[10px] text-gold/90"
-                                  >
-                                    {cat}
-                                  </span>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                          <div className="flex shrink-0 items-start gap-1">
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              onClick={() => setEditing(product)}
-                            >
-                              <Pencil className="h-3.5 w-3.5" />
-                            </Button>
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              onClick={() => setDeleting(product)}
-                            >
-                              <Trash2 className="h-3.5 w-3.5" />
-                            </Button>
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )}
-              </div>
-            )}
+                    ) : (
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-white/5 text-[10px] text-muted-foreground">
+                        N/A
+                      </div>
+                    )}
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-medium">{p.title}</p>
+                      <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+                        {p.sku || p.handle}
+                        {p.mayoristaMatch ? ` · ${p.mayoristaMatch}` : ""}
+                        {p.mayoristaIsProvisional ? " · provisional" : ""}
+                      </p>
+                      <p className="mt-1 text-[11px] text-muted-foreground">
+                        Retail {money(p.retailPrice)} · Mayorista {money(mayoristaPrice(p))} ·
+                        Empresario {money(empresarioPrice(p, pricing))}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      className="rounded-md p-2 text-muted-foreground hover:text-foreground"
+                      onClick={() => setEditing(p)}
+                      aria-label="Editar"
+                    >
+                      <Pencil className="h-4 w-4" />
+                    </button>
+                    <button
+                      type="button"
+                      className="rounded-md p-2 text-destructive/80 hover:text-destructive"
+                      onClick={() => setDeleting(p)}
+                      aria-label="Eliminar"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
           </section>
         )}
       </div>
 
-      {(creating || editing) && selected && (
+      {(creating || editing) && (
         <CatalogProductFormDialog
           open={creating || !!editing}
-          onOpenChange={(open) => {
-            if (!open) {
+          onOpenChange={(o) => {
+            if (!o) {
               setCreating(false);
               setEditing(null);
             }
           }}
           initial={editing}
-          onSubmit={upsertProduct}
-        />
-      )}
-
-      {selected && (
-        <CatalogBulkEditSheet
-          open={bulkOpen}
-          onOpenChange={setBulkOpen}
-          products={bulkProducts}
-          pricing={pricing}
-          onSave={applyBulkUpdates}
+          currency={currency}
+          locale={locale}
+          onSubmit={async (values) => {
+            await saveMut.mutateAsync({ values, existing: editing });
+          }}
         />
       )}
 
@@ -633,15 +456,14 @@ function CatalogsAdminPage() {
           <AlertDialogHeader>
             <AlertDialogTitle>Eliminar producto</AlertDialogTitle>
             <AlertDialogDescription>
-              ¿Eliminar “{deleting?.title}”? Solo afecta esta demo local.
+              ¿Eliminar “{deleting?.title}”? Esta acción no se puede deshacer.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancelar</AlertDialogCancel>
             <AlertDialogAction
               onClick={() => {
-                if (deleting) removeProduct(deleting.handle);
-                setDeleting(null);
+                if (deleting) deleteMut.mutate(deleting);
               }}
             >
               Eliminar
@@ -649,6 +471,20 @@ function CatalogsAdminPage() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      {bulkOpen && (
+        <CatalogBulkEditSheet
+          open={bulkOpen}
+          onOpenChange={setBulkOpen}
+          products={bulkProducts}
+          pricing={pricing}
+          currency={currency}
+          locale={locale}
+          onSave={async (updated) => {
+            await bulkSaveMut.mutateAsync(updated);
+          }}
+        />
+      )}
     </main>
   );
 }
