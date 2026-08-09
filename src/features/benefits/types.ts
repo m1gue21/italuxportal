@@ -14,6 +14,7 @@ import {
   Headphones,
   CreditCard,
   Globe,
+  RefreshCw,
   type LucideIcon,
 } from "lucide-react";
 
@@ -45,6 +46,7 @@ export const BENEFIT_ICONS: Record<string, LucideIcon> = {
   Headphones,
   CreditCard,
   Globe,
+  RefreshCw,
 };
 
 export const BENEFIT_ICON_NAMES = Object.keys(BENEFIT_ICONS);

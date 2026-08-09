@@ -2,7 +2,7 @@ import { useDeferredValue, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Search, ShoppingBag, X } from "lucide-react";
-import logo from "@/assets/italux-logo.png.asset.json";
+import logo from "@/assets/italux-logo.png";
 import { Input } from "@/components/ui/input";
 import { publicCountriesQuery } from "@/features/countries/queries";
 import { SOCIAL_LINKS } from "@/features/countries/data";
@@ -115,7 +115,7 @@ export function CatalogPage({ countryCode }: Props) {
           >
             <ArrowLeft className="h-4 w-4" />
           </Link>
-          <img src={logo.url} alt="ITALUX" className="h-9 w-auto object-contain" />
+          <img src={logo} alt="ITALUX" className="h-9 w-auto object-contain" />
           <div className="min-w-0 flex-1">
             <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-gold">
               {countryName} · Inversionistas

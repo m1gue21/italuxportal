@@ -1,6 +1,6 @@
 import { Instagram, Facebook, MessageCircle, Music2 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import logo from "@/assets/italux-logo.png.asset.json";
+import logo from "@/assets/italux-logo.png";
 import { SOCIAL_LINKS } from "@/features/countries/data";
 import { sectionTextQuery } from "@/features/section-texts/queries";
 import { CTA_ICONS } from "@/features/section-texts/cta-icons";
@@ -13,7 +13,7 @@ export function Footer() {
   const tagline = data?.eyebrow || "Presencia Internacional";
   const copy = data?.subtitle || "";
 
-  const logoUrl = d?.logo_url || logo.url;
+  const logoUrl = d?.logo_url || logo;
   const showLogo = d?.show_logo ?? true;
 
   const socials = [

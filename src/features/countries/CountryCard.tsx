@@ -68,6 +68,16 @@ export function CountryCard({ country }: { country: CountryRow }) {
       >
         <div className="overflow-hidden">
           <div className="grid grid-cols-2 gap-2.5 px-5 pb-3 pt-1">
+            {hasInvestorCatalog && catalogSlug && (
+              <Link
+                to="/$slug/catalogo"
+                params={{ slug: catalogSlug }}
+                className={`${buttonClasses} col-span-2 border-gold/50 bg-gold/15 text-gold hover:bg-gold/25`}
+              >
+                <BookOpen className="h-4 w-4" strokeWidth={2.2} />
+                Catálogo Inversionistas
+              </Link>
+            )}
             <a
               href={country.whatsapp_url}
               target="_blank"
@@ -86,16 +96,6 @@ export function CountryCard({ country }: { country: CountryRow }) {
               <WebIcon className="h-4 w-4" strokeWidth={2.2} />
               {country.website_label || "Página Web"}
             </a>
-            {hasInvestorCatalog && catalogSlug && (
-              <Link
-                to="/$slug/catalogo"
-                params={{ slug: catalogSlug }}
-                className={`${buttonClasses} col-span-2 border-gold/50 bg-gold/10 text-gold hover:bg-gold/20`}
-              >
-                <BookOpen className="h-4 w-4" strokeWidth={2.2} />
-                Catálogo Inversionistas
-              </Link>
-            )}
           </div>
           {addresses.length > 0 && (
             <ul className="space-y-2 px-5 pb-5 pt-2">

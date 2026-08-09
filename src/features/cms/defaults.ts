@@ -143,9 +143,9 @@ export const DEFAULT_COUNTRIES: CountryRow[] = [
 export const DEFAULT_FAQS: FaqRow[] = [
   {
     id: "faq-1",
-    pregunta: "¿Cuánto tarda en llegar mi pedido?",
+    pregunta: "¿Qué diferencia hay entre mayorista y empresario?",
     respuesta:
-      "Los envíos nacionales llegan entre 2 y 5 días hábiles. Los envíos internacionales se coordinan por WhatsApp con el distribuidor oficial de tu país.",
+      "Son dos modalidades de inversión. El mayorista trabaja con márgenes de utilidad del 30% al 50%. El empresario escala con márgenes del 40% al 60% y mejores condiciones de compra. Ambas incluyen acceso a catálogo, rotación de inventario y garantía de por vida.",
     activo: true,
     orden: 1,
     created_at: NOW,
@@ -153,9 +153,9 @@ export const DEFAULT_FAQS: FaqRow[] = [
   },
   {
     id: "faq-2",
-    pregunta: "¿Las joyas tienen garantía?",
+    pregunta: "¿Qué es la rotación de inventario?",
     respuesta:
-      "Sí. Todas nuestras piezas cuentan con garantía de por vida sobre el Oro Laminado 18K Premium contra defectos de fabricación.",
+      "Si tienes joyas con rotación lenta, puedes cambiarlas por estilos disponibles en el stock de ITALUX. Así tu inventario se mantiene fresco y vendible.",
     activo: true,
     orden: 2,
     created_at: NOW,
@@ -163,9 +163,9 @@ export const DEFAULT_FAQS: FaqRow[] = [
   },
   {
     id: "faq-3",
-    pregunta: "¿El Oro Laminado 18K pierde el color?",
+    pregunta: "¿Cómo funciona la garantía de por vida?",
     respuesta:
-      "No. Nuestra capa de Oro Laminado 18K Premium conserva su brillo y color con el cuidado básico recomendado. Evita químicos fuertes y perfumes directos.",
+      "Todas las piezas cuentan con garantía de por vida. Cuando aplica, se cambia por una joya totalmente nueva. Menos riesgo para tu negocio y más confianza para tus clientes.",
     activo: true,
     orden: 3,
     created_at: NOW,
@@ -173,9 +173,9 @@ export const DEFAULT_FAQS: FaqRow[] = [
   },
   {
     id: "faq-4",
-    pregunta: "¿Puedo comprar por WhatsApp?",
+    pregunta: "¿Cómo empiezo a trabajar con ITALUX?",
     respuesta:
-      "Sí. Cada país cuenta con atención personalizada por WhatsApp con su distribuidor oficial. Selecciona tu país en la sección de países.",
+      "Elige tu modalidad (mayorista o empresario), selecciona tu país para revisar el catálogo de inversionistas o contacta a un asesor por WhatsApp. Te guiamos en el primer pedido.",
     activo: true,
     orden: 4,
     created_at: NOW,
@@ -183,9 +183,9 @@ export const DEFAULT_FAQS: FaqRow[] = [
   },
   {
     id: "faq-5",
-    pregunta: "¿Realizan envíos seguros?",
+    pregunta: "¿El Oro Laminado 18K pierde el color?",
     respuesta:
-      "Sí. Todos los envíos son asegurados, empacados discretamente y con número de seguimiento desde el momento del despacho.",
+      "No. Nuestra capa de Oro Laminado 18K Premium conserva su brillo y color con el cuidado básico recomendado. Evita químicos fuertes y perfumes directos.",
     activo: true,
     orden: 5,
     created_at: NOW,
@@ -193,9 +193,9 @@ export const DEFAULT_FAQS: FaqRow[] = [
   },
   {
     id: "faq-6",
-    pregunta: "¿Puedo comprar al por mayor?",
+    pregunta: "¿Realizan envíos seguros?",
     respuesta:
-      'Sí. Contamos con un programa exclusivo para mayoristas y revendedores. Solicita información en la sección "Venta al por mayor".',
+      "Sí. Todos los envíos son asegurados, empacados discretamente y con número de seguimiento desde el momento del despacho.",
     activo: true,
     orden: 6,
     created_at: NOW,
@@ -206,9 +206,10 @@ export const DEFAULT_FAQS: FaqRow[] = [
 export const DEFAULT_BENEFITS: BenefitRow[] = [
   {
     id: "benefit-1",
-    title: "Garantía de por vida",
-    description: "Respaldamos cada pieza para siempre.",
-    icon: "ShieldCheck",
+    title: "Rotación de inventario",
+    description:
+      "Joyas de rotación lenta se cambian por estilos disponibles en stock ITALUX.",
+    icon: "RefreshCw",
     activo: true,
     orden: 1,
     image_url: null,
@@ -218,9 +219,9 @@ export const DEFAULT_BENEFITS: BenefitRow[] = [
   },
   {
     id: "benefit-2",
-    title: "Oro Laminado 18K Premium",
-    description: "Materiales nobles y acabado impecable.",
-    icon: "Gem",
+    title: "Garantía de por vida",
+    description: "Si aplica, se cambia por una joya totalmente nueva.",
+    icon: "ShieldCheck",
     activo: true,
     orden: 2,
     image_url: null,
@@ -230,9 +231,9 @@ export const DEFAULT_BENEFITS: BenefitRow[] = [
   },
   {
     id: "benefit-3",
-    title: "Diseños exclusivos",
-    description: "Colecciones únicas, edición limitada.",
-    icon: "Sparkles",
+    title: "Oro Laminado 18K Premium",
+    description: "Materiales nobles y acabado impecable para reventa.",
+    icon: "Gem",
     activo: true,
     orden: 3,
     image_url: null,
@@ -242,9 +243,9 @@ export const DEFAULT_BENEFITS: BenefitRow[] = [
   },
   {
     id: "benefit-4",
-    title: "Envíos seguros",
-    description: "Llegamos a tu puerta con total tranquilidad.",
-    icon: "Truck",
+    title: "Diseños exclusivos",
+    description: "Cadenas, pulseras, dijes, aretes y balinería.",
+    icon: "Sparkles",
     activo: true,
     orden: 4,
     image_url: null,
@@ -293,21 +294,34 @@ export const DEFAULT_SECTION_TEXTS: SectionTextRow[] = [
   sectionText({
     id: "section-hero",
     section_key: "hero",
-    title: "Hero",
-    bg_opacity: 30,
+    title: "Construye tu negocio de joyería con márgenes reales",
+    subtitle:
+      "Oro laminado 18K Premium · Red en Latinoamérica · Stock con rotación y garantía de por vida",
+    bg_opacity: 35,
+  }),
+  sectionText({
+    id: "section-modalities",
+    section_key: "modalities",
+    eyebrow: "Modalidades de inversión",
+    title: "Elige cómo crecer con ITALUX",
+    subtitle:
+      "Dos caminos para trabajar con nosotros. Ambos incluyen acceso a stock, rotación de inventario y garantía de por vida.",
   }),
   sectionText({
     id: "section-benefits",
     section_key: "benefits",
-    eyebrow: "¿Por qué ITALUX?",
-    title: "La promesa de la maison",
+    eyebrow: "Ventajas del modelo",
+    title: "Menos riesgo, más rotación",
+    subtitle:
+      "Protegemos tu inventario y tu reputación con rotación, garantía y calidad premium.",
   }),
   sectionText({
     id: "section-wholesale",
     section_key: "wholesale",
-    eyebrow: "Venta al por Mayor",
-    title: "¿Quieres ser distribuidor?",
-    subtitle: "Únete a la red oficial ITALUX y lleva la marca a tu ciudad.",
+    eyebrow: "Asesoría personalizada",
+    title: "¿Listo para empezar?",
+    subtitle:
+      "Habla con un asesor ITALUX y te orientamos en la modalidad ideal para tu negocio.",
     cta_label: "Contactar un asesor",
     cta_url: SOCIAL_LINKS.whatsapp,
     cta_icon: "whatsapp",
