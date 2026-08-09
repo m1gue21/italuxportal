@@ -1,62 +1,37 @@
 # Panel de administración
 
-## Acceso actual (bypass)
+## Acceso
 
-Por ahora el login con usuario/contraseña de Supabase está **desactivado**.
+No hay login remoto. `/admin` y subrutas abren directamente. `/auth` redirige al admin.
 
-Flag: [`src/features/admin/auth-bypass.ts`](../src/features/admin/auth-bypass.ts)
-
-```ts
-export const ADMIN_AUTH_BYPASS = true;
-```
-
-Con `true`:
-
-- `/admin` y subrutas abren sin sesión
-- `/auth` redirige al admin
-
-Para reactivar autenticación Supabase: poner `ADMIN_AUTH_BYPASS = false`.
+El admin es una **vista previa de solo lectura** del contenido quemado en TypeScript. No guarda cambios en el navegador ni en un backend.
 
 ## Rutas del admin
 
 | Ruta | Contenido |
 | --- | --- |
-| `/admin` | Países (CRUD + orden + mapa) |
-| `/admin/catalogs` | Gestor de catálogos (demo local) |
+| `/admin` | Países (preview) |
+| `/admin/catalogs` | Catálogos / productos (preview de packs) |
 | `/admin/faqs` | Preguntas frecuentes |
 | `/admin/benefits` | Beneficios / “promesa de la maison” |
-| `/admin/wholesale` | Textos sección mayoreo |
-| `/admin/hero` | Portada |
-| `/admin/footer` | Pie y redes |
+| `/admin/wholesale` | Preview sección mayoreo |
+| `/admin/hero` | Preview portada |
+| `/admin/footer` | Preview pie y redes |
 
 Navegación compartida: [`AdminNav`](../src/features/admin/AdminNav.tsx).
 
-## Qué usa Supabase vs qué es local
+## Dónde editar el contenido
 
-| Área | Persistencia |
+| Área | Archivo |
 | --- | --- |
-| Países, FAQs, benefits, section texts | Supabase (requiere `.env` válido) |
-| Catálogos / productos del gestor | `localStorage` (demo) |
-| Catálogo público Chile | Código estático (`chile-products.ts`) |
+| Países, FAQs, benefits, textos de sección | [`src/features/cms/defaults.ts`](../src/features/cms/defaults.ts) |
+| Lecturas CMS (API interna) | [`src/features/cms/cms-data.ts`](../src/features/cms/cms-data.ts) |
+| Productos por país | `src/features/catalog/*-products.ts` + [`product-registry.ts`](../src/features/catalog/product-registry.ts) |
+| Meta catálogo (slug, moneda) | [`catalog-meta.ts`](../src/features/catalog/catalog-meta.ts) |
+| Descuentos públicos | [`pricing.ts`](../src/features/catalog/pricing.ts) |
 
-Sin acceso a Supabase, las secciones CMS pueden fallar al cargar/guardar; el **gestor de catálogos** sigue usable en local.
+Tras editar el código, reinicia o redeploya para ver los cambios.
 
-## Gestor de catálogos
+## Catálogos
 
-Documentado en detalle en [CATALOGO.md](./CATALOGO.md).
-
-Resumen de UX:
-
-1. Lista de países / catálogos
-2. **Gestionar** → tabs Productos / Configuración
-3. Seleccionar productos → **Edición masiva** (tabla editable)
-4. Botón ↻ restablece la demo local
-
-## Auth histórica (cuando se reactive)
-
-1. Ir a `/auth`
-2. Crear cuenta o iniciar sesión (Supabase Auth)
-3. Rol `admin` en tabla `user_roles`
-4. Si no hay admin, bootstrap “Convertirme en administrador” (según políticas RLS del proyecto)
-
-Migraciones en `supabase/migrations/`.
+Documentado en [CATALOGO.md](./CATALOGO.md). En `/admin/catalogs` solo se listan packs existentes; no hay CRUD ni `localStorage`.

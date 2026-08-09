@@ -1,6 +1,6 @@
 # ITALUX Portal
 
-Portal internacional de **ITALUX Joyería**: landing multi-país, mapa de presencia en Latinoamérica, CMS admin y **Catálogo Inversionistas** (Chile) para mayoristas y empresarios.
+Portal internacional de **ITALUX Joyería**: landing multi-país, mapa de presencia en Latinoamérica, CMS en TypeScript y **Catálogo Inversionistas** (multi-país) para mayoristas y empresarios.
 
 Repositorio: [github.com/m1gue21/italuxportal](https://github.com/m1gue21/italuxportal)
 
@@ -15,9 +15,9 @@ Repositorio: [github.com/m1gue21/italuxportal](https://github.com/m1gue21/italux
 | Data fetching | TanStack Query |
 | Estilos | Tailwind CSS 4 + design tokens gold/oscuro |
 | UI | Radix / shadcn-style (`src/components/ui/`) |
-| Backend / CMS | Supabase (países, FAQs, benefits, textos) |
-| Catálogo público | Datos estáticos TypeScript (Chile) |
-| Gestor catálogos | Demo local (`localStorage`) |
+| CMS / contenido | TypeScript estático (`src/features/cms/defaults.ts`) |
+| Catálogo público | Packs TypeScript por país (`*-products.ts`) |
+| Admin | Vista previa de solo lectura |
 
 ---
 
@@ -25,7 +25,8 @@ Repositorio: [github.com/m1gue21/italuxportal](https://github.com/m1gue21/italux
 
 - Node.js 20+ (recomendado)
 - npm (o bun; el repo incluye `bun.lock`)
-- Cuenta Supabase (opcional para CMS; el catálogo público y el gestor demo funcionan sin ella)
+
+No se requiere backend ni cuenta externa para CMS o catálogo.
 
 ---
 
@@ -39,11 +40,7 @@ cd italuxportal
 # 2. Dependencias
 npm install
 
-# 3. Variables de entorno
-cp .env.example .env
-# Edita .env con tu proyecto Supabase (si vas a usar el CMS)
-
-# 4. Desarrollo
+# 3. Desarrollo
 npm run dev
 ```
 
@@ -71,18 +68,16 @@ italuxportal/
 ├── src/
 │   ├── components/ui/       # Primitivos UI
 │   ├── features/
-│   │   ├── admin/           # Panel admin + gestor catálogos demo
-│   │   ├── catalog/         # Catálogo público Chile + precios/pedido
+│   │   ├── admin/           # Panel admin (preview)
+│   │   ├── catalog/         # Catálogo público + precios/pedido
+│   │   ├── cms/             # defaults.ts + cms-data.ts
 │   │   ├── countries/       # Países + CountryCard
 │   │   ├── landing/         # Hero, mapa, benefits, FAQ, footer…
 │   │   ├── benefits/
 │   │   ├── faqs/
 │   │   └── section-texts/
-│   ├── integrations/supabase/
 │   ├── routes/              # File-based routes (TanStack)
 │   └── styles.css           # Tokens de marca (gold, fondos)
-├── supabase/migrations/     # SQL del CMS
-├── products_export_1 CHILE PRODDUCTOS.csv
 ├── .env.example
 └── package.json
 ```
@@ -97,10 +92,12 @@ Convenciones de rutas: ver [`src/routes/README.md`](src/routes/README.md).
 
 1. **Hero** — marca ITALUX + CTA a países  
 2. **Mapa** — Latinoamérica geográfica (SVG Natural Earth), pines gold  
-3. **Países** — acordeón con WhatsApp, web y (Chile) catálogo  
-4. **Beneficios**, **Mayoreo**, **FAQ**, **Footer** — contenidos vía Supabase cuando está configurado  
+3. **Países** — acordeón con WhatsApp, web y catálogo cuando hay pack  
+4. **Beneficios**, **Mayoreo**, **FAQ**, **Footer** — desde `defaults.ts`  
 
-### Catálogo Inversionistas Chile (`/chile/catalogo`)
+### Catálogo Inversionistas (`/$slug/catalogo`)
+
+Países con pack: Chile, Colombia, Ecuador, España (`/chile/catalogo`, `/colombia/catalogo`, `/ecuador/catalogo`, `/espana/catalogo`).
 
 - Grid de productos con imágenes Shopify CDN  
 - Búsqueda y filtros por categoría  
@@ -111,26 +108,15 @@ Detalle: **[docs/CATALOGO.md](docs/CATALOGO.md)**
 
 ### Admin (`/admin`)
 
-- Gestión de países, FAQs, benefits, textos de secciones  
-- **Gestionar catálogos** (demo): productos, configuración, edición masiva tipo sheet  
+Vista previa del contenido estático (países, FAQs, benefits, secciones, catálogos). Para cambiar datos, edita los archivos TS indicados en la UI / docs.
 
 Detalle: **[docs/ADMIN.md](docs/ADMIN.md)**
-
-> **Auth:** el login Supabase está en bypass (`ADMIN_AUTH_BYPASS = true`). Entra directo a `/admin`. Ver docs/ADMIN.md para reactivarlo.
 
 ---
 
 ## Variables de entorno
 
-Copia `.env.example` → `.env`. Nunca commitees secretos.
-
-| Variable | Uso |
-| --- | --- |
-| `VITE_SUPABASE_URL` | URL del proyecto |
-| `VITE_SUPABASE_PUBLISHABLE_KEY` | Clave pública (anon) |
-| `SUPABASE_*` | Equivalentes server-side |
-
-El archivo `.env` está en `.gitignore`.
+No hay variables obligatorias. `.env.example` es un placeholder; no subas secretos a git.
 
 ---
 
@@ -145,35 +131,30 @@ Tokens en [`src/styles.css`](src/styles.css).
 
 ---
 
-## Datos del catálogo Chile
+## Datos del catálogo
 
-Los productos activos del CSV se materializan en `src/features/catalog/chile-products.ts`.
+Los productos activos del CSV se materializan en packs bajo `src/features/catalog/*-products.ts`.
 
 Para actualizar:
 
 1. Reemplazar / actualizar el CSV Shopify  
 2. Regenerar el TS (ver [docs/CATALOGO.md](docs/CATALOGO.md))  
-3. Verificar `/chile/catalogo`  
-
-El gestor admin edita una **copia local** (localStorage); no modifica el archivo TS ni Supabase.
+3. Verificar las rutas `/$slug/catalogo`  
 
 ---
 
 ## Roadmap sugerido
 
-- [ ] Conectar catálogos/productos a Supabase (o CMS)  
-- [ ] Reactivar auth admin y roles  
-- [ ] Catálogos por país (MX, CO, PE, …) con sus CSV  
-- [ ] Sincronizar descuentos del admin con la tienda pública  
+- [ ] Auth admin si el panel deja de ser solo preview  
+- [ ] Más países (MX, PE, …) con sus CSV  
 - [ ] PDF / email de invoice (hoy solo WhatsApp)  
 
 ---
 
 ## Seguridad
 
-- No subir `.env`, claves de servicio ni `service_role`  
-- La clave `publishable`/`anon` es pública por diseño; protege datos sensibles con RLS en Supabase  
-- Con `ADMIN_AUTH_BYPASS = true` el panel admin es público: **solo para desarrollo**  
+- No subir `.env` ni claves de servicio  
+- El panel `/admin` es público (solo lectura del seed); no expone mutaciones remotas  
 
 ---
 
@@ -188,5 +169,5 @@ Proyecto privado de ITALUX / Monarch. Uso interno salvo indicación contraria.
 | Doc | Contenido |
 | --- | --- |
 | [docs/CATALOGO.md](docs/CATALOGO.md) | Catálogo público, precios, WhatsApp, extensión multi-país |
-| [docs/ADMIN.md](docs/ADMIN.md) | Panel admin, bypass auth, CMS vs demo |
+| [docs/ADMIN.md](docs/ADMIN.md) | Panel admin preview y dónde editar en código |
 | [src/routes/README.md](src/routes/README.md) | Convenciones TanStack Router |

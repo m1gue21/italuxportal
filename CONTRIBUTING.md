@@ -21,10 +21,11 @@ npm run build
 - **Estilos:** reutilizar tokens gold/oscuro de `src/styles.css`.
 - **Secretos:** nunca commitear `.env`.
 
-## Catálogo
+## Catálogo y CMS
 
-- Productos públicos Chile viven en `chile-products.ts` (generado desde CSV).
-- El admin de catálogos es demo local; no asumas que escribe a Supabase.
+- Productos viven en packs `*-products.ts` (generados desde CSV) y se registran en `product-registry.ts`.
+- Contenido CMS (países, FAQs, benefits, secciones) en `src/features/cms/defaults.ts`.
+- El admin es solo preview; no hay mutaciones ni backend.
 - Documenta cambios de dominio en `docs/CATALOGO.md` / `docs/ADMIN.md`.
 
 ## Commits
