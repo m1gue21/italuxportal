@@ -6,23 +6,72 @@ import logo from "@/assets/italux-logo.png.asset.json";
 import { Input } from "@/components/ui/input";
 import { publicCountriesQuery } from "@/features/countries/queries";
 import { SOCIAL_LINKS } from "@/features/countries/data";
-import { CATALOG_CATEGORIES, CHILE_PRODUCTS } from "./chile-products";
+import { getCatalogMeta } from "./catalog-meta";
+import {
+  getCatalogCategories,
+  getCatalogProducts,
+} from "./product-registry";
+import {
+  catalogByCodeQuery,
+  categoriesForProducts,
+  publicProductsQuery,
+} from "./queries";
 import { ProductCard } from "./ProductCard";
 import { ProductDetailSheet } from "./ProductDetailSheet";
 import { OrderSheet } from "./OrderSheet";
 import { useOrderCart } from "./useOrderCart";
 import type { CatalogCategory, CatalogProduct, InvestorRole } from "./types";
-import { EMPRESARIO_PCT, MAYORISTA_PCT } from "./pricing";
+import {
+  DEFAULT_PRICING,
+  EMPRESARIO_PCT,
+  type PricingConfig,
+} from "./pricing";
 
-export function CatalogPage() {
-  const cart = useOrderCart("CL");
+type Props = {
+  countryCode: string;
+};
+
+export function CatalogPage({ countryCode }: Props) {
+  const meta = getCatalogMeta(countryCode);
+  const { data: remoteCatalog } = useQuery(catalogByCodeQuery(countryCode));
+  const {
+    data: remoteProducts,
+    isLoading: productsLoading,
+    isError: productsError,
+  } = useQuery(publicProductsQuery(countryCode));
+
+  const packProducts = useMemo(() => getCatalogProducts(countryCode), [countryCode]);
+  const products = useMemo(() => {
+    if (remoteProducts && remoteProducts.length > 0) return remoteProducts;
+    if (productsError || (remoteProducts && remoteProducts.length === 0)) {
+      return packProducts;
+    }
+    return remoteProducts ?? packProducts;
+  }, [remoteProducts, packProducts, productsError]);
+
+  const categories = useMemo(() => {
+    if (remoteProducts && remoteProducts.length > 0) {
+      return categoriesForProducts(remoteProducts);
+    }
+    return getCatalogCategories(countryCode);
+  }, [remoteProducts, countryCode]);
+
+  const currency = remoteCatalog?.currency ?? meta?.currency ?? "CLP";
+  const locale = remoteCatalog?.locale ?? meta?.locale ?? "es-CL";
+  const countryName = remoteCatalog?.name ?? meta?.name ?? countryCode;
+  const pricing: PricingConfig = {
+    empresarioDiscount:
+      remoteCatalog?.empresarioDiscount ?? DEFAULT_PRICING.empresarioDiscount,
+  };
+
+  const cart = useOrderCart(countryCode, pricing, currency);
   const { data: countries = [] } = useQuery(publicCountriesQuery);
-  const chile = countries.find((c) => c.code === "CL");
-  const whatsappUrl = chile?.whatsapp_url || SOCIAL_LINKS.whatsapp;
+  const countryRow = countries.find((c) => c.code === countryCode);
+  const whatsappUrl = countryRow?.whatsapp_url || SOCIAL_LINKS.whatsapp;
 
   const productsByHandle = useMemo(
-    () => new Map(CHILE_PRODUCTS.map((p) => [p.handle, p])),
-    [],
+    () => new Map(products.map((p) => [p.handle, p])),
+    [products],
   );
 
   const [detailProduct, setDetailProduct] = useState<CatalogProduct | null>(null);
@@ -32,7 +81,7 @@ export function CatalogPage() {
   const deferredSearch = useDeferredValue(search.trim().toLowerCase());
 
   const filteredProducts = useMemo(() => {
-    return CHILE_PRODUCTS.filter((product) => {
+    return products.filter((product) => {
       if (category !== "all" && !product.categories.includes(category)) {
         return false;
       }
@@ -48,7 +97,7 @@ export function CatalogPage() {
         .toLowerCase();
       return haystack.includes(deferredSearch);
     });
-  }, [category, deferredSearch]);
+  }, [products, category, deferredSearch]);
 
   const setRole = (role: InvestorRole) => {
     cart.setRoleAndReprice(role, productsByHandle);
@@ -69,9 +118,11 @@ export function CatalogPage() {
           <img src={logo.url} alt="ITALUX" className="h-9 w-auto object-contain" />
           <div className="min-w-0 flex-1">
             <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-gold">
-              Chile · Inversionistas
+              {countryName} · Inversionistas
             </p>
-            <h1 className="font-display truncate text-lg leading-tight">Catálogo Inversionistas</h1>
+            <h1 className="font-display truncate text-lg leading-tight">
+              {remoteCatalog?.title || "Catálogo Inversionistas"}
+            </h1>
           </div>
         </div>
       </header>
@@ -85,8 +136,12 @@ export function CatalogPage() {
         <div className="mt-5 grid max-w-md grid-cols-2 gap-2 rounded-2xl border border-gold/20 bg-white/[0.02] p-1.5">
           {(
             [
-              { id: "mayorista" as const, label: "Mayorista", pct: MAYORISTA_PCT },
-              { id: "empresario" as const, label: "Empresario", pct: EMPRESARIO_PCT },
+              { id: "mayorista" as const, label: "Mayorista", hint: "precio lista" },
+              {
+                id: "empresario" as const,
+                label: "Empresario",
+                hint: `−${EMPRESARIO_PCT}% s/ mayorista`,
+              },
             ] as const
           ).map((opt) => {
             const active = cart.role === opt.id;
@@ -104,7 +159,7 @@ export function CatalogPage() {
                 <span className="block text-xs font-medium uppercase tracking-[0.18em]">
                   {opt.label}
                 </span>
-                <span className="mt-0.5 block text-[10px] opacity-80">−{opt.pct}% retail</span>
+                <span className="mt-0.5 block text-[10px] opacity-80">{opt.hint}</span>
               </button>
             );
           })}
@@ -114,8 +169,8 @@ export function CatalogPage() {
           <span>
             <span className="line-through">Retail</span> tachado
           </span>
-          <span>Mayorista −{MAYORISTA_PCT}%</span>
-          <span>Empresario −{EMPRESARIO_PCT}%</span>
+          <span>Mayorista (lista)</span>
+          <span>Empresario −{EMPRESARIO_PCT}% s/ mayorista</span>
         </div>
 
         <div className="relative mt-6">
@@ -151,7 +206,7 @@ export function CatalogPage() {
           >
             Todas
           </button>
-          {CATALOG_CATEGORIES.map((cat) => {
+          {categories.map((cat) => {
             const active = category === cat;
             return (
               <button
@@ -171,35 +226,30 @@ export function CatalogPage() {
         </div>
 
         <p className="mt-4 text-[11px] text-muted-foreground">
-          {filteredProducts.length} producto{filteredProducts.length === 1 ? "" : "s"}
+          {productsLoading
+            ? "Cargando productos…"
+            : `${filteredProducts.length} producto${filteredProducts.length === 1 ? "" : "s"}`}
           {category !== "all" ? ` · ${category}` : ""}
           {deferredSearch ? ` · “${search.trim()}”` : ""}
         </p>
 
-        {filteredProducts.length === 0 ? (
+        {filteredProducts.length === 0 && !productsLoading ? (
           <div className="mt-10 rounded-2xl border border-gold/15 bg-white/[0.02] px-6 py-12 text-center">
             <p className="font-display text-xl text-foreground">Sin resultados</p>
             <p className="mt-2 text-sm text-muted-foreground">
               Prueba otra búsqueda o categoría.
             </p>
-            <button
-              type="button"
-              onClick={() => {
-                setSearch("");
-                setCategory("all");
-              }}
-              className="mt-5 text-xs uppercase tracking-[0.2em] text-gold hover:underline"
-            >
-              Limpiar filtros
-            </button>
           </div>
         ) : (
-          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4">
             {filteredProducts.map((product) => (
               <ProductCard
                 key={product.handle}
                 product={product}
                 role={cart.role}
+                pricing={pricing}
+                currency={currency}
+                locale={locale}
                 onOpen={() => setDetailProduct(product)}
                 onQuickAdd={() => cart.addItem(product, 1, cart.role)}
               />
@@ -208,37 +258,25 @@ export function CatalogPage() {
         )}
       </div>
 
-      {cart.totalPieces > 0 && (
-        <div className="fixed inset-x-0 bottom-0 z-40 px-5 pb-5 pt-2">
-          <button
-            type="button"
-            onClick={() => setOrderOpen(true)}
-            className="mx-auto flex w-full max-w-md items-center justify-between gap-3 rounded-full bg-gradient-to-r from-gold via-gold-light to-gold px-5 py-4 text-background shadow-[0_12px_40px_-12px] shadow-gold/50 active:scale-[0.98] md:max-w-sm"
-          >
-            <span className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em]">
-              <ShoppingBag className="h-4 w-4" />
-              Ver pedido ({cart.totalPieces})
-            </span>
-            <span className="text-sm font-semibold tabular-nums">
-              {new Intl.NumberFormat("es-CL", {
-                style: "currency",
-                currency: "CLP",
-                maximumFractionDigits: 0,
-              }).format(cart.totalAmount)}
-            </span>
-          </button>
-        </div>
-      )}
+      <button
+        type="button"
+        onClick={() => setOrderOpen(true)}
+        className="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-full bg-gradient-to-r from-gold via-gold-light to-gold px-5 py-3.5 text-xs font-medium uppercase tracking-[0.18em] text-background shadow-lg shadow-black/40"
+      >
+        <ShoppingBag className="h-4 w-4" />
+        Tu pedido ({cart.totalPieces})
+      </button>
 
       <ProductDetailSheet
         product={detailProduct}
         open={!!detailProduct}
-        onOpenChange={(open) => {
-          if (!open) setDetailProduct(null);
-        }}
+        onOpenChange={(o) => !o && setDetailProduct(null)}
         role={cart.role}
-        countryLabel="ITALUX Chile"
-        onAdd={(product, qty) => cart.addItem(product, qty, cart.role)}
+        pricing={pricing}
+        currency={currency}
+        locale={locale}
+        countryLabel={countryName}
+        onAdd={(p, qty) => cart.addItem(p, qty, cart.role)}
       />
 
       <OrderSheet
@@ -252,7 +290,9 @@ export function CatalogPage() {
         totalAmount={cart.totalAmount}
         totalPieces={cart.totalPieces}
         whatsappUrl={whatsappUrl}
-        countryName="Chile"
+        countryName={countryName}
+        currency={currency}
+        locale={locale}
         onSetQty={cart.setQty}
         onRemove={cart.removeItem}
         onNameChange={cart.setCustomerName}

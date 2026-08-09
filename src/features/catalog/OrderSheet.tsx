@@ -8,8 +8,9 @@ import {
 } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
 import { CTA_ICONS } from "@/features/section-texts/cta-icons";
+import type { CatalogCurrency } from "./catalog-meta";
 import { buildOrderMessage, buildWhatsAppOrderUrl } from "./buildWhatsAppOrder";
-import { formatClp, roleLabel } from "./pricing";
+import { formatPrice, roleLabel } from "./pricing";
 import type { InvestorRole, OrderLine } from "./types";
 
 type Props = {
@@ -24,6 +25,8 @@ type Props = {
   totalPieces: number;
   whatsappUrl: string;
   countryName?: string;
+  currency?: CatalogCurrency;
+  locale?: string;
   onSetQty: (handle: string, qty: number) => void;
   onRemove: (handle: string) => void;
   onNameChange: (v: string) => void;
@@ -43,6 +46,8 @@ export function OrderSheet({
   totalPieces,
   whatsappUrl,
   countryName = "Chile",
+  currency = "CLP",
+  locale = "es-CL",
   onSetQty,
   onRemove,
   onNameChange,
@@ -50,6 +55,7 @@ export function OrderSheet({
   onClear,
 }: Props) {
   const WaIcon = CTA_ICONS.whatsapp;
+  const money = (n: number) => formatPrice(n, currency, locale);
 
   const message = buildOrderMessage({
     orderId,
@@ -58,6 +64,8 @@ export function OrderSheet({
     customerName,
     customerCity,
     countryName,
+    currency,
+    locale,
   });
 
   const waHref = buildWhatsAppOrderUrl(whatsappUrl, message);
@@ -101,7 +109,7 @@ export function OrderSheet({
                       {item.title}
                     </p>
                     <p className="mt-0.5 text-[11px] text-muted-foreground">
-                      {formatClp(item.unitPrice)} c/u
+                      {money(item.unitPrice)} c/u
                     </p>
                     <div className="mt-2 flex items-center justify-between gap-2">
                       <div className="flex items-center gap-2 rounded-full border border-gold/20 px-1.5">
@@ -127,7 +135,7 @@ export function OrderSheet({
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-sm font-medium text-gold">
-                          {formatClp(item.unitPrice * item.qty)}
+                          {money(item.unitPrice * item.qty)}
                         </span>
                         <button
                           type="button"
@@ -171,7 +179,7 @@ export function OrderSheet({
               </div>
               <div className="mt-2 flex justify-between">
                 <span className="text-sm text-muted-foreground">Total</span>
-                <span className="font-display text-2xl text-gold">{formatClp(totalAmount)}</span>
+                <span className="font-display text-2xl text-gold">{money(totalAmount)}</span>
               </div>
             </div>
           )}

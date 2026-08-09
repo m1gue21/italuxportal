@@ -1,4 +1,5 @@
-import { formatClp, roleLabel } from "./pricing";
+import type { CatalogCurrency } from "./catalog-meta";
+import { formatPrice, roleLabel } from "./pricing";
 import type { OrderLine, InvestorRole } from "./types";
 
 function stripWhatsAppQuery(url: string): string {
@@ -19,8 +20,14 @@ export function buildOrderMessage(opts: {
   customerName?: string;
   customerCity?: string;
   countryName?: string;
+  currency?: CatalogCurrency;
+  locale?: string;
 }): string {
   const country = opts.countryName ?? "Chile";
+  const currency = opts.currency ?? "CLP";
+  const locale = opts.locale ?? "es-CL";
+  const money = (n: number) => formatPrice(n, currency, locale);
+
   const lines: string[] = [
     `*Pedido Catálogo Inversionistas — ${country}*`,
     `Nº: ${opts.orderId}`,
@@ -39,18 +46,18 @@ export function buildOrderMessage(opts: {
   let total = 0;
   let pieces = 0;
 
-  for (const item of opts.items) {
+  for (const item of opts.items ?? []) {
     const lineTotal = item.unitPrice * item.qty;
     total += lineTotal;
     pieces += item.qty;
     const skuPart = item.sku ? ` (${item.sku})` : "";
     lines.push(
-      `• ${item.title}${skuPart} x${item.qty} — ${formatClp(item.unitPrice)} c/u = ${formatClp(lineTotal)}`,
+      `• ${item.title}${skuPart} x${item.qty} — ${money(item.unitPrice)} c/u = ${money(lineTotal)}`,
     );
   }
 
   lines.push("");
-  lines.push(`*Total: ${formatClp(total)}*`);
+  lines.push(`*Total: ${money(total)}*`);
   lines.push(`Piezas: ${pieces}`);
   lines.push("");
   lines.push("Quiero confirmar este pedido.");

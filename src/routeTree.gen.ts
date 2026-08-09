@@ -12,8 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as SlugCatalogoRouteImport } from './routes/$slug.catalogo'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
-import { Route as ChileCatalogoRouteImport } from './routes/chile.catalogo'
 import { Route as AuthenticatedAdminBenefitsRouteImport } from './routes/_authenticated/admin_.benefits'
 import { Route as AuthenticatedAdminCatalogsRouteImport } from './routes/_authenticated/admin_.catalogs'
 import { Route as AuthenticatedAdminFaqsRouteImport } from './routes/_authenticated/admin_.faqs'
@@ -35,15 +35,15 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SlugCatalogoRoute = SlugCatalogoRouteImport.update({
+  id: '/$slug/catalogo',
+  path: '/$slug/catalogo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const ChileCatalogoRoute = ChileCatalogoRouteImport.update({
-  id: '/chile/catalogo',
-  path: '/chile/catalogo',
-  getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedAdminBenefitsRoute =
   AuthenticatedAdminBenefitsRouteImport.update({
@@ -83,8 +83,8 @@ const AuthenticatedAdminWholesaleRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/$slug/catalogo': typeof SlugCatalogoRoute
   '/admin': typeof AuthenticatedAdminRoute
-  '/chile/catalogo': typeof ChileCatalogoRoute
   '/admin/benefits': typeof AuthenticatedAdminBenefitsRoute
   '/admin/catalogs': typeof AuthenticatedAdminCatalogsRoute
   '/admin/faqs': typeof AuthenticatedAdminFaqsRoute
@@ -95,8 +95,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/$slug/catalogo': typeof SlugCatalogoRoute
   '/admin': typeof AuthenticatedAdminRoute
-  '/chile/catalogo': typeof ChileCatalogoRoute
   '/admin/benefits': typeof AuthenticatedAdminBenefitsRoute
   '/admin/catalogs': typeof AuthenticatedAdminCatalogsRoute
   '/admin/faqs': typeof AuthenticatedAdminFaqsRoute
@@ -109,8 +109,8 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/$slug/catalogo': typeof SlugCatalogoRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
-  '/chile/catalogo': typeof ChileCatalogoRoute
   '/_authenticated/admin_/benefits': typeof AuthenticatedAdminBenefitsRoute
   '/_authenticated/admin_/catalogs': typeof AuthenticatedAdminCatalogsRoute
   '/_authenticated/admin_/faqs': typeof AuthenticatedAdminFaqsRoute
@@ -123,8 +123,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/$slug/catalogo'
     | '/admin'
-    | '/chile/catalogo'
     | '/admin/benefits'
     | '/admin/catalogs'
     | '/admin/faqs'
@@ -135,8 +135,8 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/$slug/catalogo'
     | '/admin'
-    | '/chile/catalogo'
     | '/admin/benefits'
     | '/admin/catalogs'
     | '/admin/faqs'
@@ -148,8 +148,8 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/$slug/catalogo'
     | '/_authenticated/admin'
-    | '/chile/catalogo'
     | '/_authenticated/admin_/benefits'
     | '/_authenticated/admin_/catalogs'
     | '/_authenticated/admin_/faqs'
@@ -162,7 +162,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
-  ChileCatalogoRoute: typeof ChileCatalogoRoute
+  SlugCatalogoRoute: typeof SlugCatalogoRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -188,19 +188,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$slug/catalogo': {
+      id: '/$slug/catalogo'
+      path: '/$slug/catalogo'
+      fullPath: '/$slug/catalogo'
+      preLoaderRoute: typeof SlugCatalogoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/admin': {
       id: '/_authenticated/admin'
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/chile/catalogo': {
-      id: '/chile/catalogo'
-      path: '/chile/catalogo'
-      fullPath: '/chile/catalogo'
-      preLoaderRoute: typeof ChileCatalogoRouteImport
-      parentRoute: typeof rootRouteImport
     }
     '/_authenticated/admin_/benefits': {
       id: '/_authenticated/admin_/benefits'
@@ -274,7 +274,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
-  ChileCatalogoRoute: ChileCatalogoRoute,
+  SlugCatalogoRoute: SlugCatalogoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

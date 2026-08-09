@@ -1,11 +1,11 @@
 import { Plus } from "lucide-react";
+import type { CatalogCurrency } from "./catalog-meta";
 import type { CatalogProduct, InvestorRole } from "./types";
 import {
   DEFAULT_PRICING,
   empresarioPct,
   empresarioPrice,
-  formatClp,
-  mayoristaPct,
+  formatPrice,
   mayoristaPrice,
   type PricingConfig,
 } from "./pricing";
@@ -14,6 +14,8 @@ type Props = {
   product: CatalogProduct;
   role: InvestorRole;
   pricing?: PricingConfig;
+  currency?: CatalogCurrency;
+  locale?: string;
   onOpen: () => void;
   onQuickAdd: () => void;
 };
@@ -22,13 +24,15 @@ export function ProductCard({
   product,
   role,
   pricing = DEFAULT_PRICING,
+  currency = "CLP",
+  locale = "es-CL",
   onOpen,
   onQuickAdd,
 }: Props) {
-  const mayorista = mayoristaPrice(product.retailPrice, pricing);
-  const empresario = empresarioPrice(product.retailPrice, pricing);
-  const mPct = mayoristaPct(pricing);
+  const mayorista = mayoristaPrice(product, currency);
+  const empresario = empresarioPrice(product, pricing, currency);
   const ePct = empresarioPct(pricing);
+  const money = (n: number) => formatPrice(n, currency, locale);
 
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl border border-gold/15 bg-gradient-to-b from-white/[0.04] to-white/[0.01]">
@@ -52,14 +56,14 @@ export function ProductCard({
             {product.title}
           </h3>
           <p className="text-[11px] text-muted-foreground line-through decoration-white/30">
-            {formatClp(product.retailPrice)}
+            {money(product.retailPrice)}
           </p>
           <div className="space-y-0.5 text-[11px]">
             <p className={role === "mayorista" ? "font-medium text-gold" : "text-muted-foreground"}>
-              Mayorista (−{mPct}%): {formatClp(mayorista)}
+              Mayorista: {money(mayorista)}
             </p>
             <p className={role === "empresario" ? "font-medium text-gold" : "text-muted-foreground"}>
-              Empresario (−{ePct}%): {formatClp(empresario)}
+              Empresario (−{ePct}%): {money(empresario)}
             </p>
           </div>
         </div>

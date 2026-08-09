@@ -1,0 +1,1594 @@
+import type { CatalogProduct } from "./types";
+
+/** Auto-generated from products_exportECUADOR.csv — do not edit by hand */
+export const ECUADOR_PRODUCTS: CatalogProduct[] = [
+  {
+    handle: "cadena-3x1-5mm-1",
+    title: "Cadena 3x1 5mm",
+    sku: "44143",
+    retailPrice: 108.75,
+    compareAtPrice: 145.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA3X15MM.jpg?v=1755117464",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA3X15MM.jpg?v=1755117464",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA3X15MM_2.jpg?v=1755117426",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Cadenas",
+    ],
+  },
+  {
+    handle: "cadena-caracol-4mm",
+    title: "Cadena Caracol 4mm",
+    sku: "43727",
+    retailPrice: 59.0,
+    compareAtPrice: 85.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_CARACOL_4MM_2.jpg?v=1769814997",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_CARACOL_4MM_2.jpg?v=1769814997",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_CARACOL_4MM.jpg?v=1769814997",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACARACOL4MM.jpg?v=1769811557",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-caracol-mujer",
+    title: "Cadena Caracol Mujer",
+    sku: "43702",
+    retailPrice: 45.0,
+    compareAtPrice: 60.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMACARACOL2MM_2.jpg?v=1767497175",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMACARACOL2MM_2.jpg?v=1767497175",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMACARACOL2MM.jpg?v=1767497175",
+    ],
+    tags: [
+      "Cadenas",
+      "Mujer",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Mujer",
+    ],
+  },
+  {
+    handle: "cadena-cartier-mujer",
+    title: "Cadena Carter Mujer",
+    sku: "42490",
+    retailPrice: 45.0,
+    compareAtPrice: 60.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAS_mujer_CARTER_2.webp?v=1767497134",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAS_mujer_CARTER_2.webp?v=1767497134",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_mujer_CARTER-2MM.jpg?v=1767497134",
+    ],
+    tags: [
+      "Cadenas",
+      "Mujer",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Mujer",
+    ],
+  },
+  {
+    handle: "cadena-china",
+    title: "Cadena China",
+    sku: "43888",
+    retailPrice: 69.0,
+    compareAtPrice: 100.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0163_d0a27f7d-958e-4fe8-97ba-6cb9c0b35653.jpg?v=1754675948",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0163_d0a27f7d-958e-4fe8-97ba-6cb9c0b35653.jpg?v=1754675948",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0159.jpg?v=1753129940",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0179_1454f6b5-3e24-4d04-bc4b-7a932ba8c244.jpg?v=1753129940",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Cadenas",
+    ],
+  },
+  {
+    handle: "cadena-chinesa-hombre",
+    title: "Cadena Chinesca Hombre",
+    sku: "44890",
+    retailPrice: 82.0,
+    compareAtPrice: 117.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_CHINA_8MM.jpg?v=1769810147",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_CHINA_8MM.jpg?v=1769810147",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/BLANCA_CHINESCA-4MM_1f3d34c3-0912-41fc-a6af-32b444ec4d9b.jpg?v=1769810147",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_CHINA_6MM.jpg?v=1769814891",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACHINA4MM.jpg?v=1769810147",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACHINA8MM_3.jpg?v=1769810147",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACHINA6MM_91b1f194-f82e-4cc3-b9b7-0b6776f3e775.jpg?v=1769810147",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-chinesca-mujer",
+    title: "Cadena Chinesca Mujer",
+    sku: "44881",
+    retailPrice: 49.0,
+    compareAtPrice: 65.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMACHINESCA4MM_cd7d743d-d03b-461b-ae8d-b673bd888944.jpg?v=1767497133",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMACHINESCA4MM_cd7d743d-d03b-461b-ae8d-b673bd888944.jpg?v=1767497133",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMACHINESCA4MM_2.jpg?v=1767497133",
+    ],
+    tags: [
+      "Cadenas",
+      "Mujer",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Mujer",
+    ],
+  },
+  {
+    handle: "cadena-cilindro-3mm",
+    title: "Cadena Cilindro 3mm",
+    sku: "43630",
+    retailPrice: 59.0,
+    compareAtPrice: 85.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACILINDRO3MM.jpg?v=1767497158",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACILINDRO3MM.jpg?v=1767497158",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACILINDRO3MM_2.jpg?v=1767497158",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-cilindro-mujer",
+    title: "Cadena Cilindro Mujer",
+    sku: "43616",
+    retailPrice: 45.0,
+    compareAtPrice: 60.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMACILINDROS3MM_3_2423d4fc-eca6-4583-8934-5e816a518923.jpg?v=1767497176",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMACILINDROS3MM_3_2423d4fc-eca6-4583-8934-5e816a518923.jpg?v=1767497176",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMACILINDROS3MM_2.jpg?v=1767497176",
+    ],
+    tags: [
+      "Cadenas",
+      "Mujer",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Mujer",
+    ],
+  },
+  {
+    handle: "cadena-cordon-mujer",
+    title: "Cadena Cordon Mujer",
+    sku: "44020",
+    retailPrice: 45.0,
+    compareAtPrice: 60.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMACORDON3MM_2.jpg?v=1767497181",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMACORDON3MM_2.jpg?v=1767497181",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMACORDON3MM_3.jpg?v=1767497181",
+    ],
+    tags: [
+      "Cadenas",
+      "Mujer",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Mujer",
+    ],
+  },
+  {
+    handle: "cadena-cordon-3mm",
+    title: "Cadena Cordón 3mm",
+    sku: "44060",
+    retailPrice: 59.0,
+    compareAtPrice: 85.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_CORDON_4MM.jpg?v=1769812975",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_CORDON_4MM.jpg?v=1769812975",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACORDON3MM_3.jpg?v=1769812975",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-cruzada",
+    title: "Cadena Cruzada",
+    sku: "43400",
+    retailPrice: 82.0,
+    compareAtPrice: 127.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACRUZADA5MM_2.jpg?v=1767497157",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACRUZADA5MM_2.jpg?v=1767497157",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACRUZADA5MM_5.jpg?v=1767497156",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACRUZADA5MM.jpg?v=1767497157",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-cubana",
+    title: "Cadena Cubana",
+    sku: "40258",
+    retailPrice: 63.0,
+    compareAtPrice: 85.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0173_5fc15388-bd5d-4238-8c23-d29f3f050297.jpg?v=1753127261",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0173_5fc15388-bd5d-4238-8c23-d29f3f050297.jpg?v=1753127261",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Cadenas",
+    ],
+  },
+  {
+    handle: "cadena-cubana-hombre",
+    title: "Cadena Cubana Hombre",
+    sku: "42397",
+    retailPrice: 82.0,
+    compareAtPrice: 117.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_CUBANA_6MM.jpg?v=1769810448",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_CUBANA_6MM.jpg?v=1769810448",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACUBANA9MM_5.jpg?v=1769810448",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACUBANA6MM_3.jpg?v=1769810448",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-cubana-mujer",
+    title: "Cadena Cubana Mujer",
+    sku: "42389",
+    retailPrice: 45.0,
+    compareAtPrice: 60.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAS_mujer_CUBANA_2.webp?v=1767497136",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAS_mujer_CUBANA_2.webp?v=1767497136",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_mujer_CUBANA-2MM_1b1b6ff1-2df0-4303-88df-692cbbdbf08e.webp?v=1767497136",
+    ],
+    tags: [
+      "Cadenas",
+      "Mujer",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Mujer",
+    ],
+  },
+  {
+    handle: "cadena-egipcia-hombre",
+    title: "Cadena Egipcia Hombre",
+    sku: "44006",
+    retailPrice: 54.0,
+    compareAtPrice: 75.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_EGIPCIA_6MM.jpg?v=1769813660",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_EGIPCIA_6MM.jpg?v=1769813660",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/BLANCA-EGIPCIA-4MM.jpg?v=1769812444",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_EGIPCIA_6MM_2.jpg?v=1769812444",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/EGIPCIACABALLERO.jpg?v=1769812444",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-egipcia-mujer",
+    title: "Cadena Egipcia Mujer",
+    sku: "43488",
+    retailPrice: 45.0,
+    compareAtPrice: 60.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_9342.jpg?v=1767497134",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_9342.jpg?v=1767497134",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_9339_2.jpg?v=1767497133",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_9338.jpg?v=1767497134",
+    ],
+    tags: [
+      "Cadenas",
+      "Mujer",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Mujer",
+    ],
+  },
+  {
+    handle: "cadena-escalera",
+    title: "Cadena Escalera",
+    sku: "44883",
+    retailPrice: 78.0,
+    compareAtPrice: 104.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0195.jpg?v=1753129684",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0195.jpg?v=1753129684",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0191.jpg?v=1753129684",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0200.jpg?v=1753129684",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Cadenas",
+    ],
+  },
+  {
+    handle: "cadena-cartier-hombre",
+    title: "Cadena Eslabón Hombre",
+    sku: "42520",
+    retailPrice: 82.0,
+    compareAtPrice: 117.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACARTIER7MM_05f20355-bbe1-48a6-afd1-cf6a489ba84f.jpg?v=1767497144",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACARTIER7MM_05f20355-bbe1-48a6-afd1-cf6a489ba84f.jpg?v=1767497144",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/BLANCO-CARTER-4MM.jpg?v=1769456092",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACARTIER7MM_2_5f5dc4ee-9237-4876-93f1-ead42d0b5d9c.jpg?v=1769456092",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENACARTIER9MM_2.jpg?v=1769456092",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0286.jpg?v=1769456092",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0287.jpg?v=1769456092",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-franco",
+    title: "Cadena Franco",
+    sku: "43192",
+    retailPrice: 82.0,
+    compareAtPrice: 117.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_FRANCO_6MM_2.jpg?v=1769811109",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_FRANCO_6MM_2.jpg?v=1769811109",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/BLACS-FRANCO-4MM.jpg?v=1769811109",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_FRANCO_6MM.jpg?v=1769811109",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAFRANCO4MM_3.jpg?v=1769811109",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAFRANCO4MM_4.jpg?v=1769811109",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-franco-mujer",
+    title: "Cadena Franco Mujer",
+    sku: "43187",
+    retailPrice: 45.0,
+    compareAtPrice: 60.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMAFRANCO2MM_3.jpg?v=1767497178",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMAFRANCO2MM_3.jpg?v=1767497178",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMAFRANCO2MM.jpg?v=1767497178",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMAFRANCO2MM_2.jpg?v=1767497178",
+    ],
+    tags: [
+      "Cadenas",
+      "Mujer",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Mujer",
+    ],
+  },
+  {
+    handle: "cadena-grabada-hombre",
+    title: "Cadena Grabada",
+    sku: "41220",
+    retailPrice: 82.0,
+    compareAtPrice: 117.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA-GRABADA-6MM_19fc5c40-5282-41dd-9df4-f2898b87fd5d.webp?v=1769810370",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA-GRABADA-6MM_19fc5c40-5282-41dd-9df4-f2898b87fd5d.webp?v=1769810370",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAS_GRABADA_6MM.jpg?v=1769814156",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0316.jpg?v=1769810365",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA-GRABADA-4MM_1a2d2d56-7b83-4336-a434-2d669d5204b7.jpg?v=1769810365",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAGRABADA6MM_5_8e9a7dee-8326-4245-a80c-2b37a486dea4.jpg?v=1769810365",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAGRABADA4MM.jpg?v=1769810365",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAGRABADA8MM.jpg?v=1769810365",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-granocafe-hombre",
+    title: "Cadena Grano de Café Hombre",
+    sku: "42925",
+    retailPrice: 82.0,
+    compareAtPrice: 117.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/BLANCO_-ANCLA-4MM.webp?v=1769815359",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/BLANCO_-ANCLA-4MM.webp?v=1769815359",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAGRANODECAFE6MM_9d6025db-f90d-4c5a-9dae-3d53eec000b2.jpg?v=1769456069",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAGRANODECAFE9MM_2.jpg?v=1769456069",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAGRANODECAFE7MM_2_f9a7d171-62c7-46f4-947a-3d8aabc2e778.jpg?v=1769456069",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-lazo-hombre",
+    title: "Cadena Lazo Hombre",
+    sku: "42830",
+    retailPrice: 82.0,
+    compareAtPrice: 117.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENALAZO6MM_3_bd797248-7dc7-4e4f-8d4a-02cb89f4ca25.jpg?v=1767497147",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENALAZO6MM_3_bd797248-7dc7-4e4f-8d4a-02cb89f4ca25.jpg?v=1767497147",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/BLANCA_LAZO-4MM.jpg?v=1769648385",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0325.jpg?v=1771294309",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENALAZO4MM_2.jpg?v=1769456054",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENALAZO4MM_4_68b1d54e-dcae-47dd-ab0a-8c4fb855542b.jpg?v=1769456054",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-rustica-hombre",
+    title: "Cadena Rustica Hombre",
+    sku: "42600",
+    retailPrice: 82.0,
+    compareAtPrice: 127.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_RUSTICA_6MM.jpg?v=1769815042",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_RUSTICA_6MM.jpg?v=1769815042",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA-RUSTICA_20ad8630-d531-4d85-be5c-3605b5cd06a6.webp?v=1769810755",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_RUSTICA_4MM.jpg?v=1769810755",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_RUSTICA_6MM_2.jpg?v=1769815042",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENARUSTICA6MM_5_0e9b4de4-7a87-4f1f-9119-3ba4c8778e12.jpg?v=1769810755",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-serpiente-hombre",
+    title: "Cadena Serpiente Hombre",
+    sku: "42320",
+    retailPrice: 82.0,
+    compareAtPrice: 117.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA-SERPIENTE-6MM_6ed8e0d2-dad3-4d01-8206-4549142c6aa0.webp?v=1769813037",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA-SERPIENTE-6MM_6ed8e0d2-dad3-4d01-8206-4549142c6aa0.webp?v=1769813037",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENA_SERPIENTE_6MM.jpg?v=1769813037",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENASERPIENTE4MM_3.jpg?v=1769812714",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENASERPIENTE4MM.jpg?v=1769812714",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENASERPIENTE8MM_2.jpg?v=1769812714",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-singapur",
+    title: "CADENA SINGAPUR",
+    sku: "44543",
+    retailPrice: 49.0,
+    compareAtPrice: 70.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0234.jpg?v=1753127719",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0234.jpg?v=1753127719",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0231.jpg?v=1753127719",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/2_e41ef346-bf61-439a-b8dd-f960e03e1f21.jpg?v=1753127719",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/134_1.jpg?v=1753127719",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Cadenas",
+    ],
+  },
+  {
+    handle: "cadena-van-cleef",
+    title: "Cadena Van Cleef",
+    sku: "",
+    retailPrice: 70.0,
+    compareAtPrice: 90.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/WhatsApp_Image_2025-05-28_at_5.33.53_AM_2_cda661a4-c7cd-4e4d-a356-02f07802f4c3.jpg?v=1754691407",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/WhatsApp_Image_2025-05-28_at_5.33.53_AM_2_cda661a4-c7cd-4e4d-a356-02f07802f4c3.jpg?v=1754691407",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/WhatsApp_Image_2025-05-28_at_5.33.53_AM_3_dbc67a0a-0f67-44cf-ab9d-c93930738a18.jpg?v=1754691407",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Cadenas",
+    ],
+  },
+  {
+    handle: "cadena-veneciana-hombre",
+    title: "Cadena Veneciana Hombre",
+    sku: "42700",
+    retailPrice: 82.0,
+    compareAtPrice: 117.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAVENECIANA6MM_3_3426fd26-a5b7-4e89-8b76-385a5f57d11c.jpg?v=1767497140",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAVENECIANA6MM_3_3426fd26-a5b7-4e89-8b76-385a5f57d11c.jpg?v=1767497140",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/BLANCO_VENECIANA-4MM.jpg?v=1769456180",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAVENECIANA3MM_3.jpg?v=1769456180",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAVENECIANA3MM_4.jpg?v=1769456180",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CADENAVENECIANA4MM_2.jpg?v=1769456180",
+    ],
+    tags: [
+      "Cadenas",
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "cadena-veneciana-mujer",
+    title: "Cadena Veneciana Mujer",
+    sku: "42687",
+    retailPrice: 45.0,
+    compareAtPrice: 60.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMAVENECIANA2MM_3_0db3ea42-edc5-4878-8d4c-07ad140fa355.jpg?v=1767497179",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMAVENECIANA2MM_3_0db3ea42-edc5-4878-8d4c-07ad140fa355.jpg?v=1767497179",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DAMAVENECIANA2MM.jpg?v=1767497180",
+    ],
+    tags: [
+      "Cadenas",
+      "Mujer",
+      "Oro laminado",
+    ],
+    categories: [
+      "Cadenas",
+      "Mujer",
+    ],
+  },
+  {
+    handle: "copia-de-candonga-lisa-grande",
+    title: "Candonga Corrugada Medina",
+    sku: "71149",
+    retailPrice: 29.0,
+    compareAtPrice: null,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_1372.jpg?v=1717436741",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_1372.jpg?v=1717436741",
+    ],
+    tags: [
+    ],
+    categories: [
+    ],
+  },
+  {
+    handle: "copia-de-topo-balin-6mm",
+    title: "Candonga Lisa Grande",
+    sku: "71115",
+    retailPrice: 29.0,
+    compareAtPrice: 42.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0120.jpg?v=1717436736",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0120.jpg?v=1717436736",
+    ],
+    tags: [
+    ],
+    categories: [
+    ],
+  },
+  {
+    handle: "34008",
+    title: "Colgante Rostro",
+    sku: "24552",
+    retailPrice: 44.0,
+    compareAtPrice: 59.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CKRE2459.jpg?v=1717436412",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CKRE2459.jpg?v=1717436412",
+    ],
+    tags: [
+    ],
+    categories: [
+    ],
+  },
+  {
+    handle: "combo-pulseras-cruz",
+    title: "COMBO Pulseras Cruz",
+    sku: "",
+    retailPrice: 49.0,
+    compareAtPrice: 89.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_2650.jpg?v=1775867652",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_2650.jpg?v=1775867652",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_2649.jpg?v=1775867652",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Pulseras",
+      "Combos",
+    ],
+  },
+  {
+    handle: "dije-cristo-madero",
+    title: "Dije Cristo Madero Mediano",
+    sku: "23295",
+    retailPrice: 34.0,
+    compareAtPrice: 54.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/23295.jpg?v=1717436263",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/23295.jpg?v=1717436263",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "copia-de-dije-cruz-circonias-central",
+    title: "Dije Cristo Redentor",
+    sku: "27312",
+    retailPrice: 29.0,
+    compareAtPrice: 49.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_1361.jpg?v=1717436606",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_1361.jpg?v=1717436606",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "dije-cruz-circonias-central",
+    title: "Dije Cruz circonias central",
+    sku: "27200",
+    retailPrice: 34.0,
+    compareAtPrice: 54.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_1363.jpg?v=1717436601",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_1363.jpg?v=1717436601",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "dije-cruz-mediana-circonias",
+    title: "Dije Cruz Mediana Circonias",
+    sku: "23000",
+    retailPrice: 39.0,
+    compareAtPrice: 59.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/5.jpg?v=1717436330",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/5.jpg?v=1717436330",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "dije-cruz-rostro",
+    title: "Dije Cruz Rostro",
+    sku: "23044",
+    retailPrice: 49.0,
+    compareAtPrice: 65.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CruzRostro.jpg?v=1717436328",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/CruzRostro.jpg?v=1717436328",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "24441",
+    title: "Dije Cruz Sagrada",
+    sku: "230352",
+    retailPrice: 59.0,
+    compareAtPrice: 79.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/QGCM7934.jpg?v=1717436406",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/QGCM7934.jpg?v=1717436406",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/230351.jpg?v=1717436406",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "copia-de-dije-corazon-con-piedras",
+    title: "Dije Cruz Sagrada Verde",
+    sku: "23035",
+    retailPrice: 49.0,
+    compareAtPrice: 65.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0463.jpg?v=1717436638",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0463.jpg?v=1717436638",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "dije-cruz-san-benito",
+    title: "Dije Cruz San Benito",
+    sku: "23258",
+    retailPrice: 49.0,
+    compareAtPrice: 65.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Cruzsanbenito.jpg?v=1717436325",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Cruzsanbenito.jpg?v=1717436325",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "dije-cruz-toreto",
+    title: "Dije Cruz Toreto",
+    sku: "23056",
+    retailPrice: 49.0,
+    compareAtPrice: 65.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Cruztoreto.jpg?v=1717436317",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Cruztoreto.jpg?v=1717436317",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "24853",
+    title: "Dije Guadalupe Tallada",
+    sku: "24550",
+    retailPrice: 29.0,
+    compareAtPrice: 49.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/LYFK0479.jpg?v=1717436409",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/LYFK0479.jpg?v=1717436409",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "dije-madero-grande",
+    title: "Dije Madero Grande",
+    sku: "23294",
+    retailPrice: 49.0,
+    compareAtPrice: 65.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/maderogrande.jpg?v=1717436314",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/maderogrande.jpg?v=1717436314",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "dije-salmo",
+    title: "Dije Salmo",
+    sku: "23481",
+    retailPrice: 34.0,
+    compareAtPrice: 54.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/12.jpg?v=1717436337",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/12.jpg?v=1717436337",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "copia-de-dije-cristo-3d",
+    title: "Dije San Benito Redondo",
+    sku: "24476",
+    retailPrice: 29.0,
+    compareAtPrice: 49.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0094.jpg?v=1717436597",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0094.jpg?v=1717436597",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "dije-virgen-piedras",
+    title: "Dije Virgen Piedras",
+    sku: "23148",
+    retailPrice: 49.0,
+    compareAtPrice: 65.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/virgenswarocolores.jpg?v=1717436310",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/virgenswarocolores.jpg?v=1717436310",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/virgeswarcristal.jpg?v=1717436310",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "copia-de-dije-virgen-del-carmen",
+    title: "Dije Virgen Swarovski Cristal",
+    sku: "22147",
+    retailPrice: 70.0,
+    compareAtPrice: 95.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_1350.jpg?v=1717436625",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_1350.jpg?v=1717436625",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Dijes",
+    ],
+  },
+  {
+    handle: "pulsera-balin-7-nudos",
+    title: "Pulsera Balín 7 Nudos",
+    sku: "1051",
+    retailPrice: 62.0,
+    compareAtPrice: 85.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_6525.jpg?v=1748475849",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_6525.jpg?v=1748475849",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Pulseras",
+    ],
+  },
+  {
+    handle: "pulsera-balin-diamantada-6-copia",
+    title: "Pulsera Balín Diamantada",
+    sku: "1067",
+    retailPrice: 65.0,
+    compareAtPrice: 100.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/036aa257-9eed-4cf0-920b-386043767b08.jpg?v=1753130765",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/036aa257-9eed-4cf0-920b-386043767b08.jpg?v=1753130765",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/BALIN_DIAMANTADA_8MM_Y_4MM.jpg?v=1754690473",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/5e1cd2e4-83d0-42cd-a558-13849f697c5d.jpg?v=1754690473",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/52b38198-6f18-4afa-a493-38483ec21ade.jpg?v=1754690473",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Pulseras",
+    ],
+  },
+  {
+    handle: "pulsera-balin-diamantada-6",
+    title: "Pulsera Balín Diamantada #6",
+    sku: "1007",
+    retailPrice: 65.0,
+    compareAtPrice: 101.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/9dc0c18e-644f-4b1c-95cb-3ee6d8befcb6.jpg?v=1748476512",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/9dc0c18e-644f-4b1c-95cb-3ee6d8befcb6.jpg?v=1748476512",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PHOTO-2021-06-09-10-32-03.jpg?v=1775866625",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Pulseras",
+    ],
+  },
+  {
+    handle: "pulsera-balin-diamantada",
+    title: "Pulsera Balín Diamantada #8",
+    sku: "1065",
+    retailPrice: 66.0,
+    compareAtPrice: 178.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/9dc0c18e-644f-4b1c-95cb-3ee6d8befcb6.jpg?v=1748476512",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/9dc0c18e-644f-4b1c-95cb-3ee6d8befcb6.jpg?v=1748476512",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/BALIN_DIAMANTADA_8MM_2.jpg?v=1775866542",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/BALIN_DIAMANTADA_8MM.jpg?v=1775866608",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PHOTO-2021-06-09-10-32-03.jpg?v=1775866625",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0040.jpg?v=1775866683",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0037.jpg?v=1775866704",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Pulseras",
+    ],
+  },
+  {
+    handle: "pulsera-caracol-hombre",
+    title: "Pulsera Caracol Hombre",
+    sku: "53727",
+    retailPrice: 41.0,
+    compareAtPrice: 65.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_CARACOL_4MM.jpg?v=1769815980",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_CARACOL_4MM.jpg?v=1769815980",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_CARACOL_4.5MM.jpg?v=1769815980",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-cartier-hombre",
+    title: "Pulsera Carter Hombre",
+    sku: "52540",
+    retailPrice: 55.0,
+    compareAtPrice: 79.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_CARTIER_7MM_2.jpg?v=1767497120",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_CARTIER_7MM_2.jpg?v=1767497120",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_CARTIER_7MM_4_e1ef81a9-d737-40b3-b1fe-ec0424e17a97.jpg?v=1767497119",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/foto-puesta_carter6mm.webp?v=1767497120",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/foto-puesta_carter-comparacion.jpg?v=1767497120",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-cartier-mujer",
+    title: "Pulsera Cartier Mujer",
+    sku: "54261",
+    retailPrice: 34.0,
+    compareAtPrice: 52.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Pulsera_Cartier_3_mm_17_cm_2.jpg?v=1767497107",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Pulsera_Cartier_3_mm_17_cm_2.jpg?v=1767497107",
+    ],
+    tags: [
+      "Mujer",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Mujer",
+    ],
+  },
+  {
+    handle: "pulsera-chinesca-hombre",
+    title: "Pulsera Chinesca Hombre",
+    sku: "54890",
+    retailPrice: 55.0,
+    compareAtPrice: 79.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0289.jpg?v=1767497117",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0289.jpg?v=1767497117",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_CHINA_4MM.jpg?v=1769815628",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-chinesca-mujer",
+    title: "Pulsera Chinesca Mujer",
+    sku: "54883",
+    retailPrice: 45.0,
+    compareAtPrice: 60.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERADAMACHINESCA4MM_052b69f7-44df-4246-8123-0b4944ed47eb.jpg?v=1767497105",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERADAMACHINESCA4MM_052b69f7-44df-4246-8123-0b4944ed47eb.jpg?v=1767497105",
+    ],
+    tags: [
+      "Mujer",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Mujer",
+    ],
+  },
+  {
+    handle: "pulsera-cilindro-hombre",
+    title: "Pulsera Cilindro Hombre",
+    sku: "53620",
+    retailPrice: 39.0,
+    compareAtPrice: 52.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERACILINDRO3MM_38bb9b0e-6320-42df-a0e0-049c29c935d3.jpg?v=1767497164",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERACILINDRO3MM_38bb9b0e-6320-42df-a0e0-049c29c935d3.jpg?v=1767497164",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-cilindros-hombre",
+    title: "Pulsera Cilindros Hombre",
+    sku: "53260",
+    retailPrice: 39.0,
+    compareAtPrice: 65.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERACILINDRO3MM.jpg?v=1766786863",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERACILINDRO3MM.jpg?v=1766786863",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-cordon-hombre",
+    title: "Pulsera Cordon Hombre",
+    sku: "54060",
+    retailPrice: 39.0,
+    compareAtPrice: 65.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_CORDON_4MM.jpg?v=1769815740",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_CORDON_4MM.jpg?v=1769815740",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "54461",
+    title: "Pulsera Cubana Diamantada",
+    sku: "54417",
+    retailPrice: 50.0,
+    compareAtPrice: 90.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DIAMANTADA.jpg?v=1764032519",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DIAMANTADA.jpg?v=1764032519",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0104.jpg?v=1764032519",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0101.jpg?v=1755048860",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Pulseras",
+    ],
+  },
+  {
+    handle: "pulsera-cubana-hombre",
+    title: "Pulsera Cubana Hombre",
+    sku: "52397",
+    retailPrice: 55.0,
+    compareAtPrice: 79.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_CUBANA_6MM.jpg?v=1769816164",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_CUBANA_6MM.jpg?v=1769816164",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Pulsera_cubano6mm.webp?v=1769816164",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Pulsera_Cubana_6_mm_20_cm_3.jpg?v=1769816164",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Pulsera_Cubana_6_mm_20_cm_2.jpg?v=1769816164",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-cubana-mujer",
+    title: "Pulsera Cubana Mujer",
+    sku: "54286",
+    retailPrice: 34.0,
+    compareAtPrice: 66.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/pulsera_Mujer-Cubana-2-mm.jpg?v=1767497107",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/pulsera_Mujer-Cubana-2-mm.jpg?v=1767497107",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Pulsera_cubana_3_mm_17_cm_3.jpg?v=1767497108",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Pulsera_cubana_3_mm_17_cm_2.jpg?v=1767497108",
+    ],
+    tags: [
+      "Mujer",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Mujer",
+    ],
+  },
+  {
+    handle: "pulsera-egipcia-hombre",
+    title: "Pulsera Egipcia Hombre",
+    sku: "53493",
+    retailPrice: 44.0,
+    compareAtPrice: 66.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERAEGIPCIA4MM_2_40d52f39-1bb3-4b27-a231-fc5157e3168f.jpg?v=1767497115",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERAEGIPCIA4MM_2_40d52f39-1bb3-4b27-a231-fc5157e3168f.jpg?v=1767497115",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Pulsera_Egipcia_6_mm_20_cm_3.jpg?v=1767497115",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Pulsera_Egipcia_6_mm_20_cm_2.jpg?v=1767497115",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-egipcia-mujer",
+    title: "Pulsera Egipcia Mujer",
+    sku: "53488",
+    retailPrice: 34.0,
+    compareAtPrice: 52.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERASDAMAEGIPCIA3MM_81df5bce-73e1-4915-aa85-826bec198570.jpg?v=1767497104",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERASDAMAEGIPCIA3MM_81df5bce-73e1-4915-aa85-826bec198570.jpg?v=1767497104",
+    ],
+    tags: [
+      "Mujer",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Mujer",
+    ],
+  },
+  {
+    handle: "pulsera-tenis-3mm-copia",
+    title: "Pulsera Escalera Plana 4mm",
+    sku: "54936",
+    retailPrice: 49.0,
+    compareAtPrice: 75.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/5_1dbc8f1c-697f-4d2f-ad94-906f56cf9511.jpg?v=1737401483",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/5_1dbc8f1c-697f-4d2f-ad94-906f56cf9511.jpg?v=1737401483",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Pulseras",
+    ],
+  },
+  {
+    handle: "pulsera-franco-hombre",
+    title: "Pulsera Franco Hombre",
+    sku: "53200",
+    retailPrice: 49.0,
+    compareAtPrice: 65.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERAFRANCO6MM.jpg?v=1767497161",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERAFRANCO6MM.jpg?v=1767497161",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-grabada-hombre",
+    title: "Pulsera Grabada Hombre",
+    sku: "51220",
+    retailPrice: 55.0,
+    compareAtPrice: 79.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_GRABADA_6MM.jpg?v=1769816245",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_GRABADA_6MM.jpg?v=1769816245",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_GRABADA_6MM_2.jpg?v=1769816245",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERAGRABADA4MM_2.jpg?v=1769816245",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-granocafe-hombre",
+    title: "Pulsera Grano de Café Hombre",
+    sku: "52925",
+    retailPrice: 55.0,
+    compareAtPrice: 75.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Gucci_ancla6mm.webp?v=1767497126",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Gucci_ancla6mm.webp?v=1767497126",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Gucci_2_ancla-comparacion_2.webp?v=1767497126",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Pulsera_Gucci_6_mm_20_cm_2_d3c772d8-198e-4709-a78c-5ff7ce2094b3.jpg?v=1767497126",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Pulsera_Gucci_6_mm_20_cm_3.jpg?v=1767497126",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-lazo-hombre",
+    title: "Pulsera Lazo Hombre",
+    sku: "52830",
+    retailPrice: 55.0,
+    compareAtPrice: 79.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_LAZO_4MM.jpg?v=1769815675",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_LAZO_4MM.jpg?v=1769815675",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERALAZO8MM.jpg?v=1769815675",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_LAZO_6MM_f8dce243-22e3-4c83-bf41-7143a8cdc62b.jpg?v=1769815675",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-rustica-hombre",
+    title: "Pulsera Rustica Hombre",
+    sku: "52600",
+    retailPrice: 45.0,
+    compareAtPrice: 66.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Pulsera_rustico.webp?v=1767497111",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Pulsera_rustico.webp?v=1767497111",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_RUSTICA_4MM.jpg?v=1769816335",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_RUSTICA_6MM_0c7bd87b-5562-4267-add5-96e35ee8884a.jpg?v=1769815042",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-san-benito-protector",
+    title: "Pulsera San Benito Protector",
+    sku: "",
+    retailPrice: 47.0,
+    compareAtPrice: 89.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_6522_cf360d87-9730-430d-a5bc-808d4e7eb65f.jpg?v=1775868066",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_6522_cf360d87-9730-430d-a5bc-808d4e7eb65f.jpg?v=1775868066",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_6524_699610c1-0b14-4df4-a1ee-35f96f41801b.jpg?v=1775868066",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0048.jpg?v=1775868070",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Pulseras",
+    ],
+  },
+  {
+    handle: "pulsera-serpiente-hombre",
+    title: "Pulsera Serpiente Hombre",
+    sku: "52320",
+    retailPrice: 55.0,
+    compareAtPrice: 79.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_SERPIENTE_6MM.jpg?v=1775527202",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_SERPIENTE_6MM.jpg?v=1775527202",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/foto-puesta_grabada4mm.jpg?v=1769816202",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/foto-puesta_grabada4mm_2.jpg?v=1769816202",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "pulsera-van-cleef",
+    title: "Pulsera Van Cleef",
+    sku: "",
+    retailPrice: 59.0,
+    compareAtPrice: 79.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0213.jpg?v=1753127261",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0213.jpg?v=1753127261",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/TREBOL_CRISTAL.jpg?v=1754691556",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/TREBOL_VERDE_2.jpg?v=1754691556",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/TREBOL_VERDE.jpg?v=1754691556",
+    ],
+    tags: [
+    ],
+    categories: [
+      "Pulseras",
+    ],
+  },
+  {
+    handle: "pulsera-veneciana-hombre",
+    title: "Pulsera Veneciana Hombre",
+    sku: "52700",
+    retailPrice: 55.0,
+    compareAtPrice: 66.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_VENECIANA_4MM_ee1fec2d-25bf-4a6e-b37b-cc9ce34e9b63.jpg?v=1767497113",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERA_VENECIANA_4MM_ee1fec2d-25bf-4a6e-b37b-cc9ce34e9b63.jpg?v=1767497113",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/PULSERAVENECIANA3MM.jpg?v=1767497115",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/Pulsera_veneciana4mm.jpg?v=1767497113",
+    ],
+    tags: [
+      "Hombre",
+      "Oro laminado",
+      "Pulseras",
+    ],
+    categories: [
+      "Pulseras",
+      "Hombre",
+    ],
+  },
+  {
+    handle: "copia-de-candonga-lisa-pequena",
+    title: "Topito Balín Diamantado 8mm",
+    sku: "71002",
+    retailPrice: 21.0,
+    compareAtPrice: 29.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0185.jpg?v=1717436670",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0185.jpg?v=1717436670",
+    ],
+    tags: [
+    ],
+    categories: [
+    ],
+  },
+  {
+    handle: "topo-ala",
+    title: "Topo Ala",
+    sku: "71170",
+    retailPrice: 21.0,
+    compareAtPrice: 35.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0149_1.jpg?v=1717436663",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/DSC_0149_1.jpg?v=1717436663",
+    ],
+    tags: [
+    ],
+    categories: [
+    ],
+  },
+  {
+    handle: "topo-chispa",
+    title: "Topo Chispa",
+    sku: "",
+    retailPrice: 19.0,
+    compareAtPrice: 40.0,
+    imageUrl: "",
+    galleryUrls: [
+    ],
+    tags: [
+    ],
+    categories: [
+    ],
+  },
+  {
+    handle: "topo-elefantes",
+    title: "Topo Elefantes",
+    sku: "34082",
+    retailPrice: 24.0,
+    compareAtPrice: 40.0,
+    imageUrl: "",
+    galleryUrls: [
+    ],
+    tags: [
+    ],
+    categories: [
+    ],
+  },
+  {
+    handle: "topo-oso-circonias",
+    title: "Topo Oso Circonias",
+    sku: "33003",
+    retailPrice: 24.0,
+    compareAtPrice: 40.0,
+    imageUrl: "",
+    galleryUrls: [
+    ],
+    tags: [
+    ],
+    categories: [
+    ],
+  },
+  {
+    handle: "copia-de-candonga-bambu",
+    title: "Topos Balín",
+    sku: "33032 - 33034 - 34011 -34012",
+    retailPrice: 49.0,
+    compareAtPrice: 65.0,
+    imageUrl: "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_4816.jpg?v=1737745831",
+    galleryUrls: [
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_4816.jpg?v=1737745831",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_0576.jpg?v=1737745831",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_4782.jpg?v=1737745253",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_4792.jpg?v=1737745253",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_4810.jpg?v=1737745253",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_4793.jpg?v=1737745253",
+      "https://cdn.shopify.com/s/files/1/0880/9879/9916/files/IMG_4817.jpg?v=1737745236",
+    ],
+    tags: [
+    ],
+    categories: [
+    ],
+  },
+];

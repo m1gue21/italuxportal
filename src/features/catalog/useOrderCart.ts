@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import type { CatalogCurrency } from "./catalog-meta";
 import { DEFAULT_PRICING, priceForRole, type PricingConfig } from "./pricing";
 import type { CatalogProduct, InvestorRole, OrderLine, OrderState } from "./types";
 
@@ -36,7 +37,11 @@ function loadState(storageKey: string, countryCode: string): OrderState {
   }
 }
 
-export function useOrderCart(countryCode: string, pricing: PricingConfig = DEFAULT_PRICING) {
+export function useOrderCart(
+  countryCode: string,
+  pricing: PricingConfig = DEFAULT_PRICING,
+  currency: CatalogCurrency = "CLP",
+) {
   const storageKey = `italux-catalog-order-${countryCode.toLowerCase()}`;
   const [state, setState] = useState<OrderState>(() => defaultState(countryCode));
   const [hydrated, setHydrated] = useState(false);
@@ -62,12 +67,12 @@ export function useOrderCart(countryCode: string, pricing: PricingConfig = DEFAU
           return {
             ...item,
             role,
-            unitPrice: priceForRole(product.retailPrice, role, pricing),
+            unitPrice: priceForRole(product, role, pricing, currency),
           };
         }),
       }));
     },
-    [pricing],
+    [pricing, currency],
   );
 
   const addItem = useCallback(
@@ -75,7 +80,7 @@ export function useOrderCart(countryCode: string, pricing: PricingConfig = DEFAU
       if (qty < 1) return;
       setState((prev) => {
         const existing = prev.items.find((i) => i.handle === product.handle);
-        const unitPrice = priceForRole(product.retailPrice, role, pricing);
+        const unitPrice = priceForRole(product, role, pricing, currency);
         if (existing) {
           return {
             ...prev,
@@ -99,7 +104,7 @@ export function useOrderCart(countryCode: string, pricing: PricingConfig = DEFAU
         return { ...prev, role, items: [...prev.items, line] };
       });
     },
-    [pricing],
+    [pricing, currency],
   );
 
   const setQty = useCallback((handle: string, qty: number) => {

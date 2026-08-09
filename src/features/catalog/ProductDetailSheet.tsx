@@ -7,13 +7,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import type { CatalogCurrency } from "./catalog-meta";
 import type { CatalogProduct, InvestorRole } from "./types";
 import {
   DEFAULT_PRICING,
   empresarioPct,
   empresarioPrice,
-  formatClp,
-  mayoristaPct,
+  formatPrice,
   mayoristaPrice,
   priceForRole,
   type PricingConfig,
@@ -25,6 +25,8 @@ type Props = {
   onOpenChange: (open: boolean) => void;
   role: InvestorRole;
   pricing?: PricingConfig;
+  currency?: CatalogCurrency;
+  locale?: string;
   countryLabel?: string;
   onAdd: (product: CatalogProduct, qty: number) => void;
 };
@@ -35,6 +37,8 @@ export function ProductDetailSheet({
   onOpenChange,
   role,
   pricing = DEFAULT_PRICING,
+  currency = "CLP",
+  locale = "es-CL",
   countryLabel = "ITALUX",
   onAdd,
 }: Props) {
@@ -56,9 +60,9 @@ export function ProductDetailSheet({
       ? [product.imageUrl]
       : [];
 
-  const unit = priceForRole(product.retailPrice, role, pricing);
-  const mPct = mayoristaPct(pricing);
+  const unit = priceForRole(product, role, pricing, currency);
   const ePct = empresarioPct(pricing);
+  const money = (n: number) => formatPrice(n, currency, locale);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -104,13 +108,14 @@ export function ProductDetailSheet({
 
             <div className="mt-4 space-y-1 text-sm sm:mt-5">
               <p className="text-muted-foreground line-through">
-                {formatClp(product.retailPrice)} retail
+                {money(product.retailPrice)} retail
               </p>
               <p className={role === "mayorista" ? "font-medium text-gold" : "text-foreground/80"}>
-                Mayorista (−{mPct}%): {formatClp(mayoristaPrice(product.retailPrice, pricing))}
+                Mayorista: {money(mayoristaPrice(product, currency))}
               </p>
               <p className={role === "empresario" ? "font-medium text-gold" : "text-foreground/80"}>
-                Empresario (−{ePct}%): {formatClp(empresarioPrice(product.retailPrice, pricing))}
+                Empresario (−{ePct}% s/ mayorista):{" "}
+                {money(empresarioPrice(product, pricing, currency))}
               </p>
             </div>
 
@@ -142,7 +147,7 @@ export function ProductDetailSheet({
                 }}
                 className="flex-1 rounded-full bg-gradient-to-r from-gold via-gold-light to-gold px-4 py-3 text-xs font-medium uppercase tracking-[0.2em] text-background shadow-[0_10px_30px_-10px] shadow-gold/40 active:scale-[0.98]"
               >
-                Agregar · {formatClp(unit * qty)}
+                Agregar · {money(unit * qty)}
               </button>
             </div>
           </div>
