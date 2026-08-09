@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import logo from "@/assets/italux-logo.png";
 import heroMan from "@/assets/hero-model-man.jpg";
 import heroWoman from "@/assets/hero-model-woman.jpg";
 import { sectionTextQuery } from "@/features/section-texts/queries";
@@ -46,18 +45,10 @@ export function Hero() {
           className="flex flex-col items-center animate-fade-in"
           style={{ animationDuration: "700ms" }}
         >
-          <img
-            src={logo}
-            alt="ITALUX Joyería"
-            width={140}
-            height={140}
-            fetchPriority="high"
-            className="h-auto w-14 object-contain sm:w-[4.5rem]"
-          />
-          <p className="font-display mt-2 text-xl font-normal tracking-[0.35em] text-foreground sm:mt-3 sm:text-2xl">
+          <p className="font-display text-2xl font-normal tracking-[0.35em] text-foreground sm:text-3xl">
             ITALUX
           </p>
-          <p className="mt-0.5 text-[9px] font-medium uppercase tracking-[0.45em] text-gold sm:text-[10px]">
+          <p className="mt-1 text-[9px] font-medium uppercase tracking-[0.45em] text-gold sm:text-[10px]">
             Joyería
           </p>
         </div>
