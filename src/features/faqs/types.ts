@@ -1,8 +1,14 @@
 import { z } from "zod";
-import type { Tables, TablesInsert } from "@/integrations/supabase/types";
 
-export type FaqRow = Tables<"faqs">;
-export type FaqInsert = TablesInsert<"faqs">;
+export type FaqRow = {
+  id: string;
+  pregunta: string;
+  respuesta: string;
+  activo: boolean;
+  orden: number;
+  created_at: string;
+  updated_at: string;
+};
 
 export const faqSchema = z.object({
   pregunta: z.string().trim().min(1, "La pregunta es obligatoria").max(300),

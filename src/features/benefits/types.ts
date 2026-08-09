@@ -16,10 +16,19 @@ import {
   Globe,
   type LucideIcon,
 } from "lucide-react";
-import type { Tables, TablesInsert } from "@/integrations/supabase/types";
 
-export type BenefitRow = Tables<"benefits">;
-export type BenefitInsert = TablesInsert<"benefits">;
+export type BenefitRow = {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  activo: boolean;
+  orden: number;
+  image_url: string | null;
+  image_opacity: number;
+  created_at: string;
+  updated_at: string;
+};
 
 export const BENEFIT_ICONS: Record<string, LucideIcon> = {
   ShieldCheck,

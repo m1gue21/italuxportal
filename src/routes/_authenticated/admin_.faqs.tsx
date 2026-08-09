@@ -1,42 +1,12 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import {
-  DndContext,
-  closestCenter,
-  PointerSensor,
-  useSensor,
-  useSensors,
-  type DragEndEvent,
-} from "@dnd-kit/core";
-import {
-  SortableContext,
-  arrayMove,
-  useSortable,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
-import { GripVertical, Pencil, Trash2, LogOut, Plus, Eye, EyeOff } from "lucide-react";
-import { toast } from "sonner";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
+import { LogOut } from "lucide-react";
 
-import { supabase } from "@/integrations/supabase/client";
 import { adminFaqsQuery } from "@/features/faqs/queries";
-import type { FaqRow, FaqInput } from "@/features/faqs/types";
-import { FaqFormDialog } from "@/features/admin/FaqFormDialog";
-import { useIsAdmin } from "@/features/admin/useIsAdmin";
+import type { FaqRow } from "@/features/faqs/types";
 import { AdminNav } from "@/features/admin/AdminNav";
+import { CmsStaticNotice } from "@/features/admin/CmsStaticNotice";
 import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
 
 export const Route = createFileRoute("/_authenticated/admin_/faqs")({
   component: FaqsAdminPage,
@@ -44,104 +14,7 @@ export const Route = createFileRoute("/_authenticated/admin_/faqs")({
 
 function FaqsAdminPage() {
   const navigate = useNavigate();
-  const qc = useQueryClient();
-  const { loading: roleLoading, isAdmin } = useIsAdmin();
-  const { data: faqs = [], isLoading } = useQuery({
-    ...adminFaqsQuery,
-    enabled: isAdmin,
-  });
-
-  const [editing, setEditing] = useState<FaqRow | null>(null);
-  const [creating, setCreating] = useState(false);
-  const [deleting, setDeleting] = useState<FaqRow | null>(null);
-
-  const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }));
-
-  const invalidateAll = () => qc.invalidateQueries({ queryKey: ["faqs"] });
-
-  const createMut = useMutation({
-    mutationFn: async (values: FaqInput) => {
-      const { error } = await supabase.from("faqs").insert(values);
-      if (error) throw error;
-    },
-    onSuccess: () => {
-      toast.success("Pregunta creada");
-      invalidateAll();
-    },
-    onError: (e: any) => toast.error(e.message),
-  });
-
-  const updateMut = useMutation({
-    mutationFn: async ({ id, values }: { id: string; values: Partial<FaqInput> }) => {
-      const { error } = await supabase.from("faqs").update(values).eq("id", id);
-      if (error) throw error;
-    },
-    onSuccess: () => {
-      toast.success("Guardado");
-      invalidateAll();
-    },
-    onError: (e: any) => toast.error(e.message),
-  });
-
-  const deleteMut = useMutation({
-    mutationFn: async (id: string) => {
-      const { error } = await supabase.from("faqs").delete().eq("id", id);
-      if (error) throw error;
-    },
-    onSuccess: () => {
-      toast.success("Pregunta eliminada");
-      invalidateAll();
-    },
-    onError: (e: any) => toast.error(e.message),
-  });
-
-  const reorderMut = useMutation({
-    mutationFn: async (ordered: FaqRow[]) => {
-      const updates = ordered.map((f, idx) =>
-        supabase.from("faqs").update({ orden: idx + 1 }).eq("id", f.id),
-      );
-      const results = await Promise.all(updates);
-      const err = results.find((r) => r.error)?.error;
-      if (err) throw err;
-    },
-    onSuccess: () => invalidateAll(),
-    onError: (e: any) => toast.error(e.message),
-  });
-
-  const onDragEnd = (e: DragEndEvent) => {
-    const { active, over } = e;
-    if (!over || active.id === over.id) return;
-    const oldIdx = faqs.findIndex((f) => f.id === active.id);
-    const newIdx = faqs.findIndex((f) => f.id === over.id);
-    const next = arrayMove(faqs, oldIdx, newIdx);
-    qc.setQueryData(adminFaqsQuery.queryKey, next);
-    reorderMut.mutate(next);
-  };
-
-  const signOut = async () => {
-    navigate({ to: "/" });
-  };
-
-  if (roleLoading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-background text-muted-foreground">
-        Cargando...
-      </div>
-    );
-  }
-
-  if (!isAdmin) {
-    return (
-      <main className="flex min-h-screen items-center justify-center bg-background px-6 text-foreground">
-        <div className="w-full max-w-sm rounded-2xl border border-gold/20 bg-white/[0.02] p-6 text-center">
-          <h1 className="font-display text-xl font-light">Acceso restringido</h1>
-          <p className="mt-2 text-xs text-muted-foreground">
-            Tu cuenta no tiene permisos de administrador.
-          </p>
-        </div>
-      </main>
-    );
-  }
+  const { data: faqs = [], isLoading } = useQuery(adminFaqsQuery);
 
   return (
     <main className="min-h-screen bg-background px-4 pb-12 pt-6 text-foreground">
@@ -153,160 +26,39 @@ function FaqsAdminPage() {
               Preguntas frecuentes
             </h1>
           </div>
-          <div className="flex gap-2">
-            <Button size="sm" onClick={() => setCreating(true)}>
-              <Plus className="mr-1 h-4 w-4" /> Nueva
-            </Button>
-            <Button size="sm" variant="outline" onClick={signOut}>
-              <LogOut className="h-4 w-4" />
-            </Button>
-          </div>
+          <Button size="sm" variant="outline" onClick={() => navigate({ to: "/" })}>
+            <LogOut className="h-4 w-4" />
+          </Button>
         </header>
 
-        <p className="mt-2 text-xs text-muted-foreground">
-          Arrastra para reordenar. Solo las preguntas activas se muestran en la landing.
-        </p>
+        <CmsStaticNotice filePath="src/features/cms/defaults.ts" />
 
         <section className="mt-5">
           {isLoading ? (
             <p className="text-sm text-muted-foreground">Cargando...</p>
           ) : (
-            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
-              <SortableContext
-                items={faqs.map((f) => f.id)}
-                strategy={verticalListSortingStrategy}
-              >
-                <ul className="grid gap-2">
-                  {faqs.map((f) => (
-                    <SortableFaqRow
-                      key={f.id}
-                      faq={f}
-                      onToggleActive={(v) =>
-                        updateMut.mutate({ id: f.id, values: { activo: v } })
-                      }
-                      onEdit={() => setEditing(f)}
-                      onDelete={() => setDeleting(f)}
-                    />
-                  ))}
-                </ul>
-              </SortableContext>
-            </DndContext>
+            <ul className="grid gap-2">
+              {faqs.map((f) => (
+                <FaqPreviewRow key={f.id} faq={f} />
+              ))}
+            </ul>
           )}
         </section>
       </div>
-
-      {creating && (
-        <FaqFormDialog
-          open={creating}
-          onOpenChange={setCreating}
-          onSubmit={async (v) => {
-            await createMut.mutateAsync({ ...v, orden: v.orden || faqs.length + 1 });
-          }}
-        />
-      )}
-      {editing && (
-        <FaqFormDialog
-          open={!!editing}
-          onOpenChange={(o) => !o && setEditing(null)}
-          initial={editing}
-          onSubmit={async (v) => {
-            await updateMut.mutateAsync({ id: editing.id, values: v });
-            setEditing(null);
-          }}
-        />
-      )}
-
-      <AlertDialog open={!!deleting} onOpenChange={(o) => !o && setDeleting(null)}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Eliminar pregunta</AlertDialogTitle>
-            <AlertDialogDescription>
-              ¿Eliminar "{deleting?.pregunta}"? Esta acción no se puede deshacer.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancelar</AlertDialogCancel>
-            <AlertDialogAction
-              onClick={() => {
-                if (deleting) deleteMut.mutate(deleting.id);
-                setDeleting(null);
-              }}
-            >
-              Eliminar
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
     </main>
   );
 }
 
-function SortableFaqRow({
-  faq,
-  onToggleActive,
-  onEdit,
-  onDelete,
-}: {
-  faq: FaqRow;
-  onToggleActive: (v: boolean) => void;
-  onEdit: () => void;
-  onDelete: () => void;
-}) {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
-    id: faq.id,
-  });
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-    opacity: isDragging ? 0.6 : 1,
-  };
-
+function FaqPreviewRow({ faq }: { faq: FaqRow }) {
   return (
-    <li
-      ref={setNodeRef}
-      style={style}
-      className="flex items-start gap-3 rounded-xl border border-gold/15 bg-white/[0.02] p-3"
-    >
-      <button
-        type="button"
-        {...attributes}
-        {...listeners}
-        className="mt-1 cursor-grab touch-none text-muted-foreground active:cursor-grabbing"
-        aria-label="Reordenar"
-      >
-        <GripVertical className="h-5 w-5" />
-      </button>
+    <li className="flex items-start gap-3 rounded-xl border border-gold/15 bg-white/[0.02] p-3">
       <div className="min-w-0 flex-1">
         <p className="text-sm font-medium leading-snug">{faq.pregunta}</p>
         <p className="mt-1 line-clamp-2 text-[11px] text-muted-foreground">{faq.respuesta}</p>
       </div>
-      <div className="hidden sm:block">
-        <Switch checked={faq.activo} onCheckedChange={onToggleActive} />
-      </div>
-      <button
-        type="button"
-        onClick={() => onToggleActive(!faq.activo)}
-        className="rounded-md p-2 text-muted-foreground hover:text-foreground sm:hidden"
-        aria-label="Activo"
-      >
-        {faq.activo ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
-      </button>
-      <button
-        type="button"
-        onClick={onEdit}
-        className="rounded-md p-2 text-muted-foreground hover:text-foreground"
-        aria-label="Editar"
-      >
-        <Pencil className="h-4 w-4" />
-      </button>
-      <button
-        type="button"
-        onClick={onDelete}
-        className="rounded-md p-2 text-destructive/80 hover:text-destructive"
-        aria-label="Eliminar"
-      >
-        <Trash2 className="h-4 w-4" />
-      </button>
+      <span className="shrink-0 text-[10px] uppercase tracking-wider text-muted-foreground">
+        {faq.activo ? "Activa" : "Inactiva"}
+      </span>
     </li>
   );
 }
