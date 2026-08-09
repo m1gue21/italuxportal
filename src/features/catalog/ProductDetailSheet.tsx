@@ -108,7 +108,7 @@ export function ProductDetailSheet({
 
             <div className="mt-4 space-y-1 text-sm sm:mt-5">
               <p className="text-muted-foreground line-through">
-                {money(product.retailPrice)} retail
+                Precio sugerido de venta: {money(product.retailPrice)}
               </p>
               <p className={role === "mayorista" ? "font-medium text-gold" : "text-foreground/80"}>
                 Mayorista: {money(mayoristaPrice(product, currency))}

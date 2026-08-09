@@ -56,7 +56,7 @@ export function ProductCard({
             {product.title}
           </h3>
           <p className="text-[11px] text-muted-foreground line-through decoration-white/30">
-            {money(product.retailPrice)}
+            Sugerido: {money(product.retailPrice)}
           </p>
           <div className="space-y-0.5 text-[11px]">
             <p className={role === "mayorista" ? "font-medium text-gold" : "text-muted-foreground"}>

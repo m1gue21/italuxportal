@@ -167,7 +167,8 @@ export function CatalogPage({ countryCode }: Props) {
 
         <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-muted-foreground">
           <span>
-            <span className="line-through">Retail</span> tachado
+            <span className="line-through">Precio sugerido de venta</span>{" "}
+            tachado
           </span>
           <span>Mayorista (lista)</span>
           <span>Empresario −{EMPRESARIO_PCT}% s/ mayorista</span>
