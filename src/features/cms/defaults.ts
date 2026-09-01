@@ -143,9 +143,9 @@ export const DEFAULT_COUNTRIES: CountryRow[] = [
 export const DEFAULT_FAQS: FaqRow[] = [
   {
     id: "faq-1",
-    pregunta: "¿Qué diferencia hay entre mayorista y empresario?",
+    pregunta: "¿Cómo pido?",
     respuesta:
-      "Son dos modalidades de inversión. El mayorista trabaja con márgenes de utilidad del 30% al 50%. El empresario escala con márgenes del 40% al 60% y mejores condiciones de compra. Ambas incluyen acceso a catálogo, rotación de inventario y garantía de por vida.",
+      "Puedes realizar tu pedido directamente desde el catálogo de inversionistas en esta página: elige tu país, selecciona los productos y envía el pedido por WhatsApp. También puedes contactar a un asesor si necesitas orientación.",
     activo: true,
     orden: 1,
     created_at: NOW,
@@ -153,9 +153,9 @@ export const DEFAULT_FAQS: FaqRow[] = [
   },
   {
     id: "faq-2",
-    pregunta: "¿Qué es la rotación de inventario?",
+    pregunta: "¿Qué diferencia hay entre mayorista y empresario?",
     respuesta:
-      "Si tienes joyas con rotación lenta, puedes cambiarlas por estilos disponibles en el stock de ITALUX. Así tu inventario se mantiene fresco y vendible.",
+      "Son dos modalidades de inversión. El mayorista trabaja con márgenes de utilidad del 30% al 50%. El empresario escala con márgenes del 40% al 60% y mejores condiciones de compra. Ambas incluyen acceso a catálogo, rotación de inventario y garantía de por vida.",
     activo: true,
     orden: 2,
     created_at: NOW,
@@ -163,9 +163,9 @@ export const DEFAULT_FAQS: FaqRow[] = [
   },
   {
     id: "faq-3",
-    pregunta: "¿Cómo funciona la garantía de por vida?",
+    pregunta: "¿Qué es la rotación de inventario?",
     respuesta:
-      "Todas las piezas cuentan con garantía de por vida. Cuando aplica, se cambia por una joya totalmente nueva. Menos riesgo para tu negocio y más confianza para tus clientes.",
+      "Si tienes joyas con rotación lenta, puedes cambiarlas por estilos disponibles en el stock de ITALUX. Así tu inventario se mantiene fresco y vendible.",
     activo: true,
     orden: 3,
     created_at: NOW,
@@ -173,9 +173,9 @@ export const DEFAULT_FAQS: FaqRow[] = [
   },
   {
     id: "faq-4",
-    pregunta: "¿Cómo empiezo a trabajar con ITALUX?",
+    pregunta: "¿Cómo funciona la garantía de por vida?",
     respuesta:
-      "Elige tu modalidad (mayorista o empresario), selecciona tu país para revisar el catálogo de inversionistas o contacta a un asesor por WhatsApp. Te guiamos en el primer pedido.",
+      "Todas las piezas cuentan con garantía de por vida. Cuando aplica, se cambia por una joya totalmente nueva. Menos riesgo para tu negocio y más confianza para tus clientes.",
     activo: true,
     orden: 4,
     created_at: NOW,
@@ -183,9 +183,9 @@ export const DEFAULT_FAQS: FaqRow[] = [
   },
   {
     id: "faq-5",
-    pregunta: "¿El Oro Laminado 18K pierde el color?",
+    pregunta: "¿Cómo empiezo a trabajar con ITALUX?",
     respuesta:
-      "No. Nuestra capa de Oro Laminado 18K Premium conserva su brillo y color con el cuidado básico recomendado. Evita químicos fuertes y perfumes directos.",
+      "Elige tu modalidad (mayorista o empresario), selecciona tu país para revisar el catálogo de inversionistas o contacta a un asesor por WhatsApp. Te guiamos en el primer pedido.",
     activo: true,
     orden: 5,
     created_at: NOW,
@@ -193,11 +193,21 @@ export const DEFAULT_FAQS: FaqRow[] = [
   },
   {
     id: "faq-6",
+    pregunta: "¿Cómo es el Oro Laminado 18K de ITALUX?",
+    respuesta:
+      "Nuestras piezas llevan varias capas de Oro Laminado 18K Premium sobre una base de alta calidad. Es un material resistente, con acabado duradero y brillo estable, pensado para uso diario y para reventa con confianza.",
+    activo: true,
+    orden: 6,
+    created_at: NOW,
+    updated_at: NOW,
+  },
+  {
+    id: "faq-7",
     pregunta: "¿Realizan envíos seguros?",
     respuesta:
       "Sí. Todos los envíos son asegurados, empacados discretamente y con número de seguimiento desde el momento del despacho.",
     activo: true,
-    orden: 6,
+    orden: 7,
     created_at: NOW,
     updated_at: NOW,
   },
