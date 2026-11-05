@@ -13,7 +13,12 @@ import { ProductDetailSheet } from "./ProductDetailSheet";
 import { OrderSheet } from "./OrderSheet";
 import { useOrderCart } from "./useOrderCart";
 import type { CatalogCategory, CatalogProduct, InvestorRole } from "./types";
-import { DEFAULT_PRICING, EMPRESARIO_PCT, type PricingConfig } from "./pricing";
+import {
+  DEFAULT_PRICING,
+  EMPRESARIO_PCT,
+  hasOwnEmpresarioPrice,
+  type PricingConfig,
+} from "./pricing";
 
 type Props = {
   countryCode: string;
@@ -24,6 +29,9 @@ export function CatalogPage({ countryCode }: Props) {
 
   const products = useMemo(() => getCatalogProducts(countryCode), [countryCode]);
   const categories = useMemo(() => getCatalogCategories(countryCode), [countryCode]);
+
+  /** Los países con tabla propia traen el precio empresario por producto. */
+  const empresarioFromTable = useMemo(() => products.some(hasOwnEmpresarioPrice), [products]);
 
   const currency = meta?.currency ?? "CLP";
   const locale = meta?.locale ?? "es-CL";
@@ -101,7 +109,9 @@ export function CatalogPage({ countryCode }: Props) {
               {
                 id: "empresario" as const,
                 label: "Empresario",
-                hint: `−${EMPRESARIO_PCT}% s/ mayorista`,
+                hint: empresarioFromTable
+                  ? "precio empresario"
+                  : `−${EMPRESARIO_PCT}% s/ mayorista`,
               },
             ] as const
           ).map((opt) => {
@@ -127,11 +137,9 @@ export function CatalogPage({ countryCode }: Props) {
         </div>
 
         <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-muted-foreground">
-          <span>
-            <span className="line-through">Precio sugerido de venta</span> tachado
-          </span>
+          <span>Precio sugerido de venta</span>
           <span>Mayorista (lista)</span>
-          <span>Empresario −{EMPRESARIO_PCT}% s/ mayorista</span>
+          <span>Empresario</span>
         </div>
 
         <div className="relative mt-6">

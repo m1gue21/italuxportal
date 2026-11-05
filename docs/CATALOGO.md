@@ -23,13 +23,33 @@ Entrada desde la landing: tarjeta del país (si existe en CMS) → **Catálogo I
 
 Definidos en [`src/features/catalog/pricing.ts`](../src/features/catalog/pricing.ts):
 
-| Rol | Cálculo (defaults) |
+| Rol | De dónde sale |
 | --- | --- |
-| Retail | Precio del producto (tachado en UI) |
-| Mayorista | `retail × (1 − 0.30)` → −30% |
-| Empresario | `retail × (1 − 0.30 − 0.30)` → −60% |
+| Sugerido | `retailPrice` del producto (precio de venta sugerido, sin tachar) |
+| Mayorista | `mayoristaPrice` del pack — tabla de precios del país |
+| Empresario | `empresarioPrice` del pack; si falta, `mayorista × (1 − 0.30)` |
 
-La tienda pública y el preview admin usan estos defaults del código.
+Los países con tabla de precios traen mayorista y empresario por producto, así
+que no se calcula ningún porcentaje. Los que todavía no la tienen caen en el
+fallback: mayorista provisional (`retail × 0.70`) y empresario −30%, y la UI
+muestra el porcentaje junto al rol.
+
+### Actualizar precios desde la tabla del país
+
+```bash
+npm run prices:apply -- <tabla.xlsx> src/features/catalog/<pais>-products.ts
+npm run prices:apply -- <tabla.xlsx> src/features/catalog/<pais>-products.ts -- --apply
+```
+
+Sin `--apply` solo imprime el informe: cuántos productos cruzan por SKU, cuáles
+quedan dudosos (no se tocan) y cuáles se quedan sin precio real. Para monedas con
+decimales (USD/EUR) añade `--round 2`.
+
+La hoja necesita encabezados `NOMBRE PRODUCTO`, `MAYORISTA` (o `MAYORITA`) y
+`EMPRESARIO`; `SKU` y `DETAL SUGERIDO` son opcionales pero mejoran el cruce
+(el SKU) y actualizan el sugerido.
+
+Hoy solo Colombia tiene tabla: [`precios-inversionistas-colombia.xlsx`](../precios-inversionistas-colombia.xlsx).
 
 ## Datos de productos
 

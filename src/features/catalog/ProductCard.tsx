@@ -6,6 +6,7 @@ import {
   empresarioPct,
   empresarioPrice,
   formatPrice,
+  hasOwnEmpresarioPrice,
   mayoristaPrice,
   type PricingConfig,
 } from "./pricing";
@@ -55,15 +56,18 @@ export function ProductCard({
           <h3 className="font-display line-clamp-2 min-h-[2.5rem] text-[15px] leading-snug text-foreground">
             {product.title}
           </h3>
-          <p className="text-[11px] text-muted-foreground line-through decoration-white/30">
+          <p className="text-[11px] text-muted-foreground">
             Sugerido: {money(product.retailPrice)}
           </p>
           <div className="space-y-0.5 text-[11px]">
             <p className={role === "mayorista" ? "font-medium text-gold" : "text-muted-foreground"}>
               Mayorista: {money(mayorista)}
             </p>
-            <p className={role === "empresario" ? "font-medium text-gold" : "text-muted-foreground"}>
-              Empresario (−{ePct}%): {money(empresario)}
+            <p
+              className={role === "empresario" ? "font-medium text-gold" : "text-muted-foreground"}
+            >
+              {hasOwnEmpresarioPrice(product) ? "Empresario" : `Empresario (−${ePct}%)`}:{" "}
+              {money(empresario)}
             </p>
           </div>
         </div>

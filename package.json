@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "generate:packs": "python3 scripts/generate-packs-from-shopify.py"
+    "generate:packs": "python3 scripts/generate-packs-from-shopify.py",
+    "prices:apply": "python3 scripts/apply-investor-prices.py"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

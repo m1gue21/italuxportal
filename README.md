@@ -140,7 +140,8 @@ Para actualizar:
 
 1. Reemplazar / actualizar el CSV Shopify  
 2. Regenerar el TS (ver [docs/CATALOGO.md](docs/CATALOGO.md))  
-3. Verificar las rutas `/$slug/catalogo`  
+3. Aplicar la tabla de precios del país con `npm run prices:apply`  
+4. Verificar las rutas `/$slug/catalogo`  
 
 ---
 

@@ -26,23 +26,36 @@ export function mayoristaPrice(
   product: Pick<CatalogProduct, "mayoristaPrice"> | number,
   currency: CatalogCurrency = "CLP",
 ): number {
-  const amount =
-    typeof product === "number" ? product : Number(product.mayoristaPrice);
+  const amount = typeof product === "number" ? product : Number(product.mayoristaPrice);
   return roundMoney(amount, currency);
 }
 
-/** Empresario = 30% menos del mayorista. */
+type PricedProduct = Pick<CatalogProduct, "mayoristaPrice" | "empresarioPrice">;
+
+/** True si el producto trae su propio precio empresario (tabla del país). */
+export function hasOwnEmpresarioPrice(product: PricedProduct | number): boolean {
+  if (typeof product === "number") return false;
+  return product.empresarioPrice != null && Number.isFinite(product.empresarioPrice);
+}
+
+/**
+ * Empresario: precio de la tabla del país si lo hay; si no, se calcula
+ * restando el descuento configurado al mayorista.
+ */
 export function empresarioPrice(
-  product: Pick<CatalogProduct, "mayoristaPrice"> | number,
+  product: PricedProduct | number,
   config: PricingConfig = DEFAULT_PRICING,
   currency: CatalogCurrency = "CLP",
 ): number {
+  if (typeof product !== "number" && hasOwnEmpresarioPrice(product)) {
+    return roundMoney(Number(product.empresarioPrice), currency);
+  }
   const mayorista = mayoristaPrice(product, currency);
   return roundMoney(mayorista * (1 - config.empresarioDiscount), currency);
 }
 
 export function priceForRole(
-  product: Pick<CatalogProduct, "mayoristaPrice"> | number,
+  product: PricedProduct | number,
   role: InvestorRole,
   config: PricingConfig = DEFAULT_PRICING,
   currency: CatalogCurrency = "CLP",

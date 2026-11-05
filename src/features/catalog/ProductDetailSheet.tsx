@@ -14,6 +14,7 @@ import {
   empresarioPct,
   empresarioPrice,
   formatPrice,
+  hasOwnEmpresarioPrice,
   mayoristaPrice,
   priceForRole,
   type PricingConfig,
@@ -107,15 +108,17 @@ export function ProductDetailSheet({
             </DialogHeader>
 
             <div className="mt-4 space-y-1 text-sm sm:mt-5">
-              <p className="text-muted-foreground line-through">
+              <p className="text-muted-foreground">
                 Precio sugerido de venta: {money(product.retailPrice)}
               </p>
               <p className={role === "mayorista" ? "font-medium text-gold" : "text-foreground/80"}>
                 Mayorista: {money(mayoristaPrice(product, currency))}
               </p>
               <p className={role === "empresario" ? "font-medium text-gold" : "text-foreground/80"}>
-                Empresario (−{ePct}% s/ mayorista):{" "}
-                {money(empresarioPrice(product, pricing, currency))}
+                {hasOwnEmpresarioPrice(product)
+                  ? "Empresario"
+                  : `Empresario (−${ePct}% s/ mayorista)`}
+                : {money(empresarioPrice(product, pricing, currency))}
               </p>
             </div>
 
