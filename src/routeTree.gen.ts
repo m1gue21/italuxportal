@@ -10,24 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as SlugCatalogoRouteImport } from './routes/$slug.catalogo'
-import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
-import { Route as AuthenticatedAdminBenefitsRouteImport } from './routes/_authenticated/admin_.benefits'
-import { Route as AuthenticatedAdminCatalogsRouteImport } from './routes/_authenticated/admin_.catalogs'
-import { Route as AuthenticatedAdminFaqsRouteImport } from './routes/_authenticated/admin_.faqs'
-import { Route as AuthenticatedAdminFooterRouteImport } from './routes/_authenticated/admin_.footer'
-import { Route as AuthenticatedAdminHeroRouteImport } from './routes/_authenticated/admin_.hero'
-import { Route as AuthenticatedAdminWholesaleRouteImport } from './routes/_authenticated/admin_.wholesale'
+import { Route as AdminBenefitsRouteImport } from './routes/admin_.benefits'
+import { Route as AdminCatalogsRouteImport } from './routes/admin_.catalogs'
+import { Route as AdminFaqsRouteImport } from './routes/admin_.faqs'
+import { Route as AdminFooterRouteImport } from './routes/admin_.footer'
+import { Route as AdminHeroRouteImport } from './routes/admin_.hero'
+import { Route as AdminWholesaleRouteImport } from './routes/admin_.wholesale'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -40,91 +40,81 @@ const SlugCatalogoRoute = SlugCatalogoRouteImport.update({
   path: '/$slug/catalogo',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
-  getParentRoute: () => AuthenticatedRouteRoute,
+const AdminBenefitsRoute = AdminBenefitsRouteImport.update({
+  id: '/admin_/benefits',
+  path: '/admin/benefits',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedAdminBenefitsRoute =
-  AuthenticatedAdminBenefitsRouteImport.update({
-    id: '/admin_/benefits',
-    path: '/admin/benefits',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-const AuthenticatedAdminCatalogsRoute =
-  AuthenticatedAdminCatalogsRouteImport.update({
-    id: '/admin_/catalogs',
-    path: '/admin/catalogs',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-const AuthenticatedAdminFaqsRoute = AuthenticatedAdminFaqsRouteImport.update({
+const AdminCatalogsRoute = AdminCatalogsRouteImport.update({
+  id: '/admin_/catalogs',
+  path: '/admin/catalogs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminFaqsRoute = AdminFaqsRouteImport.update({
   id: '/admin_/faqs',
   path: '/admin/faqs',
-  getParentRoute: () => AuthenticatedRouteRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedAdminFooterRoute =
-  AuthenticatedAdminFooterRouteImport.update({
-    id: '/admin_/footer',
-    path: '/admin/footer',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-const AuthenticatedAdminHeroRoute = AuthenticatedAdminHeroRouteImport.update({
+const AdminFooterRoute = AdminFooterRouteImport.update({
+  id: '/admin_/footer',
+  path: '/admin/footer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminHeroRoute = AdminHeroRouteImport.update({
   id: '/admin_/hero',
   path: '/admin/hero',
-  getParentRoute: () => AuthenticatedRouteRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedAdminWholesaleRoute =
-  AuthenticatedAdminWholesaleRouteImport.update({
-    id: '/admin_/wholesale',
-    path: '/admin/wholesale',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
+const AdminWholesaleRoute = AdminWholesaleRouteImport.update({
+  id: '/admin_/wholesale',
+  path: '/admin/wholesale',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
   '/$slug/catalogo': typeof SlugCatalogoRoute
-  '/admin': typeof AuthenticatedAdminRoute
-  '/admin/benefits': typeof AuthenticatedAdminBenefitsRoute
-  '/admin/catalogs': typeof AuthenticatedAdminCatalogsRoute
-  '/admin/faqs': typeof AuthenticatedAdminFaqsRoute
-  '/admin/footer': typeof AuthenticatedAdminFooterRoute
-  '/admin/hero': typeof AuthenticatedAdminHeroRoute
-  '/admin/wholesale': typeof AuthenticatedAdminWholesaleRoute
+  '/admin/benefits': typeof AdminBenefitsRoute
+  '/admin/catalogs': typeof AdminCatalogsRoute
+  '/admin/faqs': typeof AdminFaqsRoute
+  '/admin/footer': typeof AdminFooterRoute
+  '/admin/hero': typeof AdminHeroRoute
+  '/admin/wholesale': typeof AdminWholesaleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
   '/$slug/catalogo': typeof SlugCatalogoRoute
-  '/admin': typeof AuthenticatedAdminRoute
-  '/admin/benefits': typeof AuthenticatedAdminBenefitsRoute
-  '/admin/catalogs': typeof AuthenticatedAdminCatalogsRoute
-  '/admin/faqs': typeof AuthenticatedAdminFaqsRoute
-  '/admin/footer': typeof AuthenticatedAdminFooterRoute
-  '/admin/hero': typeof AuthenticatedAdminHeroRoute
-  '/admin/wholesale': typeof AuthenticatedAdminWholesaleRoute
+  '/admin/benefits': typeof AdminBenefitsRoute
+  '/admin/catalogs': typeof AdminCatalogsRoute
+  '/admin/faqs': typeof AdminFaqsRoute
+  '/admin/footer': typeof AdminFooterRoute
+  '/admin/hero': typeof AdminHeroRoute
+  '/admin/wholesale': typeof AdminWholesaleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
   '/$slug/catalogo': typeof SlugCatalogoRoute
-  '/_authenticated/admin': typeof AuthenticatedAdminRoute
-  '/_authenticated/admin_/benefits': typeof AuthenticatedAdminBenefitsRoute
-  '/_authenticated/admin_/catalogs': typeof AuthenticatedAdminCatalogsRoute
-  '/_authenticated/admin_/faqs': typeof AuthenticatedAdminFaqsRoute
-  '/_authenticated/admin_/footer': typeof AuthenticatedAdminFooterRoute
-  '/_authenticated/admin_/hero': typeof AuthenticatedAdminHeroRoute
-  '/_authenticated/admin_/wholesale': typeof AuthenticatedAdminWholesaleRoute
+  '/admin_/benefits': typeof AdminBenefitsRoute
+  '/admin_/catalogs': typeof AdminCatalogsRoute
+  '/admin_/faqs': typeof AdminFaqsRoute
+  '/admin_/footer': typeof AdminFooterRoute
+  '/admin_/hero': typeof AdminHeroRoute
+  '/admin_/wholesale': typeof AdminWholesaleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/auth'
     | '/$slug/catalogo'
-    | '/admin'
     | '/admin/benefits'
     | '/admin/catalogs'
     | '/admin/faqs'
@@ -134,9 +124,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin'
     | '/auth'
     | '/$slug/catalogo'
-    | '/admin'
     | '/admin/benefits'
     | '/admin/catalogs'
     | '/admin/faqs'
@@ -146,23 +136,28 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/_authenticated'
+    | '/admin'
     | '/auth'
     | '/$slug/catalogo'
-    | '/_authenticated/admin'
-    | '/_authenticated/admin_/benefits'
-    | '/_authenticated/admin_/catalogs'
-    | '/_authenticated/admin_/faqs'
-    | '/_authenticated/admin_/footer'
-    | '/_authenticated/admin_/hero'
-    | '/_authenticated/admin_/wholesale'
+    | '/admin_/benefits'
+    | '/admin_/catalogs'
+    | '/admin_/faqs'
+    | '/admin_/footer'
+    | '/admin_/hero'
+    | '/admin_/wholesale'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AdminRoute: typeof AdminRoute
   AuthRoute: typeof AuthRoute
   SlugCatalogoRoute: typeof SlugCatalogoRoute
+  AdminBenefitsRoute: typeof AdminBenefitsRoute
+  AdminCatalogsRoute: typeof AdminCatalogsRoute
+  AdminFaqsRoute: typeof AdminFaqsRoute
+  AdminFooterRoute: typeof AdminFooterRoute
+  AdminHeroRoute: typeof AdminHeroRoute
+  AdminWholesaleRoute: typeof AdminWholesaleRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -174,11 +169,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated': {
-      id: '/_authenticated'
-      path: ''
-      fullPath: '/'
-      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -195,86 +190,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SlugCatalogoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/admin': {
-      id: '/_authenticated/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AuthenticatedAdminRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/admin_/benefits': {
-      id: '/_authenticated/admin_/benefits'
+    '/admin_/benefits': {
+      id: '/admin_/benefits'
       path: '/admin/benefits'
       fullPath: '/admin/benefits'
-      preLoaderRoute: typeof AuthenticatedAdminBenefitsRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      preLoaderRoute: typeof AdminBenefitsRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/admin_/catalogs': {
-      id: '/_authenticated/admin_/catalogs'
+    '/admin_/catalogs': {
+      id: '/admin_/catalogs'
       path: '/admin/catalogs'
       fullPath: '/admin/catalogs'
-      preLoaderRoute: typeof AuthenticatedAdminCatalogsRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      preLoaderRoute: typeof AdminCatalogsRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/admin_/faqs': {
-      id: '/_authenticated/admin_/faqs'
+    '/admin_/faqs': {
+      id: '/admin_/faqs'
       path: '/admin/faqs'
       fullPath: '/admin/faqs'
-      preLoaderRoute: typeof AuthenticatedAdminFaqsRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      preLoaderRoute: typeof AdminFaqsRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/admin_/footer': {
-      id: '/_authenticated/admin_/footer'
+    '/admin_/footer': {
+      id: '/admin_/footer'
       path: '/admin/footer'
       fullPath: '/admin/footer'
-      preLoaderRoute: typeof AuthenticatedAdminFooterRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      preLoaderRoute: typeof AdminFooterRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/admin_/hero': {
-      id: '/_authenticated/admin_/hero'
+    '/admin_/hero': {
+      id: '/admin_/hero'
       path: '/admin/hero'
       fullPath: '/admin/hero'
-      preLoaderRoute: typeof AuthenticatedAdminHeroRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      preLoaderRoute: typeof AdminHeroRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/admin_/wholesale': {
-      id: '/_authenticated/admin_/wholesale'
+    '/admin_/wholesale': {
+      id: '/admin_/wholesale'
       path: '/admin/wholesale'
       fullPath: '/admin/wholesale'
-      preLoaderRoute: typeof AuthenticatedAdminWholesaleRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      preLoaderRoute: typeof AdminWholesaleRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface AuthenticatedRouteRouteChildren {
-  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
-  AuthenticatedAdminBenefitsRoute: typeof AuthenticatedAdminBenefitsRoute
-  AuthenticatedAdminCatalogsRoute: typeof AuthenticatedAdminCatalogsRoute
-  AuthenticatedAdminFaqsRoute: typeof AuthenticatedAdminFaqsRoute
-  AuthenticatedAdminFooterRoute: typeof AuthenticatedAdminFooterRoute
-  AuthenticatedAdminHeroRoute: typeof AuthenticatedAdminHeroRoute
-  AuthenticatedAdminWholesaleRoute: typeof AuthenticatedAdminWholesaleRoute
-}
-
-const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
-  AuthenticatedAdminBenefitsRoute: AuthenticatedAdminBenefitsRoute,
-  AuthenticatedAdminCatalogsRoute: AuthenticatedAdminCatalogsRoute,
-  AuthenticatedAdminFaqsRoute: AuthenticatedAdminFaqsRoute,
-  AuthenticatedAdminFooterRoute: AuthenticatedAdminFooterRoute,
-  AuthenticatedAdminHeroRoute: AuthenticatedAdminHeroRoute,
-  AuthenticatedAdminWholesaleRoute: AuthenticatedAdminWholesaleRoute,
-}
-
-const AuthenticatedRouteRouteWithChildren =
-  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AdminRoute: AdminRoute,
   AuthRoute: AuthRoute,
   SlugCatalogoRoute: SlugCatalogoRoute,
+  AdminBenefitsRoute: AdminBenefitsRoute,
+  AdminCatalogsRoute: AdminCatalogsRoute,
+  AdminFaqsRoute: AdminFaqsRoute,
+  AdminFooterRoute: AdminFooterRoute,
+  AdminHeroRoute: AdminHeroRoute,
+  AdminWholesaleRoute: AdminWholesaleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

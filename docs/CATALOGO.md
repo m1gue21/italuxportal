@@ -53,14 +53,14 @@ Cada producto incluye:
 
 ### Regenerar desde CSV
 
-Desde la raíz del proyecto (ejemplo con Python):
+Desde la raíz del proyecto:
 
 ```bash
-python3 - <<'PY'
-# Ver script usado en el historial del repo / adaptar el parseo CSV → chile-products.ts
-# Agrupar por Handle, Status=active, Image Src → galleryUrls
-PY
+npm run generate:packs
 ```
+
+Corre [`scripts/generate-packs-from-shopify.py`](../scripts/generate-packs-from-shopify.py):
+agrupa por `Handle`, filtra `Status=active` y junta los `Image Src` en `galleryUrls`.
 
 Solo se incluyen productos con título y `Status === active`.
 

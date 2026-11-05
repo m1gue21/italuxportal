@@ -1,34 +1,26 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { LogOut } from "lucide-react";
 
 import { adminFaqsQuery } from "@/features/faqs/queries";
 import type { FaqRow } from "@/features/faqs/types";
 import { AdminNav } from "@/features/admin/AdminNav";
 import { CmsStaticNotice } from "@/features/admin/CmsStaticNotice";
-import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/_authenticated/admin_/faqs")({
+export const Route = createFileRoute("/admin_/faqs")({
   component: FaqsAdminPage,
 });
 
 function FaqsAdminPage() {
-  const navigate = useNavigate();
   const { data: faqs = [], isLoading } = useQuery(adminFaqsQuery);
 
   return (
     <main className="min-h-screen bg-background px-4 pb-12 pt-6 text-foreground">
       <div className="mx-auto max-w-3xl">
-        <header className="flex items-center justify-between gap-2">
-          <div>
-            <AdminNav current="/admin/faqs" />
-            <h1 className="font-display mt-1 text-2xl font-light tracking-wide">
-              Preguntas frecuentes
-            </h1>
-          </div>
-          <Button size="sm" variant="outline" onClick={() => navigate({ to: "/" })}>
-            <LogOut className="h-4 w-4" />
-          </Button>
+        <header>
+          <AdminNav current="/admin/faqs" />
+          <h1 className="font-display mt-1 text-2xl font-light tracking-wide">
+            Preguntas frecuentes
+          </h1>
         </header>
 
         <CmsStaticNotice filePath="src/features/cms/defaults.ts" />

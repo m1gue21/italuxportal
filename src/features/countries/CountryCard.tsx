@@ -1,26 +1,21 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
 import { ChevronDown, MapPin, BookOpen } from "lucide-react";
 import { getCatalogMeta } from "@/features/catalog/catalog-meta";
 import { hasCatalogProducts } from "@/features/catalog/product-registry";
-import { publicCatalogsQuery } from "@/features/catalog/queries";
 import type { CountryRow } from "./types";
 import { CTA_ICONS } from "@/features/section-texts/cta-icons";
 
 export function CountryCard({ country }: { country: CountryRow }) {
   const [open, setOpen] = useState(false);
-  const { data: remoteCatalogs } = useQuery(publicCatalogsQuery);
 
   const WaIcon = CTA_ICONS[country.whatsapp_icon || "whatsapp"] ?? CTA_ICONS.whatsapp;
   const WebIcon = CTA_ICONS[country.website_icon || "Globe"] ?? CTA_ICONS.Globe;
   const addresses = Array.isArray(country.addresses) ? country.addresses.filter(Boolean) : [];
   const isLight = country.button_variant === "light";
   const catalogMeta = getCatalogMeta(country.code);
-  const remote = remoteCatalogs?.find((c) => c.code === country.code && c.isActive);
-  const hasInvestorCatalog =
-    !!remote || (!!catalogMeta && hasCatalogProducts(country.code));
-  const catalogSlug = remote?.slug ?? catalogMeta?.slug;
+  const hasInvestorCatalog = !!catalogMeta && hasCatalogProducts(country.code);
+  const catalogSlug = catalogMeta?.slug;
 
   const buttonBase =
     "flex items-center justify-center gap-1.5 rounded-xl border px-3 py-3.5 text-xs font-medium tracking-wide transition-all active:scale-[0.97]";

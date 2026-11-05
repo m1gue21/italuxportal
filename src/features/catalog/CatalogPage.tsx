@@ -7,25 +7,13 @@ import { Input } from "@/components/ui/input";
 import { publicCountriesQuery } from "@/features/countries/queries";
 import { SOCIAL_LINKS } from "@/features/countries/data";
 import { getCatalogMeta } from "./catalog-meta";
-import {
-  getCatalogCategories,
-  getCatalogProducts,
-} from "./product-registry";
-import {
-  catalogByCodeQuery,
-  categoriesForProducts,
-  publicProductsQuery,
-} from "./queries";
+import { getCatalogCategories, getCatalogProducts } from "./product-registry";
 import { ProductCard } from "./ProductCard";
 import { ProductDetailSheet } from "./ProductDetailSheet";
 import { OrderSheet } from "./OrderSheet";
 import { useOrderCart } from "./useOrderCart";
 import type { CatalogCategory, CatalogProduct, InvestorRole } from "./types";
-import {
-  DEFAULT_PRICING,
-  EMPRESARIO_PCT,
-  type PricingConfig,
-} from "./pricing";
+import { DEFAULT_PRICING, EMPRESARIO_PCT, type PricingConfig } from "./pricing";
 
 type Props = {
   countryCode: string;
@@ -33,46 +21,21 @@ type Props = {
 
 export function CatalogPage({ countryCode }: Props) {
   const meta = getCatalogMeta(countryCode);
-  const { data: remoteCatalog } = useQuery(catalogByCodeQuery(countryCode));
-  const {
-    data: remoteProducts,
-    isLoading: productsLoading,
-    isError: productsError,
-  } = useQuery(publicProductsQuery(countryCode));
 
-  const packProducts = useMemo(() => getCatalogProducts(countryCode), [countryCode]);
-  const products = useMemo(() => {
-    if (remoteProducts && remoteProducts.length > 0) return remoteProducts;
-    if (productsError || (remoteProducts && remoteProducts.length === 0)) {
-      return packProducts;
-    }
-    return remoteProducts ?? packProducts;
-  }, [remoteProducts, packProducts, productsError]);
+  const products = useMemo(() => getCatalogProducts(countryCode), [countryCode]);
+  const categories = useMemo(() => getCatalogCategories(countryCode), [countryCode]);
 
-  const categories = useMemo(() => {
-    if (remoteProducts && remoteProducts.length > 0) {
-      return categoriesForProducts(remoteProducts);
-    }
-    return getCatalogCategories(countryCode);
-  }, [remoteProducts, countryCode]);
-
-  const currency = remoteCatalog?.currency ?? meta?.currency ?? "CLP";
-  const locale = remoteCatalog?.locale ?? meta?.locale ?? "es-CL";
-  const countryName = remoteCatalog?.name ?? meta?.name ?? countryCode;
-  const pricing: PricingConfig = {
-    empresarioDiscount:
-      remoteCatalog?.empresarioDiscount ?? DEFAULT_PRICING.empresarioDiscount,
-  };
+  const currency = meta?.currency ?? "CLP";
+  const locale = meta?.locale ?? "es-CL";
+  const countryName = meta?.name ?? countryCode;
+  const pricing: PricingConfig = DEFAULT_PRICING;
 
   const cart = useOrderCart(countryCode, pricing, currency);
   const { data: countries = [] } = useQuery(publicCountriesQuery);
   const countryRow = countries.find((c) => c.code === countryCode);
   const whatsappUrl = countryRow?.whatsapp_url || SOCIAL_LINKS.whatsapp;
 
-  const productsByHandle = useMemo(
-    () => new Map(products.map((p) => [p.handle, p])),
-    [products],
-  );
+  const productsByHandle = useMemo(() => new Map(products.map((p) => [p.handle, p])), [products]);
 
   const [detailProduct, setDetailProduct] = useState<CatalogProduct | null>(null);
   const [orderOpen, setOrderOpen] = useState(false);
@@ -120,9 +83,7 @@ export function CatalogPage({ countryCode }: Props) {
             <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-gold">
               {countryName} · Inversionistas
             </p>
-            <h1 className="font-display truncate text-lg leading-tight">
-              {remoteCatalog?.title || "Catálogo Inversionistas"}
-            </h1>
+            <h1 className="font-display truncate text-lg leading-tight">Catálogo Inversionistas</h1>
           </div>
         </div>
       </header>
@@ -167,8 +128,7 @@ export function CatalogPage({ countryCode }: Props) {
 
         <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-muted-foreground">
           <span>
-            <span className="line-through">Precio sugerido de venta</span>{" "}
-            tachado
+            <span className="line-through">Precio sugerido de venta</span> tachado
           </span>
           <span>Mayorista (lista)</span>
           <span>Empresario −{EMPRESARIO_PCT}% s/ mayorista</span>
@@ -227,19 +187,15 @@ export function CatalogPage({ countryCode }: Props) {
         </div>
 
         <p className="mt-4 text-[11px] text-muted-foreground">
-          {productsLoading
-            ? "Cargando productos…"
-            : `${filteredProducts.length} producto${filteredProducts.length === 1 ? "" : "s"}`}
+          {`${filteredProducts.length} producto${filteredProducts.length === 1 ? "" : "s"}`}
           {category !== "all" ? ` · ${category}` : ""}
           {deferredSearch ? ` · “${search.trim()}”` : ""}
         </p>
 
-        {filteredProducts.length === 0 && !productsLoading ? (
+        {filteredProducts.length === 0 ? (
           <div className="mt-10 rounded-2xl border border-gold/15 bg-white/[0.02] px-6 py-12 text-center">
             <p className="font-display text-xl text-foreground">Sin resultados</p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Prueba otra búsqueda o categoría.
-            </p>
+            <p className="mt-2 text-sm text-muted-foreground">Prueba otra búsqueda o categoría.</p>
           </div>
         ) : (
           <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4">

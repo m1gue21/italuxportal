@@ -2,37 +2,14 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { CatalogPage } from "@/features/catalog/CatalogPage";
 import { getCatalogMetaBySlug } from "@/features/catalog/catalog-meta";
 import { hasCatalogProducts } from "@/features/catalog/product-registry";
-import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/$slug/catalogo")({
-  beforeLoad: async ({ params }) => {
-    const staticMeta = getCatalogMetaBySlug(params.slug);
-    try {
-      const { data } = await supabase
-        .from("investor_catalogs")
-        .select("code, name, slug, is_active")
-        .eq("slug", params.slug)
-        .eq("is_active", true)
-        .maybeSingle();
-      if (data) {
-        return {
-          catalogMeta: {
-            code: data.code,
-            name: data.name,
-            slug: data.slug,
-            flag: staticMeta?.flag ?? "",
-            currency: staticMeta?.currency ?? "CLP",
-            locale: staticMeta?.locale ?? "es",
-          },
-        };
-      }
-    } catch {
-      // fallback packs
-    }
-    if (!staticMeta || !hasCatalogProducts(staticMeta.code)) {
+  beforeLoad: ({ params }) => {
+    const catalogMeta = getCatalogMetaBySlug(params.slug);
+    if (!catalogMeta || !hasCatalogProducts(catalogMeta.code)) {
       throw notFound();
     }
-    return { catalogMeta: staticMeta };
+    return { catalogMeta };
   },
   head: ({ params }) => {
     const meta = getCatalogMetaBySlug(params.slug);

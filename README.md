@@ -26,7 +26,8 @@ Repositorio: [github.com/m1gue21/italuxportal](https://github.com/m1gue21/italux
 - Node.js 20+ (recomendado)
 - npm (o bun; el repo incluye `bun.lock`)
 
-No se requiere backend ni cuenta externa para CMS o catálogo.
+No se requiere backend ni cuenta externa: contenido y catálogo viven en
+TypeScript dentro del repo. No hay base de datos, auth ni variables de entorno.
 
 ---
 
