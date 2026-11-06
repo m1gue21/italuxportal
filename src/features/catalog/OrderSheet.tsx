@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { FileText, Minus, Plus, Trash2 } from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Minus, Plus, Share2, Trash2 } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -13,6 +13,7 @@ import type { CatalogCurrency } from "./catalog-meta";
 import { buildOrderMessage, buildWhatsAppOrderUrl } from "./buildWhatsAppOrder";
 import { buildOrderPdfFile } from "./buildOrderPdf";
 import { shareOrderPdf } from "./shareOrderPdf";
+import { buildOrderPageUrl, buildOrderPayload } from "./orderLink";
 import { formatPrice, roleLabel } from "./pricing";
 import type { InvestorRole, OrderLine } from "./types";
 
@@ -22,6 +23,7 @@ type Props = {
   items: OrderLine[];
   role: InvestorRole;
   orderId: string;
+  countryCode: string;
   customerName: string;
   customerCity: string;
   customerDocument: string;
@@ -47,6 +49,7 @@ export function OrderSheet({
   items,
   role,
   orderId,
+  countryCode,
   customerName,
   customerCity,
   customerDocument,
@@ -68,6 +71,33 @@ export function OrderSheet({
   const WaIcon = CTA_ICONS.whatsapp;
   const money = (n: number) => formatPrice(n, currency, locale);
 
+  // El pedido viaja dentro del link, así el asesor lo abre de un toque.
+  const orderUrl = useMemo(() => {
+    if (typeof window === "undefined" || items.length === 0) return undefined;
+    return buildOrderPageUrl(
+      window.location.origin,
+      buildOrderPayload({
+        orderId,
+        role,
+        countryCode,
+        items,
+        customerName,
+        customerCity,
+        customerDocument,
+        customerPhone,
+      }),
+    );
+  }, [
+    items,
+    orderId,
+    role,
+    countryCode,
+    customerName,
+    customerCity,
+    customerDocument,
+    customerPhone,
+  ]);
+
   const message = buildOrderMessage({
     orderId,
     role,
@@ -77,6 +107,7 @@ export function OrderSheet({
     countryName,
     currency,
     locale,
+    orderUrl,
   });
 
   const waHref = buildWhatsAppOrderUrl(whatsappUrl, message);
@@ -127,35 +158,23 @@ export function OrderSheet({
     if (!open) setStatus(null);
   }, [open]);
 
-  const sendOrder = useCallback(async () => {
+  /** Secundario: manda el PDF como archivo por la hoja de compartir. */
+  const sharePdf = useCallback(async () => {
     if (!items.length || sending) return;
     setSending(true);
     setStatus(null);
     try {
       const file = pdfFile ?? (await buildOrderPdfFile(pdfOptionsRef.current));
-      const outcome = await shareOrderPdf(file, { message, whatsappUrl: waHref });
+      const outcome = await shareOrderPdf(file, { message });
       if (outcome === "downloaded") {
-        setStatus("Descargamos el PDF y abrimos WhatsApp: adjúntalo en el chat del asesor.");
-      } else if (outcome === "cancelled") {
-        setStatus(null);
+        setStatus("Descargamos el PDF: adjúntalo en el chat con el asesor.");
       }
     } catch {
-      setStatus("No pudimos generar el PDF. Abre WhatsApp y envía el resumen.");
-      window.open(waHref, "_blank", "noopener,noreferrer");
+      setStatus("No pudimos generar el PDF. Envía el pedido con el botón de arriba.");
     } finally {
       setSending(false);
     }
-  }, [items.length, sending, pdfFile, message, waHref]);
-
-  const downloadPdf = useCallback(async () => {
-    const file = pdfFile ?? (await buildOrderPdfFile(pdfOptionsRef.current));
-    const url = URL.createObjectURL(file);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = file.name;
-    link.click();
-    setTimeout(() => URL.revokeObjectURL(url), 10_000);
-  }, [pdfFile]);
+  }, [items.length, sending, pdfFile, message]);
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -282,19 +301,25 @@ export function OrderSheet({
         </div>
 
         <div className="shrink-0 space-y-2 border-t border-gold/15 bg-background px-5 py-4">
-          <button
-            type="button"
-            onClick={sendOrder}
-            disabled={!items.length || sending}
+          <a
+            href={items.length ? waHref : undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-disabled={!items.length}
             className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-xs font-medium uppercase tracking-[0.22em] transition-all ${
-              items.length && !sending
+              items.length
                 ? "bg-gradient-to-r from-gold via-gold-light to-gold text-background shadow-[0_10px_30px_-10px] shadow-gold/40 active:scale-[0.98]"
                 : "pointer-events-none bg-muted text-muted-foreground"
             }`}
           >
             <WaIcon className="h-4 w-4" strokeWidth={2.2} />
-            {sending ? "Preparando pedido…" : "Enviar pedido por WhatsApp"}
-          </button>
+            Enviar pedido por WhatsApp
+          </a>
+          {items.length > 0 && (
+            <p className="px-1 text-center text-[11px] leading-relaxed text-muted-foreground">
+              Le llega al asesor con el link del pedido: ahí lo ve y descarga el PDF.
+            </p>
+          )}
           {status && (
             <p className="px-1 text-center text-[11px] leading-relaxed text-muted-foreground">
               {status}
@@ -303,11 +328,12 @@ export function OrderSheet({
           {items.length > 0 && (
             <button
               type="button"
-              onClick={downloadPdf}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-gold/30 px-6 py-3 text-[11px] font-medium uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold/10"
+              onClick={sharePdf}
+              disabled={sending}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-gold/30 px-6 py-3 text-[11px] font-medium uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold/10 disabled:opacity-60"
             >
-              <FileText className="h-3.5 w-3.5" strokeWidth={2} />
-              Descargar PDF
+              <Share2 className="h-3.5 w-3.5" strokeWidth={2} />
+              {sending ? "Preparando PDF…" : "Compartir el PDF"}
             </button>
           )}
           {items.length > 0 && (

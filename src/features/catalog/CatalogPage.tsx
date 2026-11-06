@@ -256,6 +256,7 @@ export function CatalogPage({ countryCode }: Props) {
         items={cart.items}
         role={cart.role}
         orderId={cart.orderId}
+        countryCode={countryCode}
         customerName={cart.customerName}
         customerCity={cart.customerCity}
         customerDocument={cart.customerDocument}

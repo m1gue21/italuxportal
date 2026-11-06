@@ -22,6 +22,8 @@ export function buildOrderMessage(opts: {
   countryName?: string;
   currency?: CatalogCurrency;
   locale?: string;
+  /** Link a la página del pedido; es lo que abre el asesor. */
+  orderUrl?: string;
 }): string {
   const country = opts.countryName ?? "Chile";
   const currency = opts.currency ?? "CLP";
@@ -60,15 +62,16 @@ export function buildOrderMessage(opts: {
   lines.push(`*Total: ${money(total)}*`);
   lines.push(`Piezas: ${pieces}`);
   lines.push("");
+  if (opts.orderUrl) {
+    lines.push(`Ver el pedido: ${opts.orderUrl}`);
+    lines.push("");
+  }
   lines.push("Quiero confirmar este pedido.");
 
   return lines.join("\n");
 }
 
-export function buildWhatsAppOrderUrl(
-  whatsappBaseUrl: string,
-  message: string,
-): string {
+export function buildWhatsAppOrderUrl(whatsappBaseUrl: string, message: string): string {
   const base = stripWhatsAppQuery(whatsappBaseUrl);
   return `${base}?text=${encodeURIComponent(message)}`;
 }

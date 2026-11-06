@@ -106,15 +106,26 @@ import dinámico, así que solo se descarga cuando alguien abre su pedido.
 
 ### Cómo llega a WhatsApp
 
-Un link de `wa.me` solo transporta texto: no se puede adjuntar un archivo. Por eso
-[`shareOrderPdf.ts`](../src/features/catalog/shareOrderPdf.ts) usa la hoja de
-compartir del sistema (`navigator.share` con `files`), donde el usuario elige
-WhatsApp y el PDF va adjunto. Donde no exista —escritorio, navegadores viejos— se
-descarga el PDF y se abre `wa.me` con el resumen en texto para adjuntarlo a mano.
+Un link de `wa.me` solo transporta texto: no existe forma de adjuntar un archivo a
+un número concreto desde la web. La hoja de compartir sí adjunta el PDF, pero deja
+que el usuario elija el contacto, así que no sirve para que llegue siempre al asesor.
 
-`navigator.share` exige el gesto del usuario y en iOS caduca si se espera a generar
-el archivo, así que el PDF se construye por adelantado (con debounce) mientras el
-panel está abierto.
+Por eso el pedido viaja **dentro del link**:
+[`orderLink.ts`](../src/features/catalog/orderLink.ts) codifica el pedido en base64url
+y lo mete en el fragmento de una URL a `/pedido`. El botón principal abre `wa.me` con
+el número del asesor y el mensaje ya escrito, incluido ese link. El asesor lo toca,
+ve el invoice en [`/pedido`](../src/routes/pedido.tsx) y descarga el PDF desde ahí.
+
+Como va en el fragmento (`#`), el pedido nunca llega al servidor ni queda en logs, y
+no hace falta base de datos ni almacenamiento. Un pedido de 20 líneas ocupa ~1.200
+caracteres de URL.
+
+El botón secundario **Compartir el PDF** sigue usando
+[`shareOrderPdf.ts`](../src/features/catalog/shareOrderPdf.ts) (`navigator.share` con
+`files`) para quien prefiera mandar el archivo adjunto eligiendo el contacto; en
+escritorio simplemente lo descarga. `navigator.share` exige el gesto del usuario y en
+iOS caduca si se espera a generar el archivo, así que el PDF se construye por
+adelantado (con debounce) mientras el panel está abierto.
 
 Mensaje de texto armado en [`buildWhatsAppOrder.ts`](../src/features/catalog/buildWhatsAppOrder.ts).
 El número sale de `countries.whatsapp_url` o fallback en `SOCIAL_LINKS`.

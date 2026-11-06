@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as PedidoRouteImport } from './routes/pedido'
 import { Route as SlugCatalogoRouteImport } from './routes/$slug.catalogo'
 import { Route as AdminBenefitsRouteImport } from './routes/admin_.benefits'
 import { Route as AdminCatalogsRouteImport } from './routes/admin_.catalogs'
@@ -33,6 +34,11 @@ const AdminRoute = AdminRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PedidoRoute = PedidoRouteImport.update({
+  id: '/pedido',
+  path: '/pedido',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SlugCatalogoRoute = SlugCatalogoRouteImport.update({
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/pedido': typeof PedidoRoute
   '/$slug/catalogo': typeof SlugCatalogoRoute
   '/admin/benefits': typeof AdminBenefitsRoute
   '/admin/catalogs': typeof AdminCatalogsRoute
@@ -87,6 +94,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/pedido': typeof PedidoRoute
   '/$slug/catalogo': typeof SlugCatalogoRoute
   '/admin/benefits': typeof AdminBenefitsRoute
   '/admin/catalogs': typeof AdminCatalogsRoute
@@ -100,6 +108,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/pedido': typeof PedidoRoute
   '/$slug/catalogo': typeof SlugCatalogoRoute
   '/admin_/benefits': typeof AdminBenefitsRoute
   '/admin_/catalogs': typeof AdminCatalogsRoute
@@ -114,6 +123,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/auth'
+    | '/pedido'
     | '/$slug/catalogo'
     | '/admin/benefits'
     | '/admin/catalogs'
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/auth'
+    | '/pedido'
     | '/$slug/catalogo'
     | '/admin/benefits'
     | '/admin/catalogs'
@@ -138,6 +149,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/auth'
+    | '/pedido'
     | '/$slug/catalogo'
     | '/admin_/benefits'
     | '/admin_/catalogs'
@@ -151,6 +163,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   AuthRoute: typeof AuthRoute
+  PedidoRoute: typeof PedidoRoute
   SlugCatalogoRoute: typeof SlugCatalogoRoute
   AdminBenefitsRoute: typeof AdminBenefitsRoute
   AdminCatalogsRoute: typeof AdminCatalogsRoute
@@ -181,6 +194,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pedido': {
+      id: '/pedido'
+      path: '/pedido'
+      fullPath: '/pedido'
+      preLoaderRoute: typeof PedidoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$slug/catalogo': {
@@ -239,6 +259,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   AuthRoute: AuthRoute,
+  PedidoRoute: PedidoRoute,
   SlugCatalogoRoute: SlugCatalogoRoute,
   AdminBenefitsRoute: AdminBenefitsRoute,
   AdminCatalogsRoute: AdminCatalogsRoute,
