@@ -36,8 +36,11 @@ export function Hero() {
         />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/55 to-background/90" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
+      {/* Velo suave: deja respirar el color de las fotos y funde con la sección. */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/35 via-background/20 to-background/85 dark:from-background/70 dark:via-background/55 dark:to-background/90" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/20 dark:to-background/40" />
+      {/* Scrim solo detrás del texto, para que el titular siga legible. */}
+      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(ellipse_60%_55%_at_50%_50%,var(--background)_0%,transparent_75%)] opacity-85 dark:opacity-70" />
 
       {/* El contenido define la altura del hero; en desktop ocupa más viewport */}
       <div className="relative z-10 flex min-h-[520px] flex-col items-center justify-center px-5 py-10 text-center sm:min-h-[62svh] sm:px-6 sm:py-14 lg:min-h-svh">
