@@ -26,6 +26,11 @@ Repositorio: [github.com/m1gue21/italuxportal](https://github.com/m1gue21/italux
 - Node.js 20+ (recomendado)
 - npm (o bun; el repo incluye `bun.lock`)
 
+`@tanstack/react-start` queda fijado a la línea `1.168.x` (`~1.168.61`): desde
+`1.169.0` pide Vite 8 y el proyecto va con Vite 7. Para subir a `1.169+` hay que
+subir Vite primero. La `1.168.61` es además la mínima sin el XSS CVE-2026-102989,
+que Vercel bloquea en el build.
+
 No se requiere backend ni cuenta externa: contenido y catálogo viven en
 TypeScript dentro del repo. No hay base de datos, auth ni variables de entorno.
 
