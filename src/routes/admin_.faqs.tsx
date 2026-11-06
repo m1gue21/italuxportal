@@ -43,7 +43,7 @@ function FaqsAdminPage() {
 
 function FaqPreviewRow({ faq }: { faq: FaqRow }) {
   return (
-    <li className="flex items-start gap-3 rounded-xl border border-gold/15 bg-white/[0.02] p-3">
+    <li className="flex items-start gap-3 rounded-xl border border-gold/15 bg-surface p-3">
       <div className="min-w-0 flex-1">
         <p className="text-sm font-medium leading-snug">{faq.pregunta}</p>
         <p className="mt-1 line-clamp-2 text-[11px] text-muted-foreground">{faq.respuesta}</p>

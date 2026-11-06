@@ -123,12 +123,19 @@ No hay variables obligatorias. `.env.example` es un placeholder; no subas secret
 
 ## Diseño / marca
 
-- Fondo oscuro cálido (`oklch`)  
+- Dos temas: **claro por defecto** (marfil cálido) y oscuro opcional  
 - Acentos **gold** (`--gold`, `--gold-light`, `--gold-deep`)  
 - Display: Cormorant Garamond · Body: Inter  
 - Landing mobile-first (`max-w-md` en secciones clave); catálogo más ancho en desktop  
 
-Tokens en [`src/styles.css`](src/styles.css).
+Tokens en [`src/styles.css`](src/styles.css): `:root` es el claro y `.dark` el oscuro.
+Para los paneles usa `bg-surface` / `bg-surface-strong`, nunca `bg-white/[0.0x]`
+(ese solo se ve sobre fondo oscuro).
+
+El botón de cambio es [`ThemeToggle`](src/features/theme/ThemeToggle.tsx) y está en la
+landing (flotante), en la cabecera del catálogo y en la navegación del admin. La elección
+se guarda en `localStorage` (`italux-theme`) y un script en el `<head>` la aplica antes de
+pintar, así que no parpadea. Sin elección guardada, siempre arranca en claro.
 
 ---
 

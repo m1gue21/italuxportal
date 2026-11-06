@@ -36,9 +36,9 @@ export function ProductCard({
   const money = (n: number) => formatPrice(n, currency, locale);
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl border border-gold/15 bg-gradient-to-b from-white/[0.04] to-white/[0.01]">
+    <article className="flex flex-col overflow-hidden rounded-2xl border border-gold/15 bg-surface-strong">
       <button type="button" onClick={onOpen} className="block w-full text-left">
-        <div className="relative aspect-square overflow-hidden bg-white/[0.03]">
+        <div className="relative aspect-square overflow-hidden bg-surface">
           {product.imageUrl ? (
             <img
               src={product.imageUrl}

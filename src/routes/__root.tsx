@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { THEME_INIT_SCRIPT } from "@/features/theme/theme";
 
 function NotFoundComponent() {
   return (
@@ -78,17 +79,37 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Lovable App" },
-      { name: "description", content: "Italia Lux Portal is a premium corporate landing page for ITALUX JOYERÍA, serving as an Instagram bio link." },
+      {
+        name: "description",
+        content:
+          "Italia Lux Portal is a premium corporate landing page for ITALUX JOYERÍA, serving as an Instagram bio link.",
+      },
       { name: "author", content: "Lovable" },
       { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Italia Lux Portal is a premium corporate landing page for ITALUX JOYERÍA, serving as an Instagram bio link." },
+      {
+        property: "og:description",
+        content:
+          "Italia Lux Portal is a premium corporate landing page for ITALUX JOYERÍA, serving as an Instagram bio link.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "Italia Lux Portal is a premium corporate landing page for ITALUX JOYERÍA, serving as an Instagram bio link." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/87851c34-e1d8-44d6-8bc3-6856a8f40fdd/id-preview-5ce444bb--03c11b12-9e8d-4c2e-9b9b-5ec3f853aa1a.lovable.app-1782178633093.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/87851c34-e1d8-44d6-8bc3-6856a8f40fdd/id-preview-5ce444bb--03c11b12-9e8d-4c2e-9b9b-5ec3f853aa1a.lovable.app-1782178633093.png" },
+      {
+        name: "twitter:description",
+        content:
+          "Italia Lux Portal is a premium corporate landing page for ITALUX JOYERÍA, serving as an Instagram bio link.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/87851c34-e1d8-44d6-8bc3-6856a8f40fdd/id-preview-5ce444bb--03c11b12-9e8d-4c2e-9b9b-5ec3f853aa1a.lovable.app-1782178633093.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/87851c34-e1d8-44d6-8bc3-6856a8f40fdd/id-preview-5ce444bb--03c11b12-9e8d-4c2e-9b9b-5ec3f853aa1a.lovable.app-1782178633093.png",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -108,9 +129,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        {/* Aplica el tema guardado antes de pintar, para que no parpadee. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body>
         {children}

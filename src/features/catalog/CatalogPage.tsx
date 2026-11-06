@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Search, ShoppingBag, X } from "lucide-react";
 import logo from "@/assets/italux-logo.png";
 import { Input } from "@/components/ui/input";
+import { ThemeToggle } from "@/features/theme/ThemeToggle";
 import { publicCountriesQuery } from "@/features/countries/queries";
 import { SOCIAL_LINKS } from "@/features/countries/data";
 import { getCatalogMeta } from "./catalog-meta";
@@ -86,13 +87,18 @@ export function CatalogPage({ countryCode }: Props) {
           >
             <ArrowLeft className="h-4 w-4" />
           </Link>
-          <img src={logo} alt="ITALUX" className="h-9 w-auto object-contain" />
+          <img
+            src={logo}
+            alt="ITALUX"
+            className="h-9 w-auto rounded-lg object-contain ring-1 ring-gold/20 dark:ring-0"
+          />
           <div className="min-w-0 flex-1">
             <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-gold">
               {countryName} · Inversionistas
             </p>
             <h1 className="font-display truncate text-lg leading-tight">Catálogo Inversionistas</h1>
           </div>
+          <ThemeToggle />
         </div>
       </header>
 
@@ -102,7 +108,7 @@ export function CatalogPage({ countryCode }: Props) {
           WhatsApp a un asesor.
         </p>
 
-        <div className="mt-5 grid max-w-md grid-cols-2 gap-2 rounded-2xl border border-gold/20 bg-white/[0.02] p-1.5">
+        <div className="mt-5 grid max-w-md grid-cols-2 gap-2 rounded-2xl border border-gold/20 bg-surface p-1.5">
           {(
             [
               { id: "mayorista" as const, label: "Mayorista", hint: "precio lista" },
@@ -148,7 +154,7 @@ export function CatalogPage({ countryCode }: Props) {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar por nombre, SKU o categoría…"
-            className="h-11 rounded-xl border-gold/25 bg-white/[0.03] pl-10 pr-10 text-sm placeholder:text-muted-foreground/70"
+            className="h-11 rounded-xl border-gold/25 bg-surface pl-10 pr-10 text-sm placeholder:text-muted-foreground/70"
             aria-label="Buscar productos"
           />
           {search && (
@@ -201,7 +207,7 @@ export function CatalogPage({ countryCode }: Props) {
         </p>
 
         {filteredProducts.length === 0 ? (
-          <div className="mt-10 rounded-2xl border border-gold/15 bg-white/[0.02] px-6 py-12 text-center">
+          <div className="mt-10 rounded-2xl border border-gold/15 bg-surface px-6 py-12 text-center">
             <p className="font-display text-xl text-foreground">Sin resultados</p>
             <p className="mt-2 text-sm text-muted-foreground">Prueba otra búsqueda o categoría.</p>
           </div>

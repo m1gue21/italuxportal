@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { ThemeToggle } from "@/features/theme/ThemeToggle";
 
 const LINKS = [
   { to: "/", label: "← Landing" },
@@ -13,7 +14,7 @@ const LINKS = [
 
 export function AdminNav({ current }: { current?: string }) {
   return (
-    <div className="flex flex-wrap gap-3 text-[10px] uppercase tracking-[0.2em] text-gold/70">
+    <div className="flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-gold/70">
       {LINKS.map((link) => {
         if (link.to === current) {
           return (
@@ -28,6 +29,7 @@ export function AdminNav({ current }: { current?: string }) {
           </Link>
         );
       })}
+      <ThemeToggle className="h-7 w-7" />
     </div>
   );
 }

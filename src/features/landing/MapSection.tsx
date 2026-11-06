@@ -22,9 +22,9 @@ export function MapSection() {
         >
           <defs>
             <linearGradient id="mapLandGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="oklch(0.82 0.13 82)" stopOpacity="0.22" />
-              <stop offset="55%" stopColor="oklch(0.7 0.14 75)" stopOpacity="0.12" />
-              <stop offset="100%" stopColor="oklch(0.82 0.13 82)" stopOpacity="0.05" />
+              <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.22" />
+              <stop offset="55%" stopColor="var(--gold-deep)" stopOpacity="0.12" />
+              <stop offset="100%" stopColor="var(--gold)" stopOpacity="0.05" />
             </linearGradient>
             <filter id="mapGlow" x="-20%" y="-20%" width="140%" height="140%">
               <feGaussianBlur stdDeviation="0.6" result="blur" />
@@ -41,7 +41,7 @@ export function MapSection() {
               <path
                 key={`glow-${c.name}`}
                 d={c.d}
-                fill="oklch(0.82 0.13 82)"
+                fill="var(--gold)"
                 fillOpacity="0.08"
               />
             ))}
@@ -54,7 +54,7 @@ export function MapSection() {
                 key={c.name}
                 d={c.d}
                 fill="url(#mapLandGrad)"
-                stroke="oklch(0.82 0.13 82)"
+                stroke="var(--gold)"
                 strokeWidth="0.28"
                 strokeOpacity="0.55"
                 strokeLinejoin="round"

@@ -8,6 +8,7 @@ import { CountriesSection } from "@/features/landing/CountriesSection";
 import { WholesaleSection } from "@/features/landing/WholesaleSection";
 import { FaqSection } from "@/features/landing/FaqSection";
 import { Footer } from "@/features/landing/Footer";
+import { ThemeToggle } from "@/features/theme/ThemeToggle";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,6 +33,7 @@ export const Route = createFileRoute("/")({
 function LandingPage() {
   return (
     <main className="min-h-screen bg-background text-foreground antialiased">
+      <ThemeToggle floating />
       <Hero />
       <ModalitiesSection />
       <BenefitsSection />

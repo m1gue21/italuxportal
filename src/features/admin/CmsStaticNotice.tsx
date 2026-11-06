@@ -10,7 +10,7 @@ export function CmsStaticNotice({ filePath, className }: Props) {
     <p
       className={
         className ??
-        "mt-2 rounded-lg border border-gold/20 bg-white/[0.03] px-3 py-2 text-xs text-muted-foreground"
+        "mt-2 rounded-lg border border-gold/20 bg-surface px-3 py-2 text-xs text-muted-foreground"
       }
     >
       Vista previa solo lectura. Para cambiar el contenido, edita{" "}

@@ -67,7 +67,7 @@ export function Footer() {
             width={200}
             height={200}
             loading="lazy"
-            className="mx-auto h-auto w-32 object-contain"
+            className="mx-auto h-auto w-32 rounded-2xl object-contain ring-1 ring-gold/20 dark:ring-0"
           />
         )}
 

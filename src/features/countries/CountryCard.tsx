@@ -21,11 +21,11 @@ export function CountryCard({ country }: { country: CountryRow }) {
     "flex items-center justify-center gap-1.5 rounded-xl border px-3 py-3.5 text-xs font-medium tracking-wide transition-all active:scale-[0.97]";
   const buttonClasses = isLight
     ? `${buttonBase} border-foreground/10 bg-foreground/95 text-background hover:bg-foreground`
-    : `${buttonBase} border-gold/40 bg-white/[0.03] text-gold hover:bg-gold/10`;
+    : `${buttonBase} border-gold/40 bg-surface text-gold hover:bg-gold/10`;
 
   return (
     <article
-      className={`group overflow-hidden rounded-2xl border bg-gradient-to-b from-white/[0.03] to-white/[0.01] backdrop-blur-sm transition-all duration-500 ${
+      className={`group overflow-hidden rounded-2xl border bg-surface backdrop-blur-sm transition-all duration-500 ${
         open ? "border-gold/50" : "border-gold/15"
       }`}
     >
@@ -33,7 +33,7 @@ export function CountryCard({ country }: { country: CountryRow }) {
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="flex w-full items-center gap-4 px-5 py-4 text-left transition-colors active:bg-white/[0.02]"
+        className="flex w-full items-center gap-4 px-5 py-4 text-left transition-colors active:bg-surface-strong"
       >
         <span className="text-4xl leading-none drop-shadow-lg" aria-hidden>
           {country.flag}

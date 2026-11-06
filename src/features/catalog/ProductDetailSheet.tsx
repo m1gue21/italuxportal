@@ -70,7 +70,7 @@ export function ProductDetailSheet({
       <DialogContent className="max-h-[min(92vh,880px)] w-[calc(100%-1.5rem)] max-w-3xl gap-0 overflow-hidden border-gold/20 bg-background p-0 sm:rounded-2xl">
         <div className="grid max-h-[min(92vh,880px)] md:grid-cols-2">
           <div className="min-h-0 overflow-y-auto border-b border-gold/10 p-4 sm:p-5 md:border-b-0 md:border-r">
-            <div className="mx-auto aspect-square max-h-[42vh] overflow-hidden rounded-2xl border border-gold/15 bg-white/[0.03] md:max-h-none">
+            <div className="mx-auto aspect-square max-h-[42vh] overflow-hidden rounded-2xl border border-gold/15 bg-surface md:max-h-none">
               {gallery[imgIndex] ? (
                 <img
                   src={gallery[imgIndex]}

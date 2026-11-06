@@ -33,7 +33,7 @@ export function FaqSection() {
               <AccordionItem
                 key={faq.id}
                 value={faq.id}
-                className="rounded-xl border border-gold/15 bg-white/[0.02] px-4 transition-colors hover:border-gold/35 data-[state=open]:border-gold/40"
+                className="rounded-xl border border-gold/15 bg-surface px-4 transition-colors hover:border-gold/35 data-[state=open]:border-gold/40"
               >
                 <AccordionTrigger className="text-left font-display text-base font-normal tracking-wide text-foreground hover:no-underline [&[data-state=open]>svg]:text-gold">
                   {faq.pregunta}

@@ -17,7 +17,7 @@ export function WholesaleSection() {
 
   return (
     <section className="bg-background px-6 py-8">
-      <div className="relative mx-auto max-w-md overflow-hidden rounded-3xl border border-gold/30 bg-gradient-to-br from-[oklch(0.18_0.01_60)] via-background to-[oklch(0.16_0.02_75)] px-7 py-12 text-center shadow-[0_20px_60px_-20px] shadow-gold/20">
+      <div className="relative mx-auto max-w-md overflow-hidden rounded-3xl border border-gold/30 bg-gradient-to-br from-surface-strong via-background to-surface px-7 py-12 text-center shadow-[0_20px_60px_-20px] shadow-gold/20">
         <div className="pointer-events-none absolute -top-20 -right-20 h-48 w-48 rounded-full bg-gold/20 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-24 -left-16 h-48 w-48 rounded-full bg-gold-deep/15 blur-3xl" />
 

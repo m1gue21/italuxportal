@@ -76,7 +76,7 @@ function CatalogsAdminPage() {
             {catalogs.map((catalog) => (
               <article
                 key={catalog.code}
-                className="rounded-2xl border border-gold/15 bg-white/[0.02] px-4 py-3"
+                className="rounded-2xl border border-gold/15 bg-surface px-4 py-3"
               >
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="text-2xl" aria-hidden>
@@ -132,7 +132,7 @@ function CatalogsAdminPage() {
               {filteredProducts.map((p) => (
                 <li
                   key={p.handle}
-                  className="flex items-start gap-3 rounded-xl border border-gold/15 bg-white/[0.02] p-3"
+                  className="flex items-start gap-3 rounded-xl border border-gold/15 bg-surface p-3"
                 >
                   {p.imageUrl ? (
                     <img
@@ -141,7 +141,7 @@ function CatalogsAdminPage() {
                       className="h-12 w-12 shrink-0 rounded-md object-cover"
                     />
                   ) : (
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-white/5 text-[10px] text-muted-foreground">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-surface-strong text-[10px] text-muted-foreground">
                       N/A
                     </div>
                   )}

@@ -93,9 +93,9 @@ export function OrderSheet({
               {items.map((item) => (
                 <li
                   key={item.handle}
-                  className="flex gap-3 rounded-2xl border border-gold/15 bg-white/[0.02] p-2.5"
+                  className="flex gap-3 rounded-2xl border border-gold/15 bg-surface p-2.5"
                 >
-                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-white/[0.04]">
+                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-surface-strong">
                     {item.imageUrl ? (
                       <img
                         src={item.imageUrl}
@@ -161,13 +161,13 @@ export function OrderSheet({
               value={customerName}
               onChange={(e) => onNameChange(e.target.value)}
               placeholder="Tu nombre"
-              className="border-gold/20 bg-white/[0.02]"
+              className="border-gold/20 bg-surface"
             />
             <Input
               value={customerCity}
               onChange={(e) => onCityChange(e.target.value)}
               placeholder="Ciudad"
-              className="border-gold/20 bg-white/[0.02]"
+              className="border-gold/20 bg-surface"
             />
           </div>
 
@@ -194,7 +194,7 @@ export function OrderSheet({
             className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-xs font-medium uppercase tracking-[0.22em] transition-all ${
               items.length
                 ? "bg-gradient-to-r from-gold via-gold-light to-gold text-background shadow-[0_10px_30px_-10px] shadow-gold/40 active:scale-[0.98]"
-                : "pointer-events-none bg-white/10 text-muted-foreground"
+                : "pointer-events-none bg-muted text-muted-foreground"
             }`}
           >
             <WaIcon className="h-4 w-4" strokeWidth={2.2} />

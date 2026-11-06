@@ -41,7 +41,7 @@ function AdminPage() {
 
 function CountryPreviewRow({ country }: { country: CountryRow }) {
   return (
-    <li className="flex items-center gap-3 rounded-xl border border-gold/15 bg-white/[0.02] p-3">
+    <li className="flex items-center gap-3 rounded-xl border border-gold/15 bg-surface p-3">
       <span className="text-2xl">{country.flag}</span>
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-medium">{country.name}</p>

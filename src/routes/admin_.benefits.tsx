@@ -46,7 +46,7 @@ function BenefitPreviewRow({ benefit }: { benefit: BenefitRow }) {
   const Icon = BENEFIT_ICONS[benefit.icon] ?? Sparkles;
 
   return (
-    <li className="flex items-start gap-3 rounded-xl border border-gold/15 bg-white/[0.02] p-3">
+    <li className="flex items-start gap-3 rounded-xl border border-gold/15 bg-surface p-3">
       <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold/30 text-gold">
         <Icon className="h-4 w-4" strokeWidth={1.4} />
       </span>

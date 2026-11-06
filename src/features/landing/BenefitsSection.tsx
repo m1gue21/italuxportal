@@ -45,7 +45,7 @@ export function BenefitsSection() {
           return (
             <li
               key={b.id}
-              className="relative isolate flex flex-col items-center overflow-hidden rounded-2xl border border-gold/15 bg-gradient-to-b from-white/[0.03] to-transparent px-4 py-7 text-center transition-colors hover:border-gold/35"
+              className="relative isolate flex flex-col items-center overflow-hidden rounded-2xl border border-gold/15 bg-surface px-4 py-7 text-center transition-colors hover:border-gold/35"
             >
               {bgImage && (
                 <img
