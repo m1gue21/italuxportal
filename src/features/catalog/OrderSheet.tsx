@@ -17,6 +17,38 @@ import { buildOrderPageUrl, buildOrderPayload } from "./orderLink";
 import { formatPrice, roleLabel } from "./pricing";
 import type { InvestorRole, OrderLine } from "./types";
 
+function Field({
+  value,
+  onChange,
+  placeholder,
+  error,
+  inputMode,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  placeholder: string;
+  error?: string;
+  inputMode?: "tel";
+}) {
+  return (
+    <div>
+      <Input
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        inputMode={inputMode}
+        aria-invalid={error ? "true" : undefined}
+        className={
+          error
+            ? "border-destructive/70 bg-surface focus-visible:ring-destructive/40"
+            : "border-gold/20 bg-surface"
+        }
+      />
+      {error && <p className="mt-1 px-1 text-[11px] text-destructive">{error}</p>}
+    </div>
+  );
+}
+
 type Props = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -158,9 +190,39 @@ export function OrderSheet({
     if (!open) setStatus(null);
   }, [open]);
 
+  // El asesor necesita saber quién pide y cómo responderle: los cuatro datos
+  // son obligatorios antes de poder enviar.
+  const missing = useMemo(() => {
+    const errors: Record<string, string> = {};
+    if (customerName.trim().length < 3) errors.name = "Escribe tu nombre completo";
+    if (customerCity.trim().length < 2) errors.city = "Indica tu ciudad";
+    if (customerDocument.trim().length < 5) errors.document = "Falta el C.C. / NIT";
+    if (customerPhone.replace(/\D/g, "").length < 7) {
+      errors.phone = "Falta un teléfono de contacto";
+    }
+    return errors;
+  }, [customerName, customerCity, customerDocument, customerPhone]);
+
+  const incomplete = Object.keys(missing).length > 0;
+  const [showErrors, setShowErrors] = useState(false);
+  const formRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!incomplete) setShowErrors(false);
+  }, [incomplete]);
+
+  /** Devuelve true si faltan datos; de paso los señala y hace scroll. */
+  const blockIfIncomplete = useCallback(() => {
+    if (!incomplete) return false;
+    setShowErrors(true);
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    formRef.current?.querySelector<HTMLInputElement>("input[aria-invalid='true']")?.focus();
+    return true;
+  }, [incomplete]);
+
   /** Secundario: manda el PDF como archivo por la hoja de compartir. */
   const sharePdf = useCallback(async () => {
-    if (!items.length || sending) return;
+    if (!items.length || sending || blockIfIncomplete()) return;
     setSending(true);
     setStatus(null);
     try {
@@ -174,7 +236,7 @@ export function OrderSheet({
     } finally {
       setSending(false);
     }
-  }, [items.length, sending, pdfFile, message]);
+  }, [items.length, sending, pdfFile, message, blockIfIncomplete]);
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -255,34 +317,37 @@ export function OrderSheet({
             </ul>
           )}
 
-          <div className="space-y-2 rounded-2xl border border-gold/15 p-3">
+          <div ref={formRef} className="space-y-2 rounded-2xl border border-gold/15 p-3">
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-gold/80">
               Datos para el asesor
             </p>
-            <Input
+            <p className="text-[11px] text-muted-foreground">
+              Todos los datos son obligatorios: van en el pedido que recibe el asesor.
+            </p>
+            <Field
               value={customerName}
-              onChange={(e) => onNameChange(e.target.value)}
+              onChange={onNameChange}
               placeholder="Tu nombre"
-              className="border-gold/20 bg-surface"
+              error={showErrors ? missing.name : undefined}
             />
-            <Input
+            <Field
               value={customerCity}
-              onChange={(e) => onCityChange(e.target.value)}
+              onChange={onCityChange}
               placeholder="Ciudad"
-              className="border-gold/20 bg-surface"
+              error={showErrors ? missing.city : undefined}
             />
-            <Input
+            <Field
               value={customerDocument}
-              onChange={(e) => onDocumentChange(e.target.value)}
-              placeholder="C.C. / NIT (opcional)"
-              className="border-gold/20 bg-surface"
+              onChange={onDocumentChange}
+              placeholder="C.C. / NIT"
+              error={showErrors ? missing.document : undefined}
             />
-            <Input
+            <Field
               value={customerPhone}
-              onChange={(e) => onPhoneChange(e.target.value)}
-              placeholder="Teléfono (opcional)"
+              onChange={onPhoneChange}
+              placeholder="Teléfono"
               inputMode="tel"
-              className="border-gold/20 bg-surface"
+              error={showErrors ? missing.phone : undefined}
             />
           </div>
 
@@ -306,6 +371,9 @@ export function OrderSheet({
             target="_blank"
             rel="noopener noreferrer"
             aria-disabled={!items.length}
+            onClick={(event) => {
+              if (blockIfIncomplete()) event.preventDefault();
+            }}
             className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-xs font-medium uppercase tracking-[0.22em] transition-all ${
               items.length
                 ? "bg-gradient-to-r from-gold via-gold-light to-gold text-background shadow-[0_10px_30px_-10px] shadow-gold/40 active:scale-[0.98]"
@@ -317,7 +385,9 @@ export function OrderSheet({
           </a>
           {items.length > 0 && (
             <p className="px-1 text-center text-[11px] leading-relaxed text-muted-foreground">
-              Le llega al asesor con el link del pedido: ahí lo ve y descarga el PDF.
+              {incomplete
+                ? "Completa tus datos para poder enviar el pedido."
+                : "Le llega al asesor con el link del pedido: ahí lo ve y descarga el PDF."}
             </p>
           )}
           {status && (

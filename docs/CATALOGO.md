@@ -93,7 +93,7 @@ Flujo:
 1. Usuario elige rol (Mayorista / Empresario)
 2. Agrega productos (card o detalle)
 3. Abre **Tu pedido** (panel lateral)
-4. Indica nombre y ciudad; C.C./NIT y teléfono son opcionales
+4. Llena los datos del comprador: nombre, ciudad, C.C./NIT y teléfono, los cuatro obligatorios
 5. **Enviar pedido por WhatsApp** genera el PDF del pedido y lo comparte
 
 ### El PDF
