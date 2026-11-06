@@ -258,6 +258,8 @@ export function CatalogPage({ countryCode }: Props) {
         orderId={cart.orderId}
         customerName={cart.customerName}
         customerCity={cart.customerCity}
+        customerDocument={cart.customerDocument}
+        customerPhone={cart.customerPhone}
         totalAmount={cart.totalAmount}
         totalPieces={cart.totalPieces}
         whatsappUrl={whatsappUrl}
@@ -268,6 +270,8 @@ export function CatalogPage({ countryCode }: Props) {
         onRemove={cart.removeItem}
         onNameChange={cart.setCustomerName}
         onCityChange={cart.setCustomerCity}
+        onDocumentChange={cart.setCustomerDocument}
+        onPhoneChange={cart.setCustomerPhone}
         onClear={cart.clearOrder}
       />
     </div>

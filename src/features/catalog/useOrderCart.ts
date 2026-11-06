@@ -15,7 +15,13 @@ function defaultState(countryCode: string): OrderState {
     orderId: makeOrderId(countryCode),
     customerName: "",
     customerCity: "",
+    customerDocument: "",
+    customerPhone: "",
   };
+}
+
+function str(value: unknown): string {
+  return typeof value === "string" ? value : "";
 }
 
 function loadState(storageKey: string, countryCode: string): OrderState {
@@ -27,10 +33,11 @@ function loadState(storageKey: string, countryCode: string): OrderState {
     return {
       role: parsed.role === "empresario" ? "empresario" : "mayorista",
       items: Array.isArray(parsed.items) ? parsed.items : [],
-      orderId:
-        typeof parsed.orderId === "string" ? parsed.orderId : makeOrderId(countryCode),
-      customerName: typeof parsed.customerName === "string" ? parsed.customerName : "",
-      customerCity: typeof parsed.customerCity === "string" ? parsed.customerCity : "",
+      orderId: typeof parsed.orderId === "string" ? parsed.orderId : makeOrderId(countryCode),
+      customerName: str(parsed.customerName),
+      customerCity: str(parsed.customerCity),
+      customerDocument: str(parsed.customerDocument),
+      customerPhone: str(parsed.customerPhone),
     };
   } catch {
     return defaultState(countryCode);
@@ -68,6 +75,7 @@ export function useOrderCart(
             ...item,
             role,
             unitPrice: priceForRole(product, role, pricing, currency),
+            retailPrice: product.retailPrice,
           };
         }),
       }));
@@ -87,7 +95,13 @@ export function useOrderCart(
             role,
             items: prev.items.map((i) =>
               i.handle === product.handle
-                ? { ...i, qty: i.qty + qty, unitPrice, role }
+                ? {
+                    ...i,
+                    qty: i.qty + qty,
+                    unitPrice,
+                    retailPrice: product.retailPrice,
+                    role,
+                  }
                 : i,
             ),
           };
@@ -99,6 +113,7 @@ export function useOrderCart(
           imageUrl: product.imageUrl,
           qty,
           unitPrice,
+          retailPrice: product.retailPrice,
           role,
         };
         return { ...prev, role, items: [...prev.items, line] };
@@ -141,10 +156,15 @@ export function useOrderCart(
     setState((prev) => ({ ...prev, customerCity }));
   }, []);
 
-  const totalPieces = useMemo(
-    () => state.items.reduce((sum, i) => sum + i.qty, 0),
-    [state.items],
-  );
+  const setCustomerDocument = useCallback((customerDocument: string) => {
+    setState((prev) => ({ ...prev, customerDocument }));
+  }, []);
+
+  const setCustomerPhone = useCallback((customerPhone: string) => {
+    setState((prev) => ({ ...prev, customerPhone }));
+  }, []);
+
+  const totalPieces = useMemo(() => state.items.reduce((sum, i) => sum + i.qty, 0), [state.items]);
 
   const totalAmount = useMemo(
     () => state.items.reduce((sum, i) => sum + i.unitPrice * i.qty, 0),
@@ -163,5 +183,7 @@ export function useOrderCart(
     clearOrder,
     setCustomerName,
     setCustomerCity,
+    setCustomerDocument,
+    setCustomerPhone,
   };
 }

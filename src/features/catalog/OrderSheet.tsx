@@ -1,4 +1,5 @@
-import { Minus, Plus, Trash2 } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { FileText, Minus, Plus, Trash2 } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -10,6 +11,8 @@ import { Input } from "@/components/ui/input";
 import { CTA_ICONS } from "@/features/section-texts/cta-icons";
 import type { CatalogCurrency } from "./catalog-meta";
 import { buildOrderMessage, buildWhatsAppOrderUrl } from "./buildWhatsAppOrder";
+import { buildOrderPdfFile } from "./buildOrderPdf";
+import { shareOrderPdf } from "./shareOrderPdf";
 import { formatPrice, roleLabel } from "./pricing";
 import type { InvestorRole, OrderLine } from "./types";
 
@@ -21,6 +24,8 @@ type Props = {
   orderId: string;
   customerName: string;
   customerCity: string;
+  customerDocument: string;
+  customerPhone: string;
   totalAmount: number;
   totalPieces: number;
   whatsappUrl: string;
@@ -31,6 +36,8 @@ type Props = {
   onRemove: (handle: string) => void;
   onNameChange: (v: string) => void;
   onCityChange: (v: string) => void;
+  onDocumentChange: (v: string) => void;
+  onPhoneChange: (v: string) => void;
   onClear: () => void;
 };
 
@@ -42,6 +49,8 @@ export function OrderSheet({
   orderId,
   customerName,
   customerCity,
+  customerDocument,
+  customerPhone,
   totalAmount,
   totalPieces,
   whatsappUrl,
@@ -52,6 +61,8 @@ export function OrderSheet({
   onRemove,
   onNameChange,
   onCityChange,
+  onDocumentChange,
+  onPhoneChange,
   onClear,
 }: Props) {
   const WaIcon = CTA_ICONS.whatsapp;
@@ -69,6 +80,82 @@ export function OrderSheet({
   });
 
   const waHref = buildWhatsAppOrderUrl(whatsappUrl, message);
+
+  const pdfOptions = {
+    orderId,
+    role,
+    items,
+    customerName,
+    customerCity,
+    customerDocument,
+    customerPhone,
+    countryName,
+    currency,
+    locale,
+  };
+  const pdfOptionsRef = useRef(pdfOptions);
+  pdfOptionsRef.current = pdfOptions;
+
+  // El PDF se arma por adelantado: navigator.share necesita el gesto del
+  // usuario y en iOS caduca si antes se espera a generarlo.
+  const [pdfFile, setPdfFile] = useState<File | null>(null);
+  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!open || items.length === 0) {
+      setPdfFile(null);
+      return;
+    }
+    let cancelled = false;
+    const timer = setTimeout(() => {
+      buildOrderPdfFile(pdfOptionsRef.current)
+        .then((file) => {
+          if (!cancelled) setPdfFile(file);
+        })
+        .catch(() => {
+          if (!cancelled) setPdfFile(null);
+        });
+    }, 250);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [open, items, role, orderId, customerName, customerCity, customerDocument, customerPhone]);
+
+  useEffect(() => {
+    if (!open) setStatus(null);
+  }, [open]);
+
+  const sendOrder = useCallback(async () => {
+    if (!items.length || sending) return;
+    setSending(true);
+    setStatus(null);
+    try {
+      const file = pdfFile ?? (await buildOrderPdfFile(pdfOptionsRef.current));
+      const outcome = await shareOrderPdf(file, { message, whatsappUrl: waHref });
+      if (outcome === "downloaded") {
+        setStatus("Descargamos el PDF y abrimos WhatsApp: adjúntalo en el chat del asesor.");
+      } else if (outcome === "cancelled") {
+        setStatus(null);
+      }
+    } catch {
+      setStatus("No pudimos generar el PDF. Abre WhatsApp y envía el resumen.");
+      window.open(waHref, "_blank", "noopener,noreferrer");
+    } finally {
+      setSending(false);
+    }
+  }, [items.length, sending, pdfFile, message, waHref]);
+
+  const downloadPdf = useCallback(async () => {
+    const file = pdfFile ?? (await buildOrderPdfFile(pdfOptionsRef.current));
+    const url = URL.createObjectURL(file);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = file.name;
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 10_000);
+  }, [pdfFile]);
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -97,11 +184,7 @@ export function OrderSheet({
                 >
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-surface-strong">
                     {item.imageUrl ? (
-                      <img
-                        src={item.imageUrl}
-                        alt=""
-                        className="h-full w-full object-cover"
-                      />
+                      <img src={item.imageUrl} alt="" className="h-full w-full object-cover" />
                     ) : null}
                   </div>
                   <div className="min-w-0 flex-1">
@@ -169,6 +252,19 @@ export function OrderSheet({
               placeholder="Ciudad"
               className="border-gold/20 bg-surface"
             />
+            <Input
+              value={customerDocument}
+              onChange={(e) => onDocumentChange(e.target.value)}
+              placeholder="C.C. / NIT (opcional)"
+              className="border-gold/20 bg-surface"
+            />
+            <Input
+              value={customerPhone}
+              onChange={(e) => onPhoneChange(e.target.value)}
+              placeholder="Teléfono (opcional)"
+              inputMode="tel"
+              className="border-gold/20 bg-surface"
+            />
           </div>
 
           {items.length > 0 && (
@@ -186,20 +282,34 @@ export function OrderSheet({
         </div>
 
         <div className="shrink-0 space-y-2 border-t border-gold/15 bg-background px-5 py-4">
-          <a
-            href={items.length ? waHref : undefined}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-disabled={!items.length}
+          <button
+            type="button"
+            onClick={sendOrder}
+            disabled={!items.length || sending}
             className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-xs font-medium uppercase tracking-[0.22em] transition-all ${
-              items.length
+              items.length && !sending
                 ? "bg-gradient-to-r from-gold via-gold-light to-gold text-background shadow-[0_10px_30px_-10px] shadow-gold/40 active:scale-[0.98]"
                 : "pointer-events-none bg-muted text-muted-foreground"
             }`}
           >
             <WaIcon className="h-4 w-4" strokeWidth={2.2} />
-            Enviar pedido por WhatsApp
-          </a>
+            {sending ? "Preparando pedido…" : "Enviar pedido por WhatsApp"}
+          </button>
+          {status && (
+            <p className="px-1 text-center text-[11px] leading-relaxed text-muted-foreground">
+              {status}
+            </p>
+          )}
+          {items.length > 0 && (
+            <button
+              type="button"
+              onClick={downloadPdf}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-gold/30 px-6 py-3 text-[11px] font-medium uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold/10"
+            >
+              <FileText className="h-3.5 w-3.5" strokeWidth={2} />
+              Descargar PDF
+            </button>
+          )}
           {items.length > 0 && (
             <button
               type="button"

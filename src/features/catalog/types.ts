@@ -30,6 +30,8 @@ export type OrderLine = {
   imageUrl: string;
   qty: number;
   unitPrice: number;
+  /** Precio sugerido de venta, para la columna Detal del PDF. */
+  retailPrice?: number;
   role: InvestorRole;
 };
 
@@ -39,4 +41,6 @@ export type OrderState = {
   orderId: string;
   customerName: string;
   customerCity: string;
+  customerDocument: string;
+  customerPhone: string;
 };

@@ -93,10 +93,31 @@ Flujo:
 1. Usuario elige rol (Mayorista / Empresario)
 2. Agrega productos (card o detalle)
 3. Abre **Tu pedido** (panel lateral)
-4. Opcionalmente indica nombre / ciudad
-5. **Enviar pedido por WhatsApp** abre `wa.me` con mensaje prellenado
+4. Indica nombre y ciudad; C.C./NIT y teléfono son opcionales
+5. **Enviar pedido por WhatsApp** genera el PDF del pedido y lo comparte
 
-Mensaje armado en [`buildWhatsAppOrder.ts`](../src/features/catalog/buildWhatsAppOrder.ts). El número sale de `countries.whatsapp_url` o fallback en `SOCIAL_LINKS`.
+### El PDF
+
+[`buildOrderPdf.ts`](../src/features/catalog/buildOrderPdf.ts) arma una remisión en
+A4 con jsPDF: cabecera con número, fecha y rol, datos del comprador, tabla
+`Ref · Cant · Descripción · [rol] · Detal · Subtotal`, total del pedido y un
+resumen con unidades, total a precio detal y total del rol. `jspdf` entra por
+import dinámico, así que solo se descarga cuando alguien abre su pedido.
+
+### Cómo llega a WhatsApp
+
+Un link de `wa.me` solo transporta texto: no se puede adjuntar un archivo. Por eso
+[`shareOrderPdf.ts`](../src/features/catalog/shareOrderPdf.ts) usa la hoja de
+compartir del sistema (`navigator.share` con `files`), donde el usuario elige
+WhatsApp y el PDF va adjunto. Donde no exista —escritorio, navegadores viejos— se
+descarga el PDF y se abre `wa.me` con el resumen en texto para adjuntarlo a mano.
+
+`navigator.share` exige el gesto del usuario y en iOS caduca si se espera a generar
+el archivo, así que el PDF se construye por adelantado (con debounce) mientras el
+panel está abierto.
+
+Mensaje de texto armado en [`buildWhatsAppOrder.ts`](../src/features/catalog/buildWhatsAppOrder.ts).
+El número sale de `countries.whatsapp_url` o fallback en `SOCIAL_LINKS`.
 
 ## UI pública (archivos clave)
 
